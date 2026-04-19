@@ -10,6 +10,103 @@
   max-width: 480px;
 }
 
+/* ── Flagship project feature ─────────────────── */
+.project-feature {
+  margin-bottom: var(--sp-24);
+  padding-bottom: var(--sp-24);
+  border-bottom: 1px solid var(--border);
+}
+
+.project-feature-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--sp-8);
+  margin-bottom: var(--sp-8);
+  flex-wrap: wrap;
+}
+
+.project-feature-header h3 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  letter-spacing: -0.03em;
+  margin-top: var(--sp-1);
+}
+
+.project-feature-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  padding-top: var(--sp-2);
+}
+
+.project-feature-tags span {
+  font-size: 0.72rem;
+  font-family: var(--mono);
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 3px 8px;
+  white-space: nowrap;
+}
+
+/* ── Mosaic layout ────────────────────────────── */
+.project-feature-mosaic {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-8);
+  height: 420px;
+}
+
+.mosaic-main,
+.mosaic-side {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.mosaic-main img,
+.mosaic-side img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  filter: brightness(0.9);
+  transition: filter 0.3s;
+}
+
+.mosaic-main:hover img,
+.mosaic-side:hover img {
+  filter: brightness(1);
+}
+
+/* ── Feature body ─────────────────────────────── */
+.project-feature-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-6);
+}
+
+.case-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-8);
+}
+
+.case-cols p {
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.case-cols .case-label {
+  display: block;
+  margin-bottom: var(--sp-2);
+}
+
 /* ── Case study layout ────────────────────────── */
 .case-study {
   display: grid;
@@ -72,6 +169,8 @@
 .case-label {
   color: var(--muted);
   font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .case-study-body h3 {
@@ -124,19 +223,24 @@
 
 .case-link-secondary:hover { color: var(--text); }
 
-/* ── Secondary projects grid ──────────────────── */
-.projects-secondary {
+/* ── Section subheader ────────────────────────── */
+.section-subheader {
+  margin-bottom: var(--sp-8);
+  padding-top: var(--sp-4);
+}
+
+/* ── 4-up project grid ────────────────────────── */
+.projects-grid-4 {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1px;
   background: var(--border);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  margin-top: var(--sp-16);
 }
 
-.project-mini {
+.project-card-4 {
   background: var(--surface);
   padding: var(--sp-8);
   display: flex;
@@ -145,25 +249,59 @@
   transition: background 0.2s;
 }
 
-.project-mini:hover { background: var(--surface-2); }
+.project-card-4:hover { background: var(--surface-2); }
 
-.project-mini-header { margin-bottom: var(--sp-1); }
+.project-card-4-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-1);
+  margin-bottom: var(--sp-1);
+}
 
-.project-mini h4 {
-  font-size: 1.1rem;
+.project-card-4-tags span {
+  font-size: 0.65rem;
+  font-family: var(--mono);
+  color: var(--muted);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 2px 6px;
+}
+
+.project-card-4 h4 {
+  font-size: 1rem;
   font-weight: 600;
   color: var(--white);
   letter-spacing: -0.02em;
 }
 
-.project-mini p {
-  font-size: 0.85rem;
+.project-card-4 p {
+  font-size: 0.82rem;
   color: var(--muted);
   line-height: 1.65;
 }
 
 /* ── Responsive ───────────────────────────────── */
+@media (max-width: 1100px) {
+  .projects-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 900px) {
+  .project-feature-mosaic {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .mosaic-main { height: 240px; }
+  .mosaic-side { display: none; }
+
+  .case-cols {
+    grid-template-columns: 1fr;
+    gap: var(--sp-6);
+  }
+
   .case-study,
   .case-study-reverse {
     grid-template-columns: 1fr;
@@ -172,5 +310,15 @@
   }
 
   .case-study-visual img { height: 240px; }
-  .projects-secondary { grid-template-columns: 1fr; }
+
+  .project-feature-header {
+    flex-direction: column;
+    gap: var(--sp-4);
+  }
+}
+
+@media (max-width: 600px) {
+  .projects-grid-4 {
+    grid-template-columns: 1fr;
+  }
 }

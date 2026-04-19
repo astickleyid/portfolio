@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Austin Stickley — Claude API Developer & AI Systems Builder</title>
   <meta name="description" content="I build production AI systems using Claude API, Stripe, and full-stack web & mobile — shipped products, not prototypes. Available for AI integration, automation, and SaaS development.">
-  <meta name="keywords" content="Claude API developer, AI integration consultant, full-stack AI developer, Claude API integration, AI automation developer, hire AI developer, custom AI systems, Anthropic Claude developer">
+  <meta name="keywords" content="Claude API developer, AI integration consultant, full-stack AI developer, Claude API integration, AI automation developer, hire AI developer, custom AI systems, Anthropic Claude developer, RTMP streaming developer, iOS developer">
   <meta property="og:title" content="Austin Stickley — Claude API Developer & AI Systems Builder">
   <meta property="og:description" content="Production AI systems, full-stack web & mobile, and business automation. I build the thing, not the deck about the thing.">
   <meta property="og:type" content="website">
@@ -43,7 +43,7 @@
         <span class="mono">Available for projects</span>
       </div>
       <h1 class="hero-headline">I build AI systems<br>that ship to production.</h1>
-      <p class="hero-sub">Claude API integrations, full-stack web & mobile, and business automation — built end-to-end and deployed. Not prototypes.</p>
+      <p class="hero-sub">Claude API integrations, full-stack web & mobile, live streaming infrastructure, and business automation — built end-to-end and deployed. Not prototypes.</p>
       <div class="hero-stats">
         <div class="stat">
           <span class="stat-num">10+</span>
@@ -54,8 +54,8 @@
           <span class="stat-label">Industries</span>
         </div>
         <div class="stat">
-          <span class="stat-num">$0→</span>
-          <span class="stat-label">Revenue, fast</span>
+          <span class="stat-num">Solo</span>
+          <span class="stat-label">Full-stack to iOS</span>
         </div>
       </div>
       <a href="#work" class="hero-btn">See the work</a>
@@ -65,75 +65,116 @@
   <!-- SELECTED WORK -->
   <section class="projects" id="work">
     <div class="section-inner">
+
       <div class="section-header reveal">
         <span class="mono section-label">Selected Work</span>
         <h2>Real products, deployed.</h2>
-        <p class="section-sub">Every project here is live or revenue-generating. Click through to see them.</p>
+        <p class="section-sub">Every project below is live or revenue-generating. No demos, no slides.</p>
       </div>
 
-      <!-- CLARUSIGN — FEATURED -->
+      <!-- ── nXcor ───────────────────────────────── -->
+      <div class="project-feature reveal">
+        <div class="project-feature-header">
+          <div>
+            <div class="mono case-label">Flagship project</div>
+            <h3>nXcor</h3>
+          </div>
+          <div class="project-feature-tags">
+            <span>React + Vite</span>
+            <span>Node / Express</span>
+            <span>SQLite WAL</span>
+            <span>RTMP + HLS</span>
+            <span>Socket.IO</span>
+            <span>iOS (Capacitor)</span>
+            <span>DigitalOcean + Caddy</span>
+          </div>
+        </div>
+        <div class="project-feature-mosaic">
+          <div class="mosaic-main">
+            <img src="images/nxcor-feed.png" alt="nXcor social feed showing posts, user interactions, and live stream thumbnail" loading="lazy">
+          </div>
+          <div class="mosaic-side">
+            <img src="images/nxcor-profile.png" alt="nXcor user profile showing banner, avatar, post tabs, streams, and analytics" loading="lazy">
+          </div>
+        </div>
+        <div class="project-feature-body">
+          <div class="case-cols">
+            <div>
+              <p class="case-label mono">What it is</p>
+              <p>A complete social platform — built solo, across every layer. Posts, follows, live streaming with RTMP ingest and HLS playback, real-time notifications, server communities, direct messages, native iOS app, and two built-in AI bots (@cortex, @nox).</p>
+            </div>
+            <div>
+              <p class="case-label mono">The hard parts</p>
+              <p>Architecting the RTMP media server alongside the web backend. WAL-mode SQLite under concurrent writes. Capacitor bridging to iOS from the same React codebase. Real-time presence via Socket.IO without polling.</p>
+            </div>
+            <div>
+              <p class="case-label mono">Status</p>
+              <p>Live at n-xcor.com. Real users, real streams, real content — no fake data.</p>
+            </div>
+          </div>
+          <a href="https://n-xcor.com" class="case-link-primary" target="_blank" rel="noopener">View live →</a>
+        </div>
+      </div>
+
+      <!-- ── ClaruSign ──────────────────────────── -->
       <div class="case-study reveal">
         <div class="case-study-visual">
-          <img src="images/clarusign.png" alt="ClaruSign — AI contract review interface showing risk score and flagged clauses" loading="lazy">
+          <img src="images/clarusign.png" alt="ClaruSign landing page — AI contract review, $9 per review, Stripe-gated" loading="lazy">
           <div class="case-study-tag">
-            <span class="mono">Claude API · Stripe · PDF Analysis · Vercel</span>
+            <span class="mono">Claude API · Stripe · PDF Parsing · Vercel Serverless</span>
           </div>
         </div>
         <div class="case-study-body">
-          <div class="case-label mono">Featured project</div>
+          <div class="mono case-label">AI SaaS</div>
           <h3>ClaruSign</h3>
-          <p class="case-problem"><strong>Problem:</strong> Most people sign contracts they don't understand — leases, freelance agreements, NDAs. Lawyers charge $200–500/hr to review them.</p>
-          <p class="case-solution"><strong>What I built:</strong> Claude API reads the full contract text, scores overall risk 1–10, extracts specific red-flag clauses with severity ratings, generates plain-English explanations, suggests exact replacement language, and produces a ready-to-send negotiation email. Stripe gates access at $9/review. PDF parsing handles any format.</p>
-          <p class="case-outcome"><strong>Result:</strong> Full SaaS — upload, pay, analyze, download. Live in production with Stripe webhooks, review history, and email delivery.</p>
+          <p class="case-problem"><strong>Problem:</strong> Most people sign contracts they don't fully understand. Lawyers charge $200–500/hr to review them.</p>
+          <p class="case-solution"><strong>Built:</strong> Claude API reads the full document, scores overall risk 1–10, extracts red-flag clauses with severity ratings, writes plain-English explanations, suggests exact replacement language, and generates a ready-to-send negotiation email. Stripe gates access at $9/review. Handles PDF and TXT, any format.</p>
+          <p class="case-outcome"><strong>Result:</strong> Full production SaaS — upload, pay, analyze, download report. Stripe webhooks, review history, email delivery.</p>
           <div class="case-links">
-            <a href="https://github.com/astickleyid/clarusign" class="case-link-primary" target="_blank" rel="noopener">View on GitHub →</a>
+            <a href="https://github.com/astickleyid/clarusign" class="case-link-primary" target="_blank" rel="noopener">GitHub →</a>
           </div>
         </div>
       </div>
 
-      <!-- NXCOR -->
-      <div class="case-study case-study-reverse reveal">
-        <div class="case-study-visual">
-          <img src="images/nxcor.png" alt="nXcor social platform showing trending feed, user profiles, and server discovery" loading="lazy">
-          <div class="case-study-tag">
-            <span class="mono">React · Node/Express · SQLite · RTMP · iOS · Socket.IO</span>
-          </div>
-        </div>
-        <div class="case-study-body">
-          <div class="case-label mono">Full platform</div>
-          <h3>nXcor</h3>
-          <p class="case-problem"><strong>Problem:</strong> Built a social platform from scratch — solo, across every layer of the stack.</p>
-          <p class="case-solution"><strong>What I built:</strong> React + Vite frontend, Node/Express backend, SQLite with WAL mode, RTMP live streaming with HLS playback, Socket.IO real-time chat and notifications, native iOS app via Capacitor, server communities, AI agents (@cortex, @nox) built into the platform, DigitalOcean VPS deployment with Caddy reverse proxy.</p>
-          <p class="case-outcome"><strong>Result:</strong> Live at n-xcor.com. Full social platform — posts, follows, live streaming, servers, DMs, AI bots — running in production.</p>
-          <div class="case-links">
-            <a href="https://n-xcor.com" class="case-link-primary" target="_blank" rel="noopener">View live →</a>
-          </div>
-        </div>
+      <!-- ── More projects ───────────────────────── -->
+      <div class="section-subheader reveal">
+        <span class="mono section-label">More work</span>
       </div>
 
-      <!-- SECONDARY PROJECTS GRID -->
-      <div class="projects-secondary reveal">
-        <div class="project-mini">
-          <div class="project-mini-header">
-            <span class="mono">Claude API · Twilio · Voice AI</span>
+      <div class="projects-grid-4 reveal">
+
+        <div class="project-card-4">
+          <div class="project-card-4-tags">
+            <span>Claude API</span><span>Twilio</span><span>Voice AI</span>
           </div>
           <h4>NWO AI Answering</h4>
-          <p>AI phone agent for HVAC and service businesses. Answers calls 24/7, qualifies leads, schedules estimates. Pricing: $199–799/mo. Built with Claude API + Twilio + lead-scoring dashboard.</p>
+          <p>AI phone agent for HVAC and service businesses. Answers inbound calls 24/7, qualifies leads, schedules estimates, escalates to human on request. Monthly SaaS pricing ($199–799/mo). Built on Claude API + Twilio with a lead-scoring dashboard.</p>
         </div>
-        <div class="project-mini">
-          <div class="project-mini-header">
-            <span class="mono">Flutter · Firebase · RevenueCat · OpenAI</span>
+
+        <div class="project-card-4">
+          <div class="project-card-4-tags">
+            <span>React</span><span>Node</span><span>Stripe</span><span>AI</span>
+          </div>
+          <h4>Rival</h4>
+          <p>Competitive intelligence SaaS. Tracks competitor activity across channels, surfaces AI-generated briefings, and flags meaningful changes. Full Stripe billing, subscription management, and a React dashboard. Code-complete MVP.</p>
+        </div>
+
+        <div class="project-card-4">
+          <div class="project-card-4-tags">
+            <span>Flutter</span><span>Firebase</span><span>RevenueCat</span><span>OpenAI</span>
           </div>
           <h4>FinCoach AI</h4>
-          <p>AI personal finance coach — iOS and Android. Riverpod state management, Firestore persistence, in-app subscription via RevenueCat. Full cross-platform mobile with real monetization.</p>
+          <p>AI personal finance coach — iOS and Android. Riverpod state management, Firestore data layer, in-app subscriptions via RevenueCat. Full cross-platform mobile with real monetization built in from day one.</p>
         </div>
-        <div class="project-mini">
-          <div class="project-mini-header">
-            <span class="mono">WebGL · Vercel · GPS · Voice Commands</span>
+
+        <div class="project-card-4">
+          <div class="project-card-4-tags">
+            <span>Python</span><span>Claude API</span><span>Automation</span>
           </div>
-          <h4>Aura AR World</h4>
-          <p>WebGL augmented reality platform with GPS-pinned world anchors, voice commands, and real-time spatial overlays. Deployed on Vercel with Vercel KV for anchor persistence.</p>
+          <h4>Agency Reporting Twin</h4>
+          <p>AI workflow that ingests client campaign data across platforms and generates polished performance reports automatically. Cuts agency reporting from hours to minutes. Built for real agency use with configurable templates and Claude API for narrative generation.</p>
         </div>
+
       </div>
 
     </div>
@@ -143,36 +184,36 @@
   <section class="services" id="services">
     <div class="section-inner">
       <div class="section-header reveal">
-        <span class="mono section-label">What I Do</span>
+        <span class="mono section-label">What I Build</span>
         <h2>Services</h2>
       </div>
       <div class="services-grid">
         <div class="service-card reveal">
           <h3>Claude API Integration</h3>
-          <p>Custom Claude API implementations — structured JSON outputs, tool use, document analysis, PDF parsing, prompt engineering, cost optimization, and production reliability. Not a wrapper, not a chatbot widget.</p>
+          <p>Custom Claude API implementations — structured JSON outputs, tool use, document analysis, PDF parsing, prompt engineering, cost optimization, and production reliability. Not a wrapper. Not a chatbot widget.</p>
           <ul>
             <li>Contract & document intelligence</li>
-            <li>AI phone agents (voice + text)</li>
-            <li>Structured data extraction</li>
-            <li>Custom AI tooling & pipelines</li>
+            <li>AI voice agents (Twilio + Claude)</li>
+            <li>Structured data extraction pipelines</li>
+            <li>Automated report generation</li>
           </ul>
         </div>
         <div class="service-card reveal">
           <h3>Full-Stack Development</h3>
-          <p>React, Node/Express, SQLite/Postgres, REST APIs, iOS (Capacitor), RTMP streaming, real-time (Socket.IO), VPS deployment, Caddy, Vercel. I own the whole stack.</p>
+          <p>React, Node/Express, SQLite/Postgres, REST APIs, iOS via Capacitor, RTMP live streaming, Socket.IO real-time, VPS deployment, Caddy, Vercel. I own the whole stack — no handoffs.</p>
           <ul>
-            <li>Web & iOS apps end-to-end</li>
+            <li>Web & iOS apps from schema to ship</li>
             <li>SaaS with Stripe billing</li>
-            <li>Real-time & streaming systems</li>
-            <li>Backend APIs & data pipelines</li>
+            <li>Live streaming infrastructure</li>
+            <li>Real-time systems (Socket.IO)</li>
           </ul>
         </div>
         <div class="service-card reveal">
           <h3>Business Automation</h3>
-          <p>I identify the manual work that's costing your business money and automate it. Lead qualification, reporting pipelines, client communication, scheduling — built to your workflow.</p>
+          <p>I find the manual work costing your business money and automate it. Lead qualification, 24/7 phone answering, reporting pipelines, client communication — built to your actual workflow.</p>
           <ul>
-            <li>Lead qualification & scoring</li>
             <li>24/7 AI phone answering</li>
+            <li>Lead qualification & scoring</li>
             <li>Agency reporting automation</li>
             <li>CRM & calendar integrations</li>
           </ul>
@@ -223,7 +264,7 @@
           <p>Got it — I'll be in touch within 24 hours.</p>
         </div>
         <div class="form-error" id="formError" hidden>
-          <p>Something went wrong. Email me directly: <a href="mailto:astickleyid@gmail.com">astickleyid@gmail.com</a></p>
+          <p>Something went wrong. Email me: <a href="mailto:astickleyid@gmail.com">astickleyid@gmail.com</a></p>
         </div>
       </form>
     </div>
@@ -235,6 +276,7 @@
       <span class="footer-name">Austin Stickley</span>
       <div class="footer-links">
         <a href="https://github.com/astickleyid" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://n-xcor.com" target="_blank" rel="noopener">nXcor</a>
       </div>
       <span class="footer-copy">© 2026</span>
     </div>
