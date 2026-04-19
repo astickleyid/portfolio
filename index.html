@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Austin Stickley — AI Developer & Systems Architect</title>
-  <meta name="description" content="I build AI-powered software and automation systems for businesses that need results, not demos. Full-stack development, Claude API integrations, and custom automation.">
-  <meta name="keywords" content="AI developer, Claude API, automation, full-stack, consulting, software engineer">
-  <meta property="og:title" content="Austin Stickley — AI Developer">
-  <meta property="og:description" content="I build the AI systems your team can't figure out.">
+  <title>Austin Stickley — Claude API Developer & AI Systems Builder</title>
+  <meta name="description" content="I build production AI systems using Claude API, Stripe, and full-stack web & mobile — shipped products, not prototypes. Available for AI integration, automation, and SaaS development.">
+  <meta name="keywords" content="Claude API developer, AI integration consultant, full-stack AI developer, Claude API integration, AI automation developer, hire AI developer, custom AI systems, Anthropic Claude developer">
+  <meta property="og:title" content="Austin Stickley — Claude API Developer & AI Systems Builder">
+  <meta property="og:description" content="Production AI systems, full-stack web & mobile, and business automation. I build the thing, not the deck about the thing.">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/reset.css">
   <link rel="stylesheet" href="styles/design-system.css">
   <link rel="stylesheet" href="styles/layout.css">
@@ -39,17 +39,26 @@
   <section class="hero" id="hero">
     <div class="hero-inner">
       <div class="hero-eyebrow">
-        <span class="mono">Available for projects</span>
         <span class="hero-dot"></span>
+        <span class="mono">Available for projects</span>
       </div>
-      <h1 class="hero-headline">I build the AI systems<br>your team can't figure out.</h1>
-      <p class="hero-sub">Full-stack developer specializing in Claude API integrations, business automation, and shipped products — not prototypes.</p>
+      <h1 class="hero-headline">I build AI systems<br>that ship to production.</h1>
+      <p class="hero-sub">Claude API integrations, full-stack web & mobile, and business automation — built end-to-end and deployed. Not prototypes.</p>
       <div class="hero-stats">
-        <div class="stat"><span class="stat-num">10+</span><span class="stat-label">AI products shipped</span></div>
-        <div class="stat"><span class="stat-num">5+</span><span class="stat-label">industries automated</span></div>
-        <div class="stat"><span class="stat-num">$0</span><span class="stat-label">to production, fast</span></div>
+        <div class="stat">
+          <span class="stat-num">10+</span>
+          <span class="stat-label">Products shipped</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">5+</span>
+          <span class="stat-label">Industries</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">$0→</span>
+          <span class="stat-label">Revenue, fast</span>
+        </div>
       </div>
-      <a href="#contact" class="hero-btn">Let's build something</a>
+      <a href="#work" class="hero-btn">See the work</a>
     </div>
   </section>
 
@@ -58,137 +67,75 @@
     <div class="section-inner">
       <div class="section-header reveal">
         <span class="mono section-label">Selected Work</span>
-        <h2>Products that ship</h2>
+        <h2>Real products, deployed.</h2>
+        <p class="section-sub">Every project here is live or revenue-generating. Click through to see them.</p>
       </div>
-      <div class="projects-grid">
 
-        <!-- FEATURED: ClaruSign -->
-        <article class="project-card project-featured reveal">
-          <div class="project-preview clarusign-preview">
-            <div class="preview-nav">
-              <span class="preview-logo">Claru<span>Sign</span></span>
-              <span class="preview-badge">AI Contract Review</span>
-            </div>
-            <div class="preview-body">
-              <div class="preview-score">
-                <div class="score-ring">
-                  <svg viewBox="0 0 80 80"><circle class="ring-bg" cx="40" cy="40" r="32"/><circle class="ring-fill" cx="40" cy="40" r="32" stroke-dasharray="201" stroke-dashoffset="60"/></svg>
-                  <span>7.2</span>
-                </div>
-                <div class="score-meta"><strong>High Risk</strong><small>3 red flags detected</small></div>
-              </div>
-              <div class="preview-flags">
-                <div class="flag flag-high"><span>●</span> Unlimited liability clause</div>
-                <div class="flag flag-med"><span>●</span> Non-compete — 3 year term</div>
-                <div class="flag flag-low"><span>●</span> IP assignment — broad scope</div>
-              </div>
-            </div>
+      <!-- CLARUSIGN — FEATURED -->
+      <div class="case-study reveal">
+        <div class="case-study-visual">
+          <img src="images/clarusign.png" alt="ClaruSign — AI contract review interface showing risk score and flagged clauses" loading="lazy">
+          <div class="case-study-tag">
+            <span class="mono">Claude API · Stripe · PDF Analysis · Vercel</span>
           </div>
-          <div class="project-info">
-            <div class="project-tags"><span>Claude API</span><span>Stripe</span><span>PDF Analysis</span></div>
-            <h3>ClaruSign</h3>
-            <p>Upload any contract and get a plain-English breakdown of risks, red flags, and negotiation tips in 60 seconds. $9/review, Stripe-gated, live AI analysis.</p>
-            <a href="https://clarusign.vercel.app" class="project-link" target="_blank" rel="noopener">View live →</a>
+        </div>
+        <div class="case-study-body">
+          <div class="case-label mono">Featured project</div>
+          <h3>ClaruSign</h3>
+          <p class="case-problem"><strong>Problem:</strong> Most people sign contracts they don't understand — leases, freelance agreements, NDAs. Lawyers charge $200–500/hr to review them.</p>
+          <p class="case-solution"><strong>What I built:</strong> Claude API reads the full contract text, scores overall risk 1–10, extracts specific red-flag clauses with severity ratings, generates plain-English explanations, suggests exact replacement language, and produces a ready-to-send negotiation email. Stripe gates access at $9/review. PDF parsing handles any format.</p>
+          <p class="case-outcome"><strong>Result:</strong> Full SaaS — upload, pay, analyze, download. Live in production with Stripe webhooks, review history, and email delivery.</p>
+          <div class="case-links">
+            <a href="https://github.com/astickleyid/clarusign" class="case-link-primary" target="_blank" rel="noopener">View on GitHub →</a>
           </div>
-        </article>
-
-        <!-- nXcor -->
-        <article class="project-card reveal">
-          <div class="project-preview nxcor-preview">
-            <div class="preview-social">
-              <div class="social-post">
-                <div class="post-avatar"></div>
-                <div class="post-body">
-                  <div class="post-name">@user <span>· live now</span></div>
-                  <div class="post-text">streaming to 140 viewers</div>
-                  <div class="post-live-dot">● LIVE</div>
-                </div>
-              </div>
-              <div class="social-post">
-                <div class="post-avatar av2"></div>
-                <div class="post-body">
-                  <div class="post-name">@austin</div>
-                  <div class="post-text">shipped the new drop algorithm today</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="project-info">
-            <div class="project-tags"><span>React</span><span>Node</span><span>RTMP</span><span>iOS</span></div>
-            <h3>nXcor</h3>
-            <p>Full social platform with live streaming, posts, profiles, and native iOS app. Built from scratch — backend, frontend, mobile, and media server.</p>
-            <a href="https://n-xcor.com" class="project-link" target="_blank" rel="noopener">View live →</a>
-          </div>
-        </article>
-
-        <!-- NWO AI Answering -->
-        <article class="project-card reveal">
-          <div class="project-preview nwo-preview">
-            <div class="preview-call">
-              <div class="call-wave">
-                <span></span><span></span><span></span><span></span><span></span>
-              </div>
-              <div class="call-status">AI answering · 0:42</div>
-              <div class="call-transcript">
-                <div class="tr-line ai">"Thank you for calling NWO — how can I help?"</div>
-                <div class="tr-line user">"I need an estimate for my AC unit"</div>
-                <div class="tr-line ai">"I can get that started — what's your address?"</div>
-              </div>
-            </div>
-          </div>
-          <div class="project-info">
-            <div class="project-tags"><span>Claude API</span><span>Voice AI</span><span>Automation</span></div>
-            <h3>NWO AI Answering</h3>
-            <p>AI phone agent for HVAC service businesses. Answers calls 24/7, qualifies leads, schedules estimates, and escalates to human when needed.</p>
-          </div>
-        </article>
-
-        <!-- Rival -->
-        <article class="project-card reveal">
-          <div class="project-preview rival-preview">
-            <div class="rival-topbar">
-              <span class="rival-logo">Rival</span>
-              <span class="rival-filter">Competitor <span class="rival-caret">▾</span></span>
-            </div>
-            <div class="rival-search">
-              <span class="rival-search-icon">⌕</span>
-              <span class="rival-search-placeholder">Search briefings…</span>
-            </div>
-            <div class="rival-briefings">
-              <div class="rival-briefing unread">
-                <div class="rival-briefing-top">
-                  <span class="rival-competitor-badge">Notion</span>
-                  <span class="rival-unread-dot"></span>
-                </div>
-                <div class="rival-briefing-title">New AI block editor features announced</div>
-                <div class="rival-briefing-meta">Today · 3 changes detected</div>
-              </div>
-              <div class="rival-briefing unread">
-                <div class="rival-briefing-top">
-                  <span class="rival-competitor-badge coda">Coda</span>
-                  <span class="rival-unread-dot"></span>
-                </div>
-                <div class="rival-briefing-title">Pricing page redesign — new team tier</div>
-                <div class="rival-briefing-meta">Yesterday · 1 change detected</div>
-              </div>
-              <div class="rival-briefing">
-                <div class="rival-briefing-top">
-                  <span class="rival-competitor-badge linear">Linear</span>
-                </div>
-                <div class="rival-briefing-title">Homepage copy updated — new positioning</div>
-                <div class="rival-briefing-meta">2 days ago · 2 changes detected</div>
-              </div>
-            </div>
-          </div>
-          <div class="project-info">
-            <div class="project-tags"><span>React</span><span>Supabase</span><span>Claude API</span></div>
-            <h3>Rival</h3>
-            <p>AI-powered competitor intelligence. Tracks competitor websites and delivers daily briefings — keyword search, smart filters, bookmarks, and email digests. Built for founders who need signal, not noise.</p>
-            <a href="https://rival-alpha.vercel.app" class="project-link" target="_blank" rel="noopener">View live →</a>
-          </div>
-        </article>
-
+        </div>
       </div>
+
+      <!-- NXCOR -->
+      <div class="case-study case-study-reverse reveal">
+        <div class="case-study-visual">
+          <img src="images/nxcor.png" alt="nXcor social platform showing trending feed, user profiles, and server discovery" loading="lazy">
+          <div class="case-study-tag">
+            <span class="mono">React · Node/Express · SQLite · RTMP · iOS · Socket.IO</span>
+          </div>
+        </div>
+        <div class="case-study-body">
+          <div class="case-label mono">Full platform</div>
+          <h3>nXcor</h3>
+          <p class="case-problem"><strong>Problem:</strong> Built a social platform from scratch — solo, across every layer of the stack.</p>
+          <p class="case-solution"><strong>What I built:</strong> React + Vite frontend, Node/Express backend, SQLite with WAL mode, RTMP live streaming with HLS playback, Socket.IO real-time chat and notifications, native iOS app via Capacitor, server communities, AI agents (@cortex, @nox) built into the platform, DigitalOcean VPS deployment with Caddy reverse proxy.</p>
+          <p class="case-outcome"><strong>Result:</strong> Live at n-xcor.com. Full social platform — posts, follows, live streaming, servers, DMs, AI bots — running in production.</p>
+          <div class="case-links">
+            <a href="https://n-xcor.com" class="case-link-primary" target="_blank" rel="noopener">View live →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECONDARY PROJECTS GRID -->
+      <div class="projects-secondary reveal">
+        <div class="project-mini">
+          <div class="project-mini-header">
+            <span class="mono">Claude API · Twilio · Voice AI</span>
+          </div>
+          <h4>NWO AI Answering</h4>
+          <p>AI phone agent for HVAC and service businesses. Answers calls 24/7, qualifies leads, schedules estimates. Pricing: $199–799/mo. Built with Claude API + Twilio + lead-scoring dashboard.</p>
+        </div>
+        <div class="project-mini">
+          <div class="project-mini-header">
+            <span class="mono">Flutter · Firebase · RevenueCat · OpenAI</span>
+          </div>
+          <h4>FinCoach AI</h4>
+          <p>AI personal finance coach — iOS and Android. Riverpod state management, Firestore persistence, in-app subscription via RevenueCat. Full cross-platform mobile with real monetization.</p>
+        </div>
+        <div class="project-mini">
+          <div class="project-mini-header">
+            <span class="mono">WebGL · Vercel · GPS · Voice Commands</span>
+          </div>
+          <h4>Aura AR World</h4>
+          <p>WebGL augmented reality platform with GPS-pinned world anchors, voice commands, and real-time spatial overlays. Deployed on Vercel with Vercel KV for anchor persistence.</p>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -201,36 +148,33 @@
       </div>
       <div class="services-grid">
         <div class="service-card reveal">
-          <div class="service-icon">⬡</div>
-          <h3>AI Integration</h3>
-          <p>Claude API, custom prompts, structured outputs, tool use, document analysis, voice AI. I build AI features that actually work in production.</p>
+          <h3>Claude API Integration</h3>
+          <p>Custom Claude API implementations — structured JSON outputs, tool use, document analysis, PDF parsing, prompt engineering, cost optimization, and production reliability. Not a wrapper, not a chatbot widget.</p>
           <ul>
-            <li>Contract & document analysis</li>
-            <li>AI phone agents & chatbots</li>
-            <li>Workflow automation</li>
-            <li>Custom AI tooling</li>
+            <li>Contract & document intelligence</li>
+            <li>AI phone agents (voice + text)</li>
+            <li>Structured data extraction</li>
+            <li>Custom AI tooling & pipelines</li>
           </ul>
         </div>
         <div class="service-card reveal">
-          <div class="service-icon">⬡</div>
           <h3>Full-Stack Development</h3>
-          <p>From schema to shipping — React, Node, mobile (iOS), databases, APIs, and deploy pipelines. I build complete products, not just components.</p>
+          <p>React, Node/Express, SQLite/Postgres, REST APIs, iOS (Capacitor), RTMP streaming, real-time (Socket.IO), VPS deployment, Caddy, Vercel. I own the whole stack.</p>
           <ul>
-            <li>Web & mobile apps</li>
-            <li>SaaS platforms</li>
-            <li>REST APIs & backends</li>
-            <li>Live streaming infrastructure</li>
+            <li>Web & iOS apps end-to-end</li>
+            <li>SaaS with Stripe billing</li>
+            <li>Real-time & streaming systems</li>
+            <li>Backend APIs & data pipelines</li>
           </ul>
         </div>
         <div class="service-card reveal">
-          <div class="service-icon">⬡</div>
           <h3>Business Automation</h3>
-          <p>Lead qualification, reporting pipelines, customer communication — I identify the manual work that's slowing your business and automate it.</p>
+          <p>I identify the manual work that's costing your business money and automate it. Lead qualification, reporting pipelines, client communication, scheduling — built to your workflow.</p>
           <ul>
-            <li>Lead qualification systems</li>
+            <li>Lead qualification & scoring</li>
+            <li>24/7 AI phone answering</li>
             <li>Agency reporting automation</li>
             <li>CRM & calendar integrations</li>
-            <li>Custom dashboards</li>
           </ul>
         </div>
       </div>
@@ -243,7 +187,7 @@
       <div class="section-header reveal">
         <span class="mono section-label">Get in touch</span>
         <h2>Let's build something.</h2>
-        <p class="contact-sub">Tell me what you're working on. I'll tell you if I can help — usually within 24 hours.</p>
+        <p class="contact-sub">Tell me what you're trying to build. I'll tell you if I can help and what it would take — usually within 24 hours.</p>
       </div>
       <form class="contact-form reveal" id="contactForm">
         <div class="form-row">
@@ -257,10 +201,10 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="project">Project type</label>
+          <label for="project">What are you building?</label>
           <select id="project" name="project" required>
-            <option value="" disabled selected>What are you building?</option>
-            <option value="ai-integration">AI integration / Claude API</option>
+            <option value="" disabled selected>Select a category</option>
+            <option value="ai-integration">Claude API / AI integration</option>
             <option value="full-stack">Full-stack web or mobile app</option>
             <option value="automation">Business automation</option>
             <option value="saas">SaaS product</option>
@@ -269,7 +213,7 @@
         </div>
         <div class="form-group">
           <label for="message">Tell me about it</label>
-          <textarea id="message" name="message" rows="5" placeholder="What are you trying to build? What's broken? What's the deadline?" required></textarea>
+          <textarea id="message" name="message" rows="5" placeholder="What are you trying to build? What problem does it solve? What's your timeline?" required></textarea>
         </div>
         <button type="submit" class="submit-btn" id="submitBtn">
           <span class="btn-text">Send message</span>
@@ -279,7 +223,7 @@
           <p>Got it — I'll be in touch within 24 hours.</p>
         </div>
         <div class="form-error" id="formError" hidden>
-          <p>Something went wrong. Email me directly at <a href="mailto:astickleyid@gmail.com">astickleyid@gmail.com</a></p>
+          <p>Something went wrong. Email me directly: <a href="mailto:astickleyid@gmail.com">astickleyid@gmail.com</a></p>
         </div>
       </form>
     </div>
@@ -289,6 +233,9 @@
   <footer class="footer">
     <div class="footer-inner">
       <span class="footer-name">Austin Stickley</span>
+      <div class="footer-links">
+        <a href="https://github.com/astickleyid" target="_blank" rel="noopener">GitHub</a>
+      </div>
       <span class="footer-copy">© 2026</span>
     </div>
   </footer>

@@ -75,6 +75,10 @@
 .footer-name { font-size: 0.9rem; color: var(--muted); }
 .footer-copy { font-size: 0.8rem; color: var(--border); }
 
+.footer-links { display: flex; gap: var(--sp-6); }
+.footer-links a { font-size: 0.85rem; color: var(--muted); transition: color 0.2s; }
+.footer-links a:hover { color: var(--white); }
+
 @media (max-width: 768px) {
   .nav-links a:not(.nav-cta) { display: none; }
   :root { --section-pad: var(--sp-16) var(--sp-4); }
