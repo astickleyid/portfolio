@@ -68,22 +68,45 @@
           </div>
         </div>
 
-        <!-- Right: live product preview -->
+        <!-- Right: live product preview (auto-rotating) -->
         <div class="hero-visual">
           <div class="browser-mock">
             <div class="browser-chrome">
               <div class="browser-dots">
                 <span></span><span></span><span></span>
               </div>
-              <div class="browser-url mono">n-xcor.com</div>
+              <div class="browser-url mono" id="heroUrl">n-xcor.com</div>
             </div>
             <div class="browser-screen">
-              <img src="images/nxcor-feed.png" alt="nXcor social platform — live feed with posts and streams">
+              <div class="browser-slide active" data-slide="0">
+                <img src="images/nxcor-feed.png" alt="nXcor social platform — live feed with posts and streams">
+              </div>
+              <div class="browser-slide" data-slide="1">
+                <img src="images/clarusign.png" alt="ClaruSign — AI contract review">
+              </div>
+              <div class="browser-slide" data-slide="2">
+                <img src="images/clarusign.png" alt="Rival — competitor intelligence dashboard">
+              </div>
             </div>
           </div>
           <div class="hero-live-badge">
-            <span class="hero-dot"></span>
-            <span>Live · Real users · Real streams</span>
+            <span class="badge-slide active" data-slide="0">
+              <span class="hero-dot"></span>
+              <span>Live · Real users · Real streams</span>
+            </span>
+            <span class="badge-slide" data-slide="1">
+              <span class="hero-dot"></span>
+              <span>Live · AI contract review · $9/review</span>
+            </span>
+            <span class="badge-slide" data-slide="2">
+              <span class="hero-dot"></span>
+              <span>In development · Competitor intelligence</span>
+            </span>
+          </div>
+          <div class="hero-carousel-dots">
+            <span class="hero-carousel-dot active" data-dot="0"></span>
+            <span class="hero-carousel-dot" data-dot="1"></span>
+            <span class="hero-carousel-dot" data-dot="2"></span>
           </div>
         </div>
 
@@ -312,6 +335,54 @@
   </footer>
 
   <script src="scripts/scroll-reveal.js"></script>
+  <script>
+    (function () {
+      var slides = [
+        { url: 'n-xcor.com',               badge: 0 },
+        { url: 'clarusign.vercel.app',      badge: 1 },
+        { url: 'rival-alpha.vercel.app',    badge: 2 }
+      ];
+      var current = 0;
+
+      function goToSlide(index) {
+        var prev = current;
+        current = index;
+
+        // Update URL bar
+        document.getElementById('heroUrl').textContent = slides[current].url;
+
+        // Swap browser slides
+        document.querySelectorAll('.browser-slide').forEach(function (el) {
+          el.classList.toggle('active', parseInt(el.dataset.slide, 10) === current);
+        });
+
+        // Swap badge slides
+        document.querySelectorAll('.badge-slide').forEach(function (el) {
+          el.classList.toggle('active', parseInt(el.dataset.slide, 10) === current);
+        });
+
+        // Update dots
+        document.querySelectorAll('.hero-carousel-dot').forEach(function (el) {
+          el.classList.toggle('active', parseInt(el.dataset.dot, 10) === current);
+        });
+      }
+
+      // Dot click handlers
+      document.querySelectorAll('.hero-carousel-dot').forEach(function (dot) {
+        dot.addEventListener('click', function () {
+          clearInterval(timer);
+          goToSlide(parseInt(dot.dataset.dot, 10));
+          timer = setInterval(advance, 4000);
+        });
+      });
+
+      function advance() {
+        goToSlide((current + 1) % slides.length);
+      }
+
+      var timer = setInterval(advance, 4000);
+    })();
+  </script>
   <script src="scripts/contact.js"></script>
 </body>
 </html>
