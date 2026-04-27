@@ -71,8 +71,9 @@ const flagshipProjects = [
     id: 'clarusign',
     label: '02 · AI legal SaaS',
     title: 'ClaruSign',
+    tagline: 'AI contract analysis — red flags, risk scores, plain-English explanations',
     summary:
-      'ClaruSign was designed to feel more like a serious service product than a flashy AI demo. The emphasis is on legibility, trust, and action.',
+      'ClaruSign scans uploaded PDFs using the Claude API to detect problematic clauses, assign per-clause risk scores, and surface plain-English summaries for each issue. The output is structured as a review report rather than raw model text — every finding maps to a location in the document with an explanation and suggested revision. Payment gating, serverless analysis, and readable delivery all had to work as one coherent experience.',
     role:
       'I handled the product framing, visual direction, prompt and report structure, payment flow, and delivery logic.',
     proof:
@@ -92,13 +93,14 @@ const flagshipProjects = [
       },
       {
         title: 'System depth',
-        text: 'Document parsing, payment gating, serverless analysis, and readable output design all had to work as one experience.',
+        text: 'PDF parsing, Claude API analysis, payment gating, and structured report delivery all work as one experience.',
       },
     ],
-    chips: ['Claude API', 'Stripe', 'Document parsing', 'Serverless', 'Report delivery'],
+    chips: ['React', 'Claude API', 'PDF.js', 'Supabase'],
     images: {
       primary: '/images/clarusign.png',
     },
+    mockup: true,
     theme: 'paper',
   },
 ];
@@ -313,7 +315,45 @@ function App() {
                 <div className="flagship__stage">
                   <div className="flagship__visual">
                     <div className="flagship__visual-main">
-                      <img src={project.images.primary} alt={`${project.title} primary view`} />
+                      {project.mockup ? (
+                        <div className="clarusign-mockup">
+                          <div className="clarusign-mockup__header">
+                            <span className="clarusign-mockup__filename">service-agreement.pdf</span>
+                            <span className="clarusign-mockup__badge clarusign-mockup__badge--high">High risk</span>
+                          </div>
+                          <div className="clarusign-mockup__score">
+                            <span className="clarusign-mockup__score-label">Overall Risk Score</span>
+                            <div className="clarusign-mockup__score-row">
+                              <span className="clarusign-mockup__score-value">74</span>
+                              <span className="clarusign-mockup__score-denom">/100</span>
+                            </div>
+                            <div className="clarusign-mockup__bar">
+                              <div className="clarusign-mockup__bar-fill" style={{ width: '74%' }} />
+                            </div>
+                          </div>
+                          <div className="clarusign-mockup__flags">
+                            <div className="clarusign-mockup__flag-label">Flagged clauses</div>
+                            {[
+                              { text: 'Non-compete clause', risk: 8, color: '#ef4444' },
+                              { text: 'Unlimited liability exposure', risk: 7, color: '#f97316' },
+                              { text: 'Unilateral contract amendment', risk: 6, color: '#f59e0b' },
+                            ].map((flag) => (
+                              <div key={flag.text} className="clarusign-mockup__flag">
+                                <span className="clarusign-mockup__dot" style={{ background: flag.color }} />
+                                <span className="clarusign-mockup__flag-text">{flag.text}</span>
+                                <span className="clarusign-mockup__flag-score" style={{ color: flag.color }}>
+                                  {flag.risk}/10
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                          <div className="clarusign-mockup__footer">
+                            3 issues found · Plain-English explanations + suggested revisions
+                          </div>
+                        </div>
+                      ) : (
+                        <img src={project.images.primary} alt={`${project.title} primary view`} />
+                      )}
                     </div>
 
                     {project.images.secondary && (

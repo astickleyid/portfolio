@@ -522,6 +522,140 @@ p {
   gap: 14px;
 }
 
+/* ── ClaruSign inline mockup ─────────────────────────── */
+.clarusign-mockup {
+  background: #0f1117;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 24px;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  color: #e2e8f0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.clarusign-mockup__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.clarusign-mockup__filename {
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.02em;
+}
+
+.clarusign-mockup__badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.clarusign-mockup__badge--high {
+  background: rgba(239,68,68,0.15);
+  color: #ef4444;
+  border: 1px solid rgba(239,68,68,0.3);
+}
+
+.clarusign-mockup__score {
+  margin-bottom: 22px;
+}
+
+.clarusign-mockup__score-label {
+  display: block;
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+
+.clarusign-mockup__score-row {
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
+  margin-bottom: 10px;
+}
+
+.clarusign-mockup__score-value {
+  font-size: 42px;
+  font-weight: 700;
+  color: #ef4444;
+  line-height: 1;
+  font-family: var(--font-sans, sans-serif);
+}
+
+.clarusign-mockup__score-denom {
+  font-size: 18px;
+  color: rgba(255,255,255,0.3);
+  font-family: var(--font-sans, sans-serif);
+}
+
+.clarusign-mockup__bar {
+  height: 6px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.clarusign-mockup__bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #f59e0b, #ef4444);
+  border-radius: 3px;
+}
+
+.clarusign-mockup__flag-label {
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+}
+
+.clarusign-mockup__flag {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px;
+  margin-bottom: 6px;
+}
+
+.clarusign-mockup__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.clarusign-mockup__flag-text {
+  flex: 1;
+  font-size: 13px;
+  color: #e2e8f0;
+}
+
+.clarusign-mockup__flag-score {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.clarusign-mockup__footer {
+  margin-top: 16px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.3);
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 14px;
+}
+/* ────────────────────────────────────────────────────── */
+
 .info-block,
 .supporting-card,
 .approach-card,
