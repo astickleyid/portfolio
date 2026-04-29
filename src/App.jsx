@@ -11,25 +11,9 @@ import {
 } from 'lucide-react';
 import { motion, useScroll, useSpring } from 'motion/react';
 import { ContactForm } from './components/ContactForm';
+import { HeroBrowserMockup } from './components/HeroBrowserMockup';
 import { Reveal } from './components/Reveal';
 
-const featuredIndex = [
-  {
-    title: 'nXcor',
-    label: 'Creator platform',
-    text: 'Feed, community, messaging, streaming, and mobile as one product system.',
-  },
-  {
-    title: 'ClaruSign',
-    label: 'AI legal SaaS',
-    text: 'Paid contract review designed around clarity, trust, and useful output.',
-  },
-  {
-    title: 'VOID RIFT',
-    label: 'Browser game',
-    text: 'Twin-stick space shooter — ships, upgrades, missions, and a global leaderboard, all in vanilla JS.',
-  },
-];
 
 const flagshipProjects = [
   {
@@ -273,30 +257,7 @@ function App() {
             </Reveal>
 
             <Reveal className="hero__panel" delay={0.08}>
-              <div className="hero-index">
-                <div className="hero-index__list">
-                  {featuredIndex.map((item) => (
-                    <article key={item.title} className="hero-index__item">
-                      <span>{item.label}</span>
-                      <strong>{item.title}</strong>
-                      <p>{item.text}</p>
-                    </article>
-                  ))}
-                </div>
-
-                <div className="hero-stage hero-stage--ink">
-                  <div className="hero-stage__main">
-                    <img src="/images/nxcor-feed.png" alt="nXcor feed interface" />
-                  </div>
-                  <div className="hero-stage__phone">
-                    <img src="/images/nxcor-phone-feed.png" alt="nXcor mobile interface" />
-                  </div>
-                  <div className="hero-stage__note">
-                    <span className="detail-label">Flagship build</span>
-                    <p>nXcor is where product direction, interface design, realtime behavior, and media infrastructure all meet.</p>
-                  </div>
-                </div>
-              </div>
+              <HeroBrowserMockup />
             </Reveal>
           </div>
         </section>
