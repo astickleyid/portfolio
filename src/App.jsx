@@ -25,9 +25,9 @@ const featuredIndex = [
     text: 'Paid contract review designed around clarity, trust, and useful output.',
   },
   {
-    title: 'Rival + Ops builds',
-    label: 'Supporting systems',
-    text: 'Competitive intelligence, lead automation, mobile, and operator tooling.',
+    title: 'VOID RIFT',
+    label: 'Browser game',
+    text: 'Twin-stick space shooter — ships, upgrades, missions, and a global leaderboard, all in vanilla JS.',
   },
 ];
 
@@ -104,6 +104,43 @@ const flagshipProjects = [
     mockup: true,
     theme: 'paper',
   },
+  {
+    id: 'voidrift',
+    label: '03 · Browser game',
+    title: 'VOID RIFT',
+    tagline: 'Twin-stick space shooter — ships, upgrades, missions, global leaderboard',
+    summary:
+      'VOID RIFT is a browser-based twin-stick shooter built as a complete game product. Ship selection, a full upgrade economy, a mission system, kill combo multipliers, mid-game power drops, and a boss system are all implemented from scratch in vanilla JS — no game engine.',
+    role:
+      'I handled game design, physics, the full upgrade economy, mission architecture, enemy AI, ship balancing, visual effects, and the iOS shell via Capacitor.',
+    proof:
+      'This is the most technically self-contained project in the portfolio — every system (save, leaderboard, social, missions, adaptive difficulty) built by hand in a single codebase.',
+    links: [
+      { label: 'Play live', href: 'https://voidrift.vercel.app' },
+      { label: 'Code', href: 'https://github.com/astickleyid/shooter-app' },
+    ],
+    bullets: [
+      {
+        title: 'What shipped',
+        text: 'Ship selection with stat bars, a persistent upgrade shop, mission system, kill combo multiplier, power-up drops, boss waves, local leaderboard, and a Capacitor iOS wrapper.',
+      },
+      {
+        title: 'Design move',
+        text: 'Keep the upgrade economy tight — upgrades give a real edge without making the base game trivially easy. Diminishing returns keep high-level players challenged.',
+      },
+      {
+        title: 'System depth',
+        text: 'Adaptive difficulty, save state, enemy formation patterns, special abilities per ship class, and an audio manager all wired together without a framework.',
+      },
+    ],
+    chips: ['Vanilla JS', 'Canvas API', 'Capacitor / iOS', 'Vercel', 'LocalStorage'],
+    images: {
+      primary: '/images/voidrift-gameplay.png',
+      secondary: '/images/voidrift-hangar.png',
+      phone: null,
+    },
+    theme: 'dark',
+  },
 ];
 
 const supportingProjects = [
@@ -141,15 +178,6 @@ const supportingProjects = [
     text: 'Turns GA4 exports and client packets into draft reports, review queues, and export bundles.',
     chips: ['Python', 'GA4 import', 'Review flow', 'Local UI'],
     liveUrl: '',
-    codeUrl: '',
-  },
-  {
-    title: 'VOID RIFT',
-    label: 'Browser game',
-    icon: Gamepad2,
-    text: 'Twin-stick space shooter with ship selection, pilot levelling, upgrades, achievements, and a global leaderboard.',
-    chips: ['Canvas API', 'Firebase', 'Game Center', 'iOS'],
-    liveUrl: 'https://void-rift.vercel.app',
     codeUrl: '',
   },
   {
@@ -277,7 +305,7 @@ function App() {
           <div className="shell section-heading">
             <Reveal>
               <span className="eyebrow">Selected work</span>
-              <h2>Two projects that show the strongest mix of product judgment and technical execution.</h2>
+              <h2>Three projects that show the strongest mix of product judgment and technical execution.</h2>
             </Reveal>
           </div>
 
