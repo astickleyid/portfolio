@@ -3,6 +3,7 @@ import {
   BrainCircuit,
   Gamepad2,
   Layers3,
+  MapPin,
   PhoneCall,
   Rocket,
   Smartphone,
@@ -150,6 +151,15 @@ const supportingProjects = [
     chips: ['Canvas API', 'Firebase', 'Game Center', 'iOS'],
     liveUrl: 'https://void-rift.vercel.app',
     codeUrl: '',
+  },
+  {
+    title: 'Aura AR World',
+    label: 'GPS AR web app',
+    icon: MapPin,
+    text: 'Drop geo-anchored pins on a live map with category filters, AR HUD overlay, and neighbor discovery powered by Overpass API.',
+    chips: ['Canvas API', 'Geolocation', 'Overpass API', 'WebGL'],
+    liveUrl: '',
+    codeUrl: 'https://github.com/astickleyid/aura-ar-world',
   },
 ];
 
