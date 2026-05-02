@@ -12,6 +12,7 @@ import {
 import { motion, useScroll, useSpring } from 'motion/react';
 import { ContactForm } from './components/ContactForm';
 import { HeroBrowserMockup } from './components/HeroBrowserMockup';
+import { NowBuilding } from './components/NowBuilding';
 import { Reveal } from './components/Reveal';
 
 
@@ -228,6 +229,10 @@ function App() {
                 I build AI-native products where the interface, backend behavior, business logic, and
                 operator flows all come from the same idea instead of being bolted together at the end.
               </p>
+
+              <Reveal delay={0.12}>
+                <NowBuilding />
+              </Reveal>
 
               <div className="hero__actions">
                 <a className="button button--primary" href="#work">
