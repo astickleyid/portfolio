@@ -14,6 +14,7 @@ import { ContactForm } from './components/ContactForm';
 import { HeroBrowserMockup } from './components/HeroBrowserMockup';
 import { NowBuilding } from './components/NowBuilding';
 import { Reveal } from './components/Reveal';
+import { StickyProjectNav } from './components/StickyProjectNav';
 
 
 const flagshipProjects = [
@@ -201,6 +202,7 @@ function App() {
   return (
     <div className="app">
       <motion.div className="scroll-indicator" style={{ scaleX: progress }} />
+      <StickyProjectNav />
 
       <header className="site-header">
         <div className="shell site-header__inner">
@@ -277,8 +279,8 @@ function App() {
 
           <div className="shell flagship-list">
             {flagshipProjects.map((project, index) => (
+              <div key={project.id} id={project.id}>
               <Reveal
-                key={project.id}
                 className={`flagship flagship--${project.theme} ${index % 2 === 1 ? 'flagship--reverse' : ''}`}
                 delay={index * 0.08}
               >
@@ -383,6 +385,7 @@ function App() {
                   </div>
                 </div>
               </Reveal>
+              </div>
             ))}
           </div>
         </section>

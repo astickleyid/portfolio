@@ -273,23 +273,28 @@ p {
   color: var(--accent);
 }
 
-/* Now Building strip */
+/* Now Building badge */
 @keyframes now-building-pulse {
   0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.4); opacity: 0.4; }
+  50% { transform: scale(1.55); opacity: 0.35; }
 }
 
 .now-building {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
+  padding: 6px 14px 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: rgba(255, 255, 255, 0.64);
+  backdrop-filter: blur(8px);
+  width: fit-content;
 }
 
 .now-building__dot {
   display: inline-block;
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: #22c55e;
   flex-shrink: 0;
@@ -299,27 +304,72 @@ p {
 .now-building__label {
   font-family: var(--font-mono);
   font-size: 0.7rem;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--soft);
   flex-shrink: 0;
 }
 
-.now-building__pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
+.now-building__sep {
+  font-size: 0.6rem;
+  color: var(--line-strong);
+  flex-shrink: 0;
 }
 
-.now-building__pill {
-  padding: 3px 10px;
-  border-radius: 999px;
-  border: 1px solid var(--line-strong);
-  background: rgba(255, 255, 255, 0.6);
-  color: var(--muted);
+.now-building__project {
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
+}
+
+.now-building__project-name {
+  color: #315cff;
+  font-weight: 700;
+}
+
+.now-building__project-desc {
+  color: var(--muted);
+}
+
+/* Sticky project nav */
+.sticky-project-nav {
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 29;
+  pointer-events: none;
+}
+
+.sticky-project-nav__inner {
+  display: flex;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(14, 23, 44, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+  pointer-events: auto;
+}
+
+.sticky-project-nav__pill {
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(238, 243, 255, 0.7);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+
+.sticky-project-nav__pill:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #eef3ff;
+  border-color: rgba(255, 255, 255, 0.22);
 }
 
 .hero__panel {
