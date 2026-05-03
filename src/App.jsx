@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { motion, useScroll, useSpring } from 'motion/react';
 import { ContactForm } from './components/ContactForm';
+import { DeviceSimulator } from './components/DeviceSimulator';
 import { HeroBrowserMockup } from './components/HeroBrowserMockup';
 import { NowBuilding } from './components/NowBuilding';
 import { Reveal } from './components/Reveal';
@@ -52,6 +53,8 @@ const flagshipProjects = [
       secondary: '/images/nxcor-explore.png',
       phone: '/images/nxcor-phone-profile.png',
     },
+    iframeUrl: 'https://n-xcor.com',
+    iframeLabel: 'n-xcor.com',
     theme: 'ink',
   },
   {
@@ -87,6 +90,8 @@ const flagshipProjects = [
     images: {
       primary: '/images/clarusign.png',
     },
+    iframeUrl: 'https://clarusign.vercel.app',
+    iframeLabel: 'clarusign.vercel.app',
     mockup: true,
     theme: 'paper',
   },
@@ -125,6 +130,8 @@ const flagshipProjects = [
       secondary: '/images/voidrift-hangar.png',
       phone: null,
     },
+    iframeUrl: 'https://voidrift.vercel.app',
+    iframeLabel: 'voidrift.vercel.app',
     theme: 'dark',
   },
 ];
@@ -319,61 +326,12 @@ function App() {
                 </div>
 
                 <div className="flagship__stage">
-                  <div className="flagship__visual">
-                    <div className="flagship__visual-main">
-                      {project.mockup ? (
-                        <div className="clarusign-mockup">
-                          <div className="clarusign-mockup__header">
-                            <span className="clarusign-mockup__filename">service-agreement.pdf</span>
-                            <span className="clarusign-mockup__badge clarusign-mockup__badge--high">High risk</span>
-                          </div>
-                          <div className="clarusign-mockup__score">
-                            <span className="clarusign-mockup__score-label">Overall Risk Score</span>
-                            <div className="clarusign-mockup__score-row">
-                              <span className="clarusign-mockup__score-value">74</span>
-                              <span className="clarusign-mockup__score-denom">/100</span>
-                            </div>
-                            <div className="clarusign-mockup__bar">
-                              <div className="clarusign-mockup__bar-fill" style={{ width: '74%' }} />
-                            </div>
-                          </div>
-                          <div className="clarusign-mockup__flags">
-                            <div className="clarusign-mockup__flag-label">Flagged clauses</div>
-                            {[
-                              { text: 'Non-compete clause', risk: 8, color: '#ef4444' },
-                              { text: 'Unlimited liability exposure', risk: 7, color: '#f97316' },
-                              { text: 'Unilateral contract amendment', risk: 6, color: '#f59e0b' },
-                            ].map((flag) => (
-                              <div key={flag.text} className="clarusign-mockup__flag">
-                                <span className="clarusign-mockup__dot" style={{ background: flag.color }} />
-                                <span className="clarusign-mockup__flag-text">{flag.text}</span>
-                                <span className="clarusign-mockup__flag-score" style={{ color: flag.color }}>
-                                  {flag.risk}/10
-                                </span>
-                              </div>
-                            ))}
-                          </div>
-                          <div className="clarusign-mockup__footer">
-                            3 issues found · Plain-English explanations + suggested revisions
-                          </div>
-                        </div>
-                      ) : (
-                        <img src={project.images.primary} alt={`${project.title} primary view`} />
-                      )}
-                    </div>
-
-                    {project.images.secondary && (
-                      <div className="flagship__visual-secondary">
-                        <img src={project.images.secondary} alt={`${project.title} secondary view`} />
-                      </div>
-                    )}
-
-                    {project.images.phone && (
-                      <div className="flagship__visual-phone">
-                        <img src={project.images.phone} alt={`${project.title} mobile view`} />
-                      </div>
-                    )}
-                  </div>
+                  <DeviceSimulator
+                    url={project.iframeUrl}
+                    label={project.iframeLabel}
+                    height={520}
+                    scale={0.75}
+                  />
 
                   <div className="flagship__bullets">
                     {project.bullets.map((bullet) => (

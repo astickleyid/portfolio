@@ -1,20 +1,67 @@
 import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 
+function IframeSlide({ src, alt }) {
+  const [loaded, setLoaded] = useState(false);
+  const scale = 0.72;
+  return (
+    <>
+      <iframe
+        src={src}
+        title={alt}
+        sandbox="allow-scripts allow-same-origin allow-forms"
+        loading="lazy"
+        onLoad={() => setLoaded(true)}
+        style={{
+          border: 'none',
+          display: 'block',
+          transform: `scale(${scale})`,
+          transformOrigin: 'top left',
+          width: `${100 / scale}%`,
+          height: `${100 / scale}%`,
+          position: 'absolute',
+          top: 0,
+          left: 0,
+        }}
+      />
+      {!loaded && (
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          background: '#0a0a0a',
+          fontFamily: 'var(--font-mono)',
+          fontSize: '0.76rem',
+          color: 'rgba(240,240,240,0.35)',
+          letterSpacing: '0.1em',
+          textTransform: 'uppercase',
+          pointerEvents: 'none',
+        }}>
+          Loading…
+        </div>
+      )}
+    </>
+  );
+}
+
 const slides = [
   {
     id: 'nxcor',
     url: 'n-xcor.com',
+    iframeSrc: 'https://n-xcor.com',
     label: 'Creator platform',
     badge: 'Live',
     badgeKind: 'live',
     img: '/images/nxcor-feed.png',
     alt: 'nXcor feed interface',
-    accent: '#315cff',
+    accent: '#4f6fff',
   },
   {
     id: 'clarusign',
     url: 'clarusign.vercel.app',
+    iframeSrc: 'https://clarusign.vercel.app',
     label: 'AI legal SaaS',
     badge: 'Paid product',
     badgeKind: 'paid',
@@ -25,12 +72,13 @@ const slides = [
   {
     id: 'rival',
     url: 'rival-alpha.vercel.app',
+    iframeSrc: null,
     label: 'Competitive intel',
     badge: 'Live',
     badgeKind: 'live',
     img: null,
     alt: 'Rival competitive intelligence',
-    accent: '#0e172c',
+    accent: '#4f6fff',
   },
 ];
 
@@ -122,7 +170,9 @@ export function HeroBrowserMockup() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5, ease: 'easeInOut' }}
           >
-            {slide.img ? (
+            {slide.iframeSrc ? (
+              <IframeSlide src={slide.iframeSrc} alt={slide.alt} />
+            ) : slide.img ? (
               <img src={slide.img} alt={slide.alt} draggable={false} />
             ) : (
               <RivalPlaceholder />
