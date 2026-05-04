@@ -5,6 +5,7 @@ const NAV_PILLS = [
   { label: 'nXcor', id: 'nxcor' },
   { label: 'ClaruSign', id: 'clarusign' },
   { label: 'VOID RIFT', id: 'voidrift' },
+  { label: 'Rival', id: 'rival' },
 ];
 
 export function StickyProjectNav() {

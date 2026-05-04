@@ -134,18 +134,49 @@ const flagshipProjects = [
     iframeLabel: 'voidrift.vercel.app',
     theme: 'dark',
   },
+  {
+    id: 'rival',
+    label: '04 · Competitive intelligence SaaS',
+    title: 'Rival',
+    tagline: 'Track competitors, surface briefings, close with context',
+    summary:
+      'Rival scrapes competitor websites on a schedule, diffs the changes, and synthesizes them into AI-written briefings delivered by email. It ships with a full subscription flow, a briefing dashboard with date filters and search highlighting, and per-competitor status tracking — all built as a solo product from schema to stripe webhook.',
+    role:
+      'I owned everything: product direction, data model, scraper architecture, AI synthesis pipeline, email delivery, Stripe integration, and the full frontend.',
+    proof:
+      'This is the sharpest example of solo SaaS in the portfolio — a real recurring-revenue product with auth, billing, a background worker, and a polished UI shipped without a team.',
+    links: [
+      { label: 'Open app', href: 'https://rival-alpha.vercel.app' },
+      { label: 'Code', href: 'https://github.com/astickleyid/rival' },
+    ],
+    bullets: [
+      {
+        title: 'What shipped',
+        text: 'Scheduled scraping, AI diff synthesis, weekly email digests, briefing annotations, bookmark and filter system, export to markdown, competitor status badges, and a Stripe subscription paywall.',
+      },
+      {
+        title: 'Design move',
+        text: 'Treat briefings as the primary object — not competitors. The dashboard is organized around what changed and when, so the signal stays surfaced even as volume grows.',
+      },
+      {
+        title: 'System depth',
+        text: 'A Cloudflare Worker handles scheduling and scraping. A synthesis layer diffs content and calls the AI. Stripe webhooks gate access. Resend delivers email. The frontend reads from Supabase with RLS.',
+      },
+    ],
+    chips: ['React', 'Supabase', 'Stripe', 'Cloudflare Workers', 'Resend', 'OpenAI'],
+    images: {
+      primary: null,
+      secondary: null,
+      phone: null,
+    },
+    iframeUrl: 'https://rival-alpha.vercel.app',
+    iframeLabel: 'rival-alpha.vercel.app',
+    mockup: true,
+    theme: 'ink',
+  },
 ];
 
 const supportingProjects = [
-  {
-    title: 'Rival',
-    label: 'Competitive intelligence',
-    icon: Workflow,
-    text: 'Tracks competitors, turns changes into briefings, and wraps the work in subscription and export logic.',
-    chips: ['React', 'Supabase', 'Stripe', 'Briefings'],
-    liveUrl: 'https://rival-alpha.vercel.app',
-    codeUrl: 'https://github.com/astickleyid/rival',
-  },
   {
     title: 'NWO Answering',
     label: 'Lead automation',
