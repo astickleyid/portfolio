@@ -8,140 +8,159 @@ import {
   Rocket,
   Smartphone,
   Workflow,
+  Send,
 } from 'lucide-react';
 import { motion, useScroll, useSpring } from 'motion/react';
 import { ContactForm } from './components/ContactForm';
 import { DeviceSimulator } from './components/DeviceSimulator';
-import { HeroBrowserMockup } from './components/HeroBrowserMockup';
+import { LiveProductsPanel } from './components/LiveProductsPanel';
 import { NowBuilding } from './components/NowBuilding';
 import { Reveal } from './components/Reveal';
 import { StickyProjectNav } from './components/StickyProjectNav';
 
+/* ─── Data ───────────────────────────────────────────────── */
 
 const flagshipProjects = [
   {
     id: 'nxcor',
-    label: '01 · Creator platform',
+    number: '01',
+    label: 'Creator platform',
     title: 'nXcor',
-    summary:
-      'nXcor is a creator workspace built around a simple product idea: the server is the studio, and public output flows from there into feed and discovery.',
-    role:
-      'I owned the product direction, interface system, frontend and backend implementation, realtime behavior, media pipeline, and deployment.',
-    proof:
-      'This is the best example in the portfolio of keeping a large product thesis coherent across multiple surfaces and technical constraints.',
-    links: [
-      { label: 'Live product', href: 'https://n-xcor.com' },
-      { label: 'Code', href: 'https://github.com/Stickley-AI/nXcor' },
-    ],
+    lede:
+      'A creator workspace where the server is the studio. Public output flows from a private workspace into feed, profiles, and discovery — one product model across every surface.',
+    role: 'Product direction, interface system, frontend, backend, realtime, media pipeline, deployment.',
+    why: 'The strongest example in this portfolio of holding a large product thesis coherent across many surfaces and technical constraints.',
+    chips: ['React', 'Node / Express', 'Socket.IO', 'SQLite WAL', 'RTMP / HLS', 'Capacitor'],
     bullets: [
       {
-        title: 'What shipped',
-        text: 'Feed, profiles, communities, DMs, notifications, RTMP ingest, HLS playback, and a Capacitor iOS shell.',
+        title: 'Shipped',
+        text: 'Feed, profiles, communities, DMs, notifications, RTMP ingest, HLS playback, iOS shell.',
       },
       {
         title: 'Design move',
-        text: 'Give each surface a clear job: create in the workspace, publish outward, discover through feed and explore.',
+        text: 'Each surface has one job: create privately, publish outward, discover through feed and explore.',
       },
       {
         title: 'System depth',
-        text: 'Presence, messaging, playback, storage, mobile packaging, and interface hierarchy all had to reinforce the same product model.',
+        text: 'Presence, messaging, playback, storage, packaging, and hierarchy all reinforce the same product model.',
+      },
+      {
+        title: 'Status',
+        text: 'Live at n-xcor.com. Continuously deployed via DigitalOcean VPS.',
       },
     ],
-    chips: ['React', 'Node / Express', 'Socket.IO', 'SQLite WAL', 'RTMP / HLS', 'Capacitor'],
-    images: {
-      primary: '/images/nxcor-feed.png',
-      secondary: '/images/nxcor-explore.png',
-      phone: '/images/nxcor-phone-profile.png',
-    },
     iframeUrl: 'https://n-xcor.com',
     iframeLabel: 'n-xcor.com',
-    theme: 'ink',
+    links: [
+      { label: 'Live site', href: 'https://n-xcor.com', primary: true },
+      { label: 'Code', href: 'https://github.com/Stickley-AI/nXcor' },
+    ],
   },
   {
     id: 'clarusign',
-    label: '02 · AI legal SaaS',
+    number: '02',
+    label: 'AI legal SaaS',
     title: 'ClaruSign',
-    tagline: 'AI contract analysis — red flags, risk scores, plain-English explanations',
-    summary:
-      'ClaruSign scans uploaded PDFs using the Claude API to detect problematic clauses, assign per-clause risk scores, and surface plain-English summaries for each issue. The output is structured as a review report rather than raw model text — every finding maps to a location in the document with an explanation and suggested revision. Payment gating, serverless analysis, and readable delivery all had to work as one coherent experience.',
-    role:
-      'I handled the product framing, visual direction, prompt and report structure, payment flow, and delivery logic.',
-    proof:
-      'It proves I can turn model output into a paid product with clear user value and a polished path from upload to result.',
-    links: [
-      { label: 'Open app', href: 'https://clarusign.vercel.app' },
-      { label: 'Code', href: 'https://github.com/astickleyid/clarusign' },
-    ],
+    lede:
+      'Contract analysis as a paid product. Upload a PDF, get a structured review report — risk-scored clauses, plain-English explanations, suggested revisions, and a draft negotiation email. Every finding maps back to a location in the document.',
+    role: 'Product framing, visual direction, prompt and report structure, payment flow, delivery logic.',
+    why: 'Proves I can turn raw model output into a paid product with clear user value and a polished path from upload to result.',
+    chips: ['React', 'Claude API', 'PDF.js', 'Supabase', 'Stripe'],
     bullets: [
       {
-        title: 'What shipped',
-        text: 'Upload, payment, analysis, report output, suggested language, and a ready-to-send negotiation email.',
+        title: 'Shipped',
+        text: 'Upload, payment gating, AI analysis, structured report, suggested language, negotiation email.',
       },
       {
         title: 'Design move',
-        text: 'Keep every screen anchored to the same question: what is risky, why does it matter, and what should the user do next?',
+        text: 'Anchor every screen to the same question: what is risky, why does it matter, what should the user do next?',
       },
       {
         title: 'System depth',
-        text: 'PDF parsing, Claude API analysis, payment gating, and structured report delivery all work as one experience.',
+        text: 'PDF parsing, Claude API analysis, payment gating, and structured report delivery as one experience.',
+      },
+      {
+        title: 'Status',
+        text: 'Live at clarusign.com. Stripe live-mode rollout in progress.',
       },
     ],
-    chips: ['React', 'Claude API', 'PDF.js', 'Supabase'],
-    images: {
-      primary: '/images/clarusign.png',
-    },
     iframeUrl: 'https://clarusign.vercel.app',
-    iframeLabel: 'clarusign.vercel.app',
-    mockup: true,
-    theme: 'paper',
+    iframeLabel: 'clarusign.com',
+    links: [
+      { label: 'Open app', href: 'https://clarusign.vercel.app', primary: true },
+      { label: 'Code', href: 'https://github.com/astickleyid/clarusign' },
+    ],
   },
   {
     id: 'voidrift',
-    label: '03 · Browser game',
+    number: '03',
+    label: 'Browser game',
     title: 'VOID RIFT',
-    tagline: 'Twin-stick space shooter — ships, upgrades, missions, global leaderboard',
-    summary:
-      'VOID RIFT is a browser-based twin-stick shooter built as a complete game product. Ship selection, a full upgrade economy, a mission system, kill combo multipliers, mid-game power drops, and a boss system are all implemented from scratch in vanilla JS — no game engine.',
-    role:
-      'I handled game design, physics, the full upgrade economy, mission architecture, enemy AI, ship balancing, visual effects, and the iOS shell via Capacitor.',
-    proof:
-      'This is the most technically self-contained project in the portfolio — every system (save, leaderboard, social, missions, adaptive difficulty) built by hand in a single codebase.',
-    links: [
-      { label: 'Play live', href: 'https://voidrift.vercel.app' },
-      { label: 'Code', href: 'https://github.com/astickleyid/shooter-app' },
-    ],
+    lede:
+      'A complete twin-stick shooter built without an engine. Ship selection, upgrade economy, missions, kill-combo multipliers, mid-game power drops, boss waves — every system implemented from scratch in vanilla JS.',
+    role: 'Game design, physics, upgrade economy, mission architecture, enemy AI, ship balancing, VFX, iOS shell.',
+    why: 'The most technically self-contained project here. Save state, leaderboard, social, missions, and adaptive difficulty all built by hand.',
+    chips: ['Vanilla JS', 'Canvas API', 'Capacitor / iOS', 'Vercel', 'LocalStorage'],
     bullets: [
       {
-        title: 'What shipped',
-        text: 'Ship selection with stat bars, a persistent upgrade shop, mission system, kill combo multiplier, power-up drops, boss waves, local leaderboard, and a Capacitor iOS wrapper.',
+        title: 'Shipped',
+        text: 'Ship select, upgrade shop, missions, kill combos, power-ups, boss waves, leaderboard, iOS wrapper.',
       },
       {
         title: 'Design move',
-        text: 'Keep the upgrade economy tight — upgrades give a real edge without making the base game trivially easy. Diminishing returns keep high-level players challenged.',
+        text: 'Tight upgrade economy with diminishing returns — upgrades reward play without trivializing it.',
       },
       {
         title: 'System depth',
-        text: 'Adaptive difficulty, save state, enemy formation patterns, special abilities per ship class, and an audio manager all wired together without a framework.',
+        text: 'Adaptive difficulty, save state, formation patterns, per-class abilities, audio manager — no framework.',
+      },
+      {
+        title: 'Status',
+        text: 'Live at voidrift.vercel.app. Playable in any browser.',
       },
     ],
-    chips: ['Vanilla JS', 'Canvas API', 'Capacitor / iOS', 'Vercel', 'LocalStorage'],
-    images: {
-      primary: '/images/voidrift-gameplay.png',
-      secondary: '/images/voidrift-hangar.png',
-      phone: null,
-    },
     iframeUrl: 'https://voidrift.vercel.app',
     iframeLabel: 'voidrift.vercel.app',
-    theme: 'dark',
+    links: [
+      { label: 'Play live', href: 'https://voidrift.vercel.app', primary: true },
+      { label: 'Code', href: 'https://github.com/astickleyid/shooter-app' },
+    ],
   },
 ];
 
 const supportingProjects = [
   {
+    title: 'findafiend',
+    label: 'Community rideshare',
+    icon: MapPin,
+    text: 'Cash-based community rideshare for Detroit and Toledo. Next.js + Upstash Redis on Vercel. Built around verified drivers, simple matching, and minimal app overhead.',
+    chips: ['Next.js', 'Upstash Redis', 'Vercel', 'Mapbox'],
+    liveUrl: 'https://findafiend.com',
+    codeUrl: '',
+  },
+  {
+    title: 'AURA',
+    label: 'Geo-AR platform',
+    icon: Layers3,
+    text: 'Iron Man–style AR layer over the live world. Camera passthrough, COCO-SSD object detection, traffic data, voice commands, IFF tagging, and a 911 incident feed.',
+    chips: ['TensorFlow.js', 'TomTom', 'WebGL', 'Vercel KV'],
+    liveUrl: 'https://aura-ar-world.vercel.app',
+    codeUrl: 'https://github.com/astickleyid/aura-ar-world',
+  },
+  {
+    title: 'KeyBridge',
+    label: 'API key vault',
+    icon: BrainCircuit,
+    text: 'Universal API-key management with an AES-256-GCM vault. Encrypted storage, scoped access, usage analytics, and a clean operator UI for solo and team workflows.',
+    chips: ['Next.js', 'Supabase', 'Upstash Redis', 'Stripe'],
+    liveUrl: '',
+    codeUrl: 'https://github.com/astickleyid/keybridge',
+  },
+  {
     title: 'Rival',
-    label: 'Competitive intelligence',
+    label: 'Competitive intel',
     icon: Workflow,
-    text: 'Tracks competitors, turns changes into briefings, and wraps the work in subscription and export logic.',
+    text: 'Tracks competitors, turns changes into briefings, and wraps the work in subscription and export logic. Built for solo operators and small teams.',
     chips: ['React', 'Supabase', 'Stripe', 'Briefings'],
     liveUrl: 'https://rival-alpha.vercel.app',
     codeUrl: 'https://github.com/astickleyid/rival',
@@ -150,7 +169,7 @@ const supportingProjects = [
     title: 'NWO Answering',
     label: 'Lead automation',
     icon: PhoneCall,
-    text: 'Captures leads, scores urgency, sends instant SMS, and routes follow-up through a lightweight CRM flow.',
+    text: 'Captures inbound leads, scores urgency, sends instant SMS, and routes follow-up through a lightweight CRM flow. Designed for small service businesses.',
     chips: ['Node', 'Twilio', 'Lead scoring', 'Dashboard'],
     liveUrl: '',
     codeUrl: '',
@@ -159,48 +178,33 @@ const supportingProjects = [
     title: 'FinCoach AI',
     label: 'Consumer mobile',
     icon: Smartphone,
-    text: 'Cross-platform finance coaching app with Firebase-backed state, subscriptions, and personalized AI tips.',
+    text: 'Cross-platform finance coaching app with Firebase-backed state, subscription billing, and personalized AI guidance based on user activity.',
     chips: ['Flutter', 'Firebase', 'RevenueCat', 'OpenAI'],
     liveUrl: '',
     codeUrl: '',
-  },
-  {
-    title: 'Agency Reporting Twin',
-    label: 'Operator tooling',
-    icon: Rocket,
-    text: 'Turns GA4 exports and client packets into draft reports, review queues, and export bundles.',
-    chips: ['Python', 'GA4 import', 'Review flow', 'Local UI'],
-    liveUrl: '',
-    codeUrl: '',
-  },
-  {
-    title: 'Aura AR World',
-    label: 'GPS AR web app',
-    icon: MapPin,
-    text: 'Drop geo-anchored pins on a live map with category filters, AR HUD overlay, and neighbor discovery powered by Overpass API.',
-    chips: ['Canvas API', 'Geolocation', 'Overpass API', 'WebGL'],
-    liveUrl: '',
-    codeUrl: 'https://github.com/astickleyid/aura-ar-world',
   },
 ];
 
 const principles = [
   {
     title: 'Hierarchy before decoration',
-    icon: Layers3,
-    text: 'The first read should be cheap. Lead with the thesis, then show proof, then let the deeper system work reveal itself.',
+    text: 'The first read should be cheap. Lead with the thesis, then proof, then let deeper system work reveal itself.',
   },
   {
     title: 'Show the operating layer',
-    icon: Workflow,
-    text: 'The most valuable work is often behind the hero screen: billing, review logic, queues, exports, and operator flows.',
+    text: 'The most valuable work is often behind the hero screen — billing, review queues, exports, operator flows.',
   },
   {
     title: 'AI is product behavior',
-    icon: BrainCircuit,
-    text: 'The model is not the product. The product is how output gets framed, constrained, reviewed, paid for, and turned into action.',
+    text: 'The model is not the product. The product is how output gets framed, constrained, paid for, and turned into action.',
+  },
+  {
+    title: 'Ship the whole loop',
+    text: 'Design, frontend, backend, infra, and billing are one continuous system. Treat them that way from day one.',
   },
 ];
+
+/* ─── App ────────────────────────────────────────────────── */
 
 function App() {
   const { scrollYProgress } = useScroll();
@@ -208,17 +212,18 @@ function App() {
 
   return (
     <div className="app">
-      <motion.div className="scroll-indicator" style={{ scaleX: progress }} />
-      <StickyProjectNav />
+      <div className="atmosphere" aria-hidden="true" />
+      <motion.div className="scroll-progress" style={{ scaleX: progress }} aria-hidden="true" />
+      <StickyProjectNav projects={flagshipProjects} />
 
+      {/* Header */}
       <header className="site-header">
         <div className="shell site-header__inner">
-          <a className="site-header__brand" href="#top">
-            <span className="site-header__mark">AS</span>
-            <span>Austin Stickley</span>
+          <a className="brand" href="#top" aria-label="Austin Stickley — home">
+            <span className="brand__mark" aria-hidden="true">AS</span>
+            <span className="brand__name">Austin Stickley</span>
           </a>
-
-          <nav className="site-header__nav" aria-label="Primary">
+          <nav className="site-nav" aria-label="Primary">
             <a href="#work">Work</a>
             <a href="#approach">Approach</a>
             <a href="#contact">Contact</a>
@@ -227,223 +232,333 @@ function App() {
       </header>
 
       <main id="top">
-        <section className="hero">
-          <div className="shell hero__layout">
-            <Reveal className="hero__copy">
-              <span className="eyebrow">AI product engineer</span>
-              <h1>
-                Products with <span>taste</span>, system depth, and enough rigor to survive launch.
-              </h1>
-              <p className="hero__summary">
-                I build AI-native products where the interface, backend behavior, business logic, and
-                operator flows all come from the same idea instead of being bolted together at the end.
-              </p>
-
-              <Reveal delay={0.12}>
-                <NowBuilding />
-              </Reveal>
-
-              <div className="hero__actions">
-                <a className="button button--primary" href="#work">
-                  Selected work
-                </a>
-                <a
-                  className="button button--secondary"
-                  href="https://github.com/astickleyid"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  GitHub
-                  <ArrowUpRight size={16} />
-                </a>
-              </div>
-
-              <div className="hero__principles">
-                <div className="hero__principle">
-                  <Layers3 size={18} />
-                  <span>Clear hierarchy, minimal filler.</span>
-                </div>
-                <div className="hero__principle">
-                  <Workflow size={18} />
-                  <span>Real systems, not surface-only polish.</span>
-                </div>
-              </div>
-            </Reveal>
-
-            <Reveal className="hero__panel" delay={0.08}>
-              <HeroBrowserMockup />
-            </Reveal>
-          </div>
-        </section>
-
-        <section className="section" id="work">
-          <div className="shell section-heading">
-            <Reveal>
-              <span className="eyebrow">Selected work</span>
-              <h2>Three projects that show the strongest mix of product judgment and technical execution.</h2>
-            </Reveal>
-          </div>
-
-          <div className="shell flagship-list">
-            {flagshipProjects.map((project, index) => (
-              <div key={project.id} id={project.id}>
-              <Reveal
-                className={`flagship flagship--${project.theme} ${index % 2 === 1 ? 'flagship--reverse' : ''}`}
-                delay={index * 0.08}
-              >
-                <div className="flagship__copy">
-                  <span className="eyebrow">{project.label}</span>
-                  <h3>{project.title}</h3>
-                  <p className="flagship__summary">{project.summary}</p>
-
-                  <div className="flagship__chips">
-                    {project.chips.map((chip) => (
-                      <span key={chip} className="pill">
-                        {chip}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="flagship__support">
-                    <div>
-                      <span className="detail-label">Role</span>
-                      <p>{project.role}</p>
-                    </div>
-                    <div>
-                      <span className="detail-label">Why it matters</span>
-                      <p>{project.proof}</p>
-                    </div>
-                  </div>
-
-                  <div className="flagship__links">
-                    {project.links.map((link) => (
-                      <a key={link.href} href={link.href} target="_blank" rel="noreferrer">
-                        {link.label}
-                        <ArrowUpRight size={16} />
-                      </a>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="flagship__stage">
-                  <DeviceSimulator
-                    url={project.iframeUrl}
-                    label={project.iframeLabel}
-                    height={520}
-                    scale={0.75}
-                  />
-
-                  <div className="flagship__bullets">
-                    {project.bullets.map((bullet) => (
-                      <article key={bullet.title} className="info-block">
-                        <span className="detail-label">{bullet.title}</span>
-                        <p>{bullet.text}</p>
-                      </article>
-                    ))}
-                  </div>
-                </div>
-              </Reveal>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="section section--supporting">
-          <div className="shell supporting-layout">
-            <Reveal className="supporting-layout__intro">
-              <span className="eyebrow">Supporting systems</span>
-              <h2>The rest of the work matters because it shows repeatability across very different product shapes.</h2>
-            </Reveal>
-
-            <div className="supporting-grid">
-              {supportingProjects.map((project, index) => {
-                const Icon = project.icon;
-
-                return (
-                  <Reveal key={project.title} className="supporting-card" delay={index * 0.05}>
-                    <div className="supporting-card__icon">
-                      <Icon size={20} />
-                    </div>
-                    <span className="supporting-card__label">{project.label}</span>
-                    <h3>{project.title}</h3>
-                    <p>{project.text}</p>
-                    <div className="supporting-card__chips">
-                      {project.chips.map((chip) => (
-                        <span key={chip} className="pill">
-                          {chip}
-                        </span>
-                      ))}
-                    </div>
-                    {(project.liveUrl || project.codeUrl) && (
-                      <div className="supporting-card__links" style={{ display: 'flex', gap: '12px', marginTop: '12px' }}>
-                        {project.liveUrl && (
-                          <a href={project.liveUrl} target="_blank" rel="noreferrer" style={{ fontSize: '13px', display: 'flex', alignItems: 'center', gap: '4px', color: 'inherit', opacity: 0.7 }}>
-                            Live <ArrowUpRight size={13} />
-                          </a>
-                        )}
-                        {project.codeUrl && (
-                          <a href={project.codeUrl} target="_blank" rel="noreferrer" style={{ fontSize: '13px', display: 'flex', alignItems: 'center', gap: '4px', color: 'inherit', opacity: 0.7 }}>
-                            Code <ArrowUpRight size={13} />
-                          </a>
-                        )}
-                      </div>
-                    )}
-                  </Reveal>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        <section className="section section--approach" id="approach">
+        {/* Hero */}
+        <section className="section section--first hero" aria-labelledby="hero-title">
           <div className="shell">
-            <Reveal className="section-heading">
-              <span className="eyebrow">Approach</span>
-              <h2>Design principles that actually change the work.</h2>
-            </Reveal>
+            <div className="hero__grid">
+              <Reveal className="hero__copy">
+                <span className="eyebrow">AI Product Engineer · Toledo / Detroit</span>
+                <h1 id="hero-title" className="hero__title">
+                  AI-native products, <em>shipped</em> end-to-end.
+                </h1>
+                <p className="hero__lede">
+                  I'm Austin Stickley. Solo builder running design, frontend, backend, AI behavior,
+                  billing, and infra as one continuous system. No handoffs. Every project below is live.
+                </p>
 
-            <div className="approach-grid">
-              {principles.map((principle, index) => {
-                const Icon = principle.icon;
+                <NowBuilding />
 
-                return (
-                  <Reveal key={principle.title} className="approach-card" delay={index * 0.06}>
-                    <div className="approach-card__icon">
-                      <Icon size={20} />
-                    </div>
-                    <h3>{principle.title}</h3>
-                    <p>{principle.text}</p>
-                  </Reveal>
-                );
-              })}
+                <div className="hero__cta">
+                  <a className="btn btn--primary" href="#work">
+                    Selected work
+                    <ArrowUpRight />
+                  </a>
+                  <a
+                    className="btn"
+                    href="https://github.com/astickleyid"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    GitHub
+                    <ArrowUpRight />
+                  </a>
+                </div>
+
+                <div className="hero__meta">
+                  <div className="hero__meta-item">
+                    <span className="label">Based</span>
+                    <span className="value">Toledo, OH</span>
+                  </div>
+                  <div className="hero__meta-item">
+                    <span className="label">Stack</span>
+                    <span className="value">Next.js · React · Node</span>
+                  </div>
+                  <div className="hero__meta-item">
+                    <span className="label">Status</span>
+                    <span className="value">Open to work</span>
+                  </div>
+                </div>
+              </Reveal>
+
+              <Reveal delay={0.08}>
+                <LiveProductsPanel />
+              </Reveal>
             </div>
           </div>
         </section>
 
-        <section className="section section--contact" id="contact">
-          <div className="shell contact-layout">
-            <Reveal className="contact-layout__copy">
-              <span className="eyebrow">Contact</span>
-              <h2>Best fit: products that need both a sharp interface and someone willing to own the hard parts behind it.</h2>
-              <p>
-                If the brief includes AI behavior, product design, implementation, billing, or the
-                internal paths that usually get ignored until the end, I am likely useful.
-              </p>
+        {/* Index — magazine TOC of all projects */}
+        <section className="section" aria-labelledby="index-title">
+          <div className="shell">
+            <div className="section__head">
+              <div className="section__head-meta">
+                <span className="section__index">[ 02 / Index ]</span>
+              </div>
+              <Reveal>
+                <h2 id="index-title" className="section__title">
+                  Every project, in one list.
+                </h2>
+                <p className="section__lede">
+                  Three flagship products, six supporting systems. Click through to the section.
+                </p>
+              </Reveal>
+            </div>
 
-              <div className="contact-layout__links">
-                <a href="mailto:astickleyid@gmail.com">astickleyid@gmail.com</a>
-                <a href="https://github.com/astickleyid" target="_blank" rel="noreferrer">
-                  github.com/astickleyid
-                </a>
+            <Reveal>
+              <div className="toc" role="list">
+                {[...flagshipProjects.map((p) => ({
+                  num: p.number,
+                  title: p.title,
+                  desc: p.label,
+                  href: `#${p.id}`,
+                })), ...supportingProjects.map((p, i) => ({
+                  num: String(i + 4).padStart(2, '0'),
+                  title: p.title,
+                  desc: p.label,
+                  href: '#more-work',
+                }))].map((row) => (
+                  <a key={row.num + row.title} href={row.href} className="toc__row" role="listitem">
+                    <span className="toc__num">{row.num}</span>
+                    <span className="toc__title">{row.title}</span>
+                    <span className="toc__desc">{row.desc}</span>
+                    <span className="toc__arrow"><ArrowUpRight size={14} /></span>
+                  </a>
+                ))}
               </div>
             </Reveal>
+          </div>
+        </section>
 
-            <Reveal delay={0.08}>
-              <ContactForm />
+        {/* Selected work */}
+        <section className="section" id="work" aria-labelledby="work-title">
+          <div className="shell">
+            <div className="section__head">
+              <div className="section__head-meta">
+                <span className="section__index">[ 03 / Selected work ]</span>
+              </div>
+              <Reveal>
+                <h2 id="work-title" className="section__title">
+                  Three projects with the strongest mix of <em>product judgment</em> and technical execution.
+                </h2>
+              </Reveal>
+            </div>
+
+            <div className="flagship-list">
+              {flagshipProjects.map((project, index) => (
+                <Reveal key={project.id} delay={index * 0.04}>
+                  <article className="flagship" id={project.id} aria-labelledby={`${project.id}-title`}>
+                    <div className="flagship__copy">
+                      <div className="flagship__head">
+                        <span className="eyebrow">{project.number} · {project.label}</span>
+                        <h3 id={`${project.id}-title`} className="flagship__title">{project.title}</h3>
+                      </div>
+
+                      <p className="flagship__lede">{project.lede}</p>
+
+                      <div className="flagship__chips">
+                        {project.chips.map((chip) => (
+                          <span key={chip} className="chip">{chip}</span>
+                        ))}
+                      </div>
+
+                      <div className="flagship__details">
+                        <div className="flagship__detail">
+                          <span className="label">Role</span>
+                          <p className="flagship__detail-text">{project.role}</p>
+                        </div>
+                        <div className="flagship__detail">
+                          <span className="label">Why it matters</span>
+                          <p className="flagship__detail-text">{project.why}</p>
+                        </div>
+                      </div>
+
+                      <div className="flagship__links">
+                        {project.links.map((link) => (
+                          <a
+                            key={link.href}
+                            className={`btn${link.primary ? ' btn--primary' : ''}`}
+                            href={link.href}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            {link.label}
+                            <ArrowUpRight />
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="flagship__stage">
+                      <DeviceSimulator
+                        url={project.iframeUrl}
+                        label={project.iframeLabel}
+                        height={460}
+                        scale={0.7}
+                      />
+
+                      <div className="flagship__bullets">
+                        {project.bullets.map((bullet) => (
+                          <div key={bullet.title} className="flagship__bullet">
+                            <h4>{bullet.title}</h4>
+                            <p>{bullet.text}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </article>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Other work — uniform grid */}
+        <section className="section" id="more-work" aria-labelledby="more-work-title">
+          <div className="shell">
+            <div className="section__head">
+              <div className="section__head-meta">
+                <span className="section__index">[ 04 / Other work ]</span>
+              </div>
+              <Reveal>
+                <h2 id="more-work-title" className="section__title">
+                  Repeatability across very different product shapes.
+                </h2>
+                <p className="section__lede">
+                  Smaller systems and side products that prove the approach holds beyond the flagship work.
+                </p>
+              </Reveal>
+            </div>
+
+            <Reveal>
+              <div className="work-grid">
+                {supportingProjects.map((project) => {
+                  const Icon = project.icon;
+                  return (
+                    <article key={project.title} className="work-card">
+                      <div className="work-card__head">
+                        <span className="work-card__icon" aria-hidden="true"><Icon size={16} /></span>
+                        <span className="work-card__label">{project.label}</span>
+                      </div>
+                      <h3 className="work-card__title">{project.title}</h3>
+                      <p className="work-card__text">{project.text}</p>
+                      <div className="flagship__chips">
+                        {project.chips.map((chip) => (
+                          <span key={chip} className="chip">{chip}</span>
+                        ))}
+                      </div>
+                      {(project.liveUrl || project.codeUrl) && (
+                        <div className="work-card__links">
+                          {project.liveUrl && (
+                            <a className="work-card__link" href={project.liveUrl} target="_blank" rel="noreferrer">
+                              Live <ArrowUpRight />
+                            </a>
+                          )}
+                          {project.codeUrl && (
+                            <a className="work-card__link" href={project.codeUrl} target="_blank" rel="noreferrer">
+                              Code <ArrowUpRight />
+                            </a>
+                          )}
+                        </div>
+                      )}
+                    </article>
+                  );
+                })}
+              </div>
             </Reveal>
+          </div>
+        </section>
+
+        {/* Approach */}
+        <section className="section" id="approach" aria-labelledby="approach-title">
+          <div className="shell">
+            <div className="section__head">
+              <div className="section__head-meta">
+                <span className="section__index">[ 05 / Approach ]</span>
+              </div>
+              <Reveal>
+                <h2 id="approach-title" className="section__title">
+                  How the work actually <em>gets made</em>.
+                </h2>
+              </Reveal>
+            </div>
+
+            <div className="approach">
+              <Reveal>
+                <p className="approach__quote">
+                  Most products fail at the seams between design, code, AI behavior, and billing.
+                  My job is to <em>remove those seams</em> by owning all of them.
+                </p>
+              </Reveal>
+
+              <Reveal delay={0.08} className="approach__list">
+                {principles.map((principle, i) => (
+                  <div key={principle.title} className="approach__item">
+                    <span className="approach__num">{String(i + 1).padStart(2, '0')}</span>
+                    <div>
+                      <h4>{principle.title}</h4>
+                      <p>{principle.text}</p>
+                    </div>
+                  </div>
+                ))}
+              </Reveal>
+            </div>
+          </div>
+        </section>
+
+        {/* Contact */}
+        <section className="section" id="contact" aria-labelledby="contact-title">
+          <div className="shell">
+            <div className="section__head">
+              <div className="section__head-meta">
+                <span className="section__index">[ 06 / Contact ]</span>
+              </div>
+            </div>
+
+            <div className="contact">
+              <Reveal>
+                <h2 id="contact-title" className="contact__title">
+                  Best fit: products that need a sharp interface and someone willing to <em>own</em> the hard parts behind it.
+                </h2>
+                <p className="contact__lede">
+                  If the brief includes AI behavior, product design, full-stack implementation, billing,
+                  or the operator paths that usually get ignored until the end — I'm useful.
+                </p>
+
+                <div className="contact__lines">
+                  <a className="contact__line" href="mailto:astickleyid@gmail.com">
+                    <span>Email</span>
+                    <span>astickleyid@gmail.com</span>
+                  </a>
+                  <a className="contact__line" href="https://github.com/astickleyid" target="_blank" rel="noreferrer">
+                    <span>GitHub</span>
+                    <span>github.com/astickleyid</span>
+                  </a>
+                  <div className="contact__line">
+                    <span>Based</span>
+                    <span>Toledo / Detroit</span>
+                  </div>
+                  <div className="contact__line">
+                    <span>Status</span>
+                    <span>Open to work</span>
+                  </div>
+                </div>
+              </Reveal>
+
+              <Reveal delay={0.08}>
+                <ContactForm />
+              </Reveal>
+            </div>
           </div>
         </section>
       </main>
+
+      {/* Footer */}
+      <footer className="site-foot">
+        <div className="shell site-foot__inner">
+          <span>© {new Date().getFullYear()} Austin Stickley</span>
+          <span>Toledo · Detroit · Open to work</span>
+        </div>
+      </footer>
     </div>
   );
 }

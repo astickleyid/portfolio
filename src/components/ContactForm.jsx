@@ -44,39 +44,39 @@ export function ContactForm() {
   }
 
   return (
-    <form className="contact-form" onSubmit={handleSubmit}>
-      <div className="contact-form__row">
+    <form className="form" onSubmit={handleSubmit} aria-label="Contact form">
+      <div className="form__row">
         <label className="field">
-          <span>Name</span>
+          <span className="field__label">Name</span>
           <input
             type="text"
             name="name"
             value={form.name}
             onChange={handleChange}
             placeholder="Your name"
+            autoComplete="name"
             required
           />
         </label>
 
         <label className="field">
-          <span>Email</span>
+          <span className="field__label">Email</span>
           <input
             type="email"
             name="email"
             value={form.email}
             onChange={handleChange}
             placeholder="you@company.com"
+            autoComplete="email"
             required
           />
         </label>
       </div>
 
       <label className="field">
-        <span>Project type</span>
+        <span className="field__label">Project type</span>
         <select name="project" value={form.project} onChange={handleChange} required>
-          <option value="" disabled>
-            Select one
-          </option>
+          <option value="" disabled>Select one</option>
           <option value="ai-integration">AI integration / workflow</option>
           <option value="full-stack">Full-stack web or mobile product</option>
           <option value="automation">Business automation</option>
@@ -86,10 +86,10 @@ export function ContactForm() {
       </label>
 
       <label className="field">
-        <span>Brief</span>
+        <span className="field__label">Brief</span>
         <textarea
           name="message"
-          rows="7"
+          rows="6"
           value={form.message}
           onChange={handleChange}
           placeholder="What are you building, where is it blocked, and what needs to be true when it ships?"
@@ -97,17 +97,15 @@ export function ContactForm() {
         />
       </label>
 
-      <button className="contact-form__submit" type="submit" disabled={status === 'loading'}>
-        <span>{status === 'loading' ? 'Sending...' : 'Send inquiry'}</span>
-        <Send size={16} />
+      <button className="form__submit" type="submit" disabled={status === 'loading'}>
+        <span>{status === 'loading' ? 'Sending…' : 'Send inquiry'}</span>
+        <Send />
       </button>
 
       {(status === 'success' || status === 'error') && (
         <div
-          className={clsx(
-            'contact-form__status',
-            status === 'success' ? 'is-success' : 'is-error'
-          )}
+          role="status"
+          className={clsx('form__status', status === 'success' ? 'is-success' : 'is-error')}
         >
           {status === 'success'
             ? 'Message received. I will follow up soon.'
