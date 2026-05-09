@@ -30,6 +30,7 @@ import { ContactForm } from './components/ContactForm';
 import { DeviceSimulator } from './components/DeviceSimulator';
 import { HeroBrowserMockup } from './components/HeroBrowserMockup';
 import { NowBuilding } from './components/NowBuilding';
+import { AnimatedCounter } from './components/AnimatedCounter';
 import { Reveal } from './components/Reveal';
 import { StickyProjectNav } from './components/StickyProjectNav';
 
@@ -337,22 +338,22 @@ function App() {
             <Reveal>
               <div className="credentials-strip">
                 <div className="credentials-strip__item">
-                  <span className="credentials-strip__number">4</span>
+                  <AnimatedCounter target={4} className="credentials-strip__number" />
                   <span className="credentials-strip__label">live products</span>
                 </div>
                 <div className="credentials-strip__divider" aria-hidden="true" />
                 <div className="credentials-strip__item">
-                  <span className="credentials-strip__number">2</span>
+                  <AnimatedCounter target={2} className="credentials-strip__number" />
                   <span className="credentials-strip__label">iOS apps shipped</span>
                 </div>
                 <div className="credentials-strip__divider" aria-hidden="true" />
                 <div className="credentials-strip__item">
-                  <span className="credentials-strip__number">3</span>
+                  <AnimatedCounter target={3} className="credentials-strip__number" />
                   <span className="credentials-strip__label">paid SaaS builds</span>
                 </div>
                 <div className="credentials-strip__divider" aria-hidden="true" />
                 <div className="credentials-strip__item">
-                  <span className="credentials-strip__number">0</span>
+                  <AnimatedCounter target={0} className="credentials-strip__number" />
                   <span className="credentials-strip__label">teams required</span>
                 </div>
               </div>
