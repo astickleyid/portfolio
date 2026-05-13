@@ -169,15 +169,15 @@ const flagshipProjects = [
     bullets: [
       {
         title: 'What shipped',
-        text: 'Scheduled scraping, AI diff synthesis, weekly email digests, briefing annotations, bookmark and filter system, export to markdown, competitor status badges, and a Stripe subscription paywall.',
+        text: 'Scheduled scraping, AI diff synthesis, weekly email digests, briefing annotations, bookmark and filter system, export to markdown and CSV, competitor status badges, activity sparkline charts, keyboard navigation, persistent filter state, and a Stripe subscription paywall.',
       },
       {
         title: 'Design move',
-        text: 'Treat briefings as the primary object — not competitors. The dashboard is organized around what changed and when, so the signal stays surfaced even as volume grows.',
+        text: 'Treat briefings as the primary object — not competitors. The dashboard is organized around what changed and when, so the signal stays surfaced even as volume grows. Filters persist across sessions so context is never lost.',
       },
       {
         title: 'System depth',
-        text: 'A Cloudflare Worker handles scheduling and scraping. A synthesis layer diffs content and calls the AI. Stripe webhooks gate access. Resend delivers email. The frontend reads from Supabase with RLS.',
+        text: 'A Cloudflare Worker handles scheduling and scraping. A synthesis layer diffs content and calls the AI. Stripe webhooks gate access. Resend delivers email. The frontend reads from Supabase with RLS. All filter and reading state persists client-side without a round-trip.',
       },
     ],
     chips: ['React', 'Supabase', 'Stripe', 'Cloudflare Workers', 'Resend', 'OpenAI'],

@@ -323,6 +323,11 @@ p {
 .now-building__project-name {
   color: var(--accent);
   font-weight: 700;
+  text-decoration: none;
+}
+
+.now-building__project-name:hover {
+  text-decoration: underline;
 }
 
 .now-building__project-desc {

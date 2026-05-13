@@ -12,8 +12,13 @@ export function NowBuilding() {
       <span className="now-building__label">Now building</span>
       <span className="now-building__sep" aria-hidden="true">▶</span>
       <span className="now-building__project">
-        <span className="now-building__project-name">Rival</span>
-        <span className="now-building__project-desc"> · competitive intelligence SaaS</span>
+        <a
+          className="now-building__project-name"
+          href="https://rivalapp.io"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Rival</a>
+        <span className="now-building__project-desc"> · competitor intelligence SaaS</span>
       </span>
     </motion.div>
   );
