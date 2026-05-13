@@ -88,11 +88,14 @@ select {
 
 .scroll-indicator {
   position: fixed;
-  inset: 0 0 auto;
-  height: 4px;
-  z-index: 40;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 9999;
   background: linear-gradient(90deg, var(--accent), var(--signal));
-  transform-origin: left;
+  transform-origin: 0%;
+  pointer-events: none;
 }
 
 .shell {
