@@ -34,7 +34,7 @@ export function ContactForm() {
       setForm(initialForm);
     } catch (error) {
       setStatus('error');
-      setErrorMessage('The form failed to send. Email me directly at astickleyid@gmail.com.');
+      setErrorMessage('The form failed to send. Email me directly at ams@stickleyai.com.');
     }
   }
 

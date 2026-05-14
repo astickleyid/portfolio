@@ -26,29 +26,8 @@ const flagshipProjects = [
     number: '01',
     label: 'Creator platform',
     title: 'nXcor',
-    lede:
-      'A creator workspace where the server is the studio. Public output flows from a private workspace into feed, profiles, and discovery — one product model across every surface.',
-    role: 'Product direction, interface system, frontend, backend, realtime, media pipeline, deployment.',
-    why: 'The strongest example in this portfolio of holding a large product thesis coherent across many surfaces and technical constraints.',
+    tagline: 'Streaming, communities, DMs, RTMP ingest, HLS playback, iOS shell. The server is the studio.',
     chips: ['React', 'Node / Express', 'Socket.IO', 'SQLite WAL', 'RTMP / HLS', 'Capacitor'],
-    bullets: [
-      {
-        title: 'Shipped',
-        text: 'Feed, profiles, communities, DMs, notifications, RTMP ingest, HLS playback, iOS shell.',
-      },
-      {
-        title: 'Design move',
-        text: 'Each surface has one job: create privately, publish outward, discover through feed and explore.',
-      },
-      {
-        title: 'System depth',
-        text: 'Presence, messaging, playback, storage, packaging, and hierarchy all reinforce the same product model.',
-      },
-      {
-        title: 'Status',
-        text: 'Live at n-xcor.com. Continuously deployed via DigitalOcean VPS.',
-      },
-    ],
     iframeUrl: 'https://n-xcor.com',
     iframeLabel: 'n-xcor.com',
     links: [
@@ -61,29 +40,8 @@ const flagshipProjects = [
     number: '02',
     label: 'AI legal SaaS',
     title: 'ClaruSign',
-    lede:
-      'Contract analysis as a paid product. Upload a PDF, get a structured review report — risk-scored clauses, plain-English explanations, suggested revisions, and a draft negotiation email. Every finding maps back to a location in the document.',
-    role: 'Product framing, visual direction, prompt and report structure, payment flow, delivery logic.',
-    why: 'Proves I can turn raw model output into a paid product with clear user value and a polished path from upload to result.',
+    tagline: 'Upload a contract, get a structured AI review — risks, plain-English explanations, suggested revisions, negotiation email.',
     chips: ['React', 'Claude API', 'PDF.js', 'Supabase', 'Stripe'],
-    bullets: [
-      {
-        title: 'Shipped',
-        text: 'Upload, payment gating, AI analysis, structured report, suggested language, negotiation email.',
-      },
-      {
-        title: 'Design move',
-        text: 'Anchor every screen to the same question: what is risky, why does it matter, what should the user do next?',
-      },
-      {
-        title: 'System depth',
-        text: 'PDF parsing, Claude API analysis, payment gating, and structured report delivery as one experience.',
-      },
-      {
-        title: 'Status',
-        text: 'Live at clarusign.com. Stripe live-mode rollout in progress.',
-      },
-    ],
     iframeUrl: 'https://clarusign.vercel.app',
     iframeLabel: 'clarusign.com',
     links: [
@@ -96,29 +54,8 @@ const flagshipProjects = [
     number: '03',
     label: 'Browser game',
     title: 'VOID RIFT',
-    lede:
-      'A complete twin-stick shooter built without an engine. Ship selection, upgrade economy, missions, kill-combo multipliers, mid-game power drops, boss waves — every system implemented from scratch in vanilla JS.',
-    role: 'Game design, physics, upgrade economy, mission architecture, enemy AI, ship balancing, VFX, iOS shell.',
-    why: 'The most technically self-contained project here. Save state, leaderboard, social, missions, and adaptive difficulty all built by hand.',
+    tagline: 'Full twin-stick shooter built without an engine. Missions, upgrade economy, boss waves, iOS shell — all vanilla JS.',
     chips: ['Vanilla JS', 'Canvas API', 'Capacitor / iOS', 'Vercel', 'LocalStorage'],
-    bullets: [
-      {
-        title: 'Shipped',
-        text: 'Ship select, upgrade shop, missions, kill combos, power-ups, boss waves, leaderboard, iOS wrapper.',
-      },
-      {
-        title: 'Design move',
-        text: 'Tight upgrade economy with diminishing returns — upgrades reward play without trivializing it.',
-      },
-      {
-        title: 'System depth',
-        text: 'Adaptive difficulty, save state, formation patterns, per-class abilities, audio manager — no framework.',
-      },
-      {
-        title: 'Status',
-        text: 'Live at voidrift.vercel.app. Playable in any browser.',
-      },
-    ],
     iframeUrl: 'https://voidrift.vercel.app',
     iframeLabel: 'voidrift.vercel.app',
     links: [
@@ -133,7 +70,7 @@ const supportingProjects = [
     title: 'findafiend',
     label: 'Community rideshare',
     icon: MapPin,
-    text: 'Cash-based community rideshare for Detroit and Toledo. Next.js + Upstash Redis on Vercel. Built around verified drivers, simple matching, and minimal app overhead.',
+    text: 'Cash-based community rideshare for Detroit and Toledo.',
     chips: ['Next.js', 'Upstash Redis', 'Vercel', 'Mapbox'],
     liveUrl: 'https://findafiend.com',
     codeUrl: '',
@@ -142,7 +79,7 @@ const supportingProjects = [
     title: 'AURA',
     label: 'Geo-AR platform',
     icon: Layers3,
-    text: 'Iron Man–style AR layer over the live world. Camera passthrough, COCO-SSD object detection, traffic data, voice commands, IFF tagging, and a 911 incident feed.',
+    text: 'Iron Man–style AR over live camera — object detection, traffic, voice commands.',
     chips: ['TensorFlow.js', 'TomTom', 'WebGL', 'Vercel KV'],
     liveUrl: 'https://aura-ar-world.vercel.app',
     codeUrl: 'https://github.com/astickleyid/aura-ar-world',
@@ -151,7 +88,7 @@ const supportingProjects = [
     title: 'KeyBridge',
     label: 'API key vault',
     icon: BrainCircuit,
-    text: 'Universal API-key management with an AES-256-GCM vault. Encrypted storage, scoped access, usage analytics, and a clean operator UI for solo and team workflows.',
+    text: 'Universal API-key management with AES-256-GCM encrypted vault.',
     chips: ['Next.js', 'Supabase', 'Upstash Redis', 'Stripe'],
     liveUrl: '',
     codeUrl: 'https://github.com/astickleyid/keybridge',
@@ -160,7 +97,7 @@ const supportingProjects = [
     title: 'Rival',
     label: 'Competitive intel',
     icon: Workflow,
-    text: 'Tracks competitors, turns changes into briefings, and wraps the work in subscription and export logic. Built for solo operators and small teams.',
+    text: 'Tracks competitors, turns changes into briefings, wraps it in subscription.',
     chips: ['React', 'Supabase', 'Stripe', 'Briefings'],
     liveUrl: 'https://rival-alpha.vercel.app',
     codeUrl: 'https://github.com/astickleyid/rival',
@@ -169,7 +106,7 @@ const supportingProjects = [
     title: 'NWO Answering',
     label: 'Lead automation',
     icon: PhoneCall,
-    text: 'Captures inbound leads, scores urgency, sends instant SMS, and routes follow-up through a lightweight CRM flow. Designed for small service businesses.',
+    text: 'Captures inbound leads, scores urgency, instant-SMS, CRM routing.',
     chips: ['Node', 'Twilio', 'Lead scoring', 'Dashboard'],
     liveUrl: '',
     codeUrl: '',
@@ -178,29 +115,10 @@ const supportingProjects = [
     title: 'FinCoach AI',
     label: 'Consumer mobile',
     icon: Smartphone,
-    text: 'Cross-platform finance coaching app with Firebase-backed state, subscription billing, and personalized AI guidance based on user activity.',
+    text: 'Cross-platform finance coaching with personalized AI guidance.',
     chips: ['Flutter', 'Firebase', 'RevenueCat', 'OpenAI'],
     liveUrl: '',
     codeUrl: '',
-  },
-];
-
-const principles = [
-  {
-    title: 'Hierarchy before decoration',
-    text: 'The first read should be cheap. Lead with the thesis, then proof, then let deeper system work reveal itself.',
-  },
-  {
-    title: 'Show the operating layer',
-    text: 'The most valuable work is often behind the hero screen — billing, review queues, exports, operator flows.',
-  },
-  {
-    title: 'AI is product behavior',
-    text: 'The model is not the product. The product is how output gets framed, constrained, paid for, and turned into action.',
-  },
-  {
-    title: 'Ship the whole loop',
-    text: 'Design, frontend, backend, infra, and billing are one continuous system. Treat them that way from day one.',
   },
 ];
 
@@ -239,11 +157,10 @@ function App() {
               <Reveal className="hero__copy">
                 <span className="eyebrow">AI Product Engineer · Toledo / Detroit</span>
                 <h1 id="hero-title" className="hero__title">
-                  AI-native products, <em>shipped</em> end-to-end.
+                  Austin Stickley
                 </h1>
-                <p className="hero__lede">
-                  I'm Austin Stickley. Solo builder running design, frontend, backend, AI behavior,
-                  billing, and infra as one continuous system. No handoffs. Every project below is live.
+                <p className="hero__subtitle">
+                  AI-native products, <em>shipped</em> end-to-end.
                 </p>
 
                 <NowBuilding />
@@ -353,23 +270,12 @@ function App() {
                         <h3 id={`${project.id}-title`} className="flagship__title">{project.title}</h3>
                       </div>
 
-                      <p className="flagship__lede">{project.lede}</p>
+                      <p className="flagship__tagline">{project.tagline}</p>
 
                       <div className="flagship__chips">
                         {project.chips.map((chip) => (
                           <span key={chip} className="chip">{chip}</span>
                         ))}
-                      </div>
-
-                      <div className="flagship__details">
-                        <div className="flagship__detail">
-                          <span className="label">Role</span>
-                          <p className="flagship__detail-text">{project.role}</p>
-                        </div>
-                        <div className="flagship__detail">
-                          <span className="label">Why it matters</span>
-                          <p className="flagship__detail-text">{project.why}</p>
-                        </div>
                       </div>
 
                       <div className="flagship__links">
@@ -392,18 +298,9 @@ function App() {
                       <DeviceSimulator
                         url={project.iframeUrl}
                         label={project.iframeLabel}
-                        height={460}
+                        height={520}
                         scale={0.7}
                       />
-
-                      <div className="flagship__bullets">
-                        {project.bullets.map((bullet) => (
-                          <div key={bullet.title} className="flagship__bullet">
-                            <h4>{bullet.title}</h4>
-                            <p>{bullet.text}</p>
-                          </div>
-                        ))}
-                      </div>
                     </div>
                   </article>
                 </Reveal>
@@ -482,24 +379,12 @@ function App() {
               </Reveal>
             </div>
 
-            <div className="approach">
+            <div className="approach approach--single">
               <Reveal>
                 <p className="approach__quote">
                   Most products fail at the seams between design, code, AI behavior, and billing.
                   My job is to <em>remove those seams</em> by owning all of them.
                 </p>
-              </Reveal>
-
-              <Reveal delay={0.08} className="approach__list">
-                {principles.map((principle, i) => (
-                  <div key={principle.title} className="approach__item">
-                    <span className="approach__num">{String(i + 1).padStart(2, '0')}</span>
-                    <div>
-                      <h4>{principle.title}</h4>
-                      <p>{principle.text}</p>
-                    </div>
-                  </div>
-                ))}
               </Reveal>
             </div>
           </div>
@@ -517,17 +402,13 @@ function App() {
             <div className="contact">
               <Reveal>
                 <h2 id="contact-title" className="contact__title">
-                  Best fit: products that need a sharp interface and someone willing to <em>own</em> the hard parts behind it.
+                  Let's build <em>something</em>.
                 </h2>
-                <p className="contact__lede">
-                  If the brief includes AI behavior, product design, full-stack implementation, billing,
-                  or the operator paths that usually get ignored until the end — I'm useful.
-                </p>
 
                 <div className="contact__lines">
-                  <a className="contact__line" href="mailto:astickleyid@gmail.com">
+                  <a className="contact__line" href="mailto:ams@stickleyai.com">
                     <span>Email</span>
-                    <span>astickleyid@gmail.com</span>
+                    <span>ams@stickleyai.com</span>
                   </a>
                   <a className="contact__line" href="https://github.com/astickleyid" target="_blank" rel="noreferrer">
                     <span>GitHub</span>
