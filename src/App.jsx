@@ -207,18 +207,7 @@ function App() {
         {/* Selected work */}
         <section className="section" id="work" aria-labelledby="work-title">
           <div className="shell">
-            <div className="section__head">
-              <div className="section__head-meta">
-                <span className="section__index">[ 03 / Selected work ]</span>
-              </div>
-              <Reveal>
-                <h2 id="work-title" className="section__title">
-                  Three projects with the strongest mix of <em>product judgment</em> and technical execution.
-                </h2>
-              </Reveal>
-            </div>
-
-            <div className="flagship-list">
+<div className="flagship-list">
               {flagshipProjects.map((project, index) => (
                 <Reveal key={project.id} delay={index * 0.04}>
                   <article className="flagship" id={project.id} aria-labelledby={`${project.id}-title`}>
