@@ -1,7 +1,6 @@
 import {
   ArrowUpRight,
   BrainCircuit,
-  Gamepad2,
   Layers3,
   MapPin,
   PhoneCall,
@@ -130,7 +129,7 @@ const flagshipProjects = [
     bullets: [
       {
         title: 'What shipped',
-        text: 'Ship selection with stat bars, a persistent upgrade shop, mission system, kill combo multiplier, power-up drops, boss waves, local leaderboard, and a Capacitor iOS wrapper.',
+        text: 'Ship selection with stat bars, a persistent upgrade shop, roguelite wave upgrades, kill combo multiplier, power-up drops, boss waves, specialized enemy types (carrier, phantom, splitter, sniper, berserker), local leaderboard, and a Capacitor iOS wrapper.',
       },
       {
         title: 'Design move',
@@ -365,7 +364,7 @@ function App() {
           <div className="shell section-heading">
             <Reveal>
               <span className="eyebrow">Selected work</span>
-              <h2>Three projects that show the strongest mix of product judgment and technical execution.</h2>
+              <h2>Four flagship projects that show the strongest mix of product judgment and technical execution.</h2>
             </Reveal>
           </div>
 
