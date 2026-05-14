@@ -204,48 +204,6 @@ function App() {
           </div>
         </section>
 
-        {/* Index — magazine TOC of all projects */}
-        <section className="section" aria-labelledby="index-title">
-          <div className="shell">
-            <div className="section__head">
-              <div className="section__head-meta">
-                <span className="section__index">[ 02 / Index ]</span>
-              </div>
-              <Reveal>
-                <h2 id="index-title" className="section__title">
-                  Every project, in one list.
-                </h2>
-                <p className="section__lede">
-                  Three flagship products, six supporting systems. Click through to the section.
-                </p>
-              </Reveal>
-            </div>
-
-            <Reveal>
-              <div className="toc" role="list">
-                {[...flagshipProjects.map((p) => ({
-                  num: p.number,
-                  title: p.title,
-                  desc: p.label,
-                  href: `#${p.id}`,
-                })), ...supportingProjects.map((p, i) => ({
-                  num: String(i + 4).padStart(2, '0'),
-                  title: p.title,
-                  desc: p.label,
-                  href: '#more-work',
-                }))].map((row) => (
-                  <a key={row.num + row.title} href={row.href} className="toc__row" role="listitem">
-                    <span className="toc__num">{row.num}</span>
-                    <span className="toc__title">{row.title}</span>
-                    <span className="toc__desc">{row.desc}</span>
-                    <span className="toc__arrow"><ArrowUpRight size={14} /></span>
-                  </a>
-                ))}
-              </div>
-            </Reveal>
-          </div>
-        </section>
-
         {/* Selected work */}
         <section className="section" id="work" aria-labelledby="work-title">
           <div className="shell">
