@@ -1,5 +1,5 @@
 # Austin Stickley — Portfolio
-# https://portfolio-iota-ashen-ylt3ljby06.vercel.app
+# https://austinstickley.dev
 
 # All crawlers
 User-agent: *
@@ -58,4 +58,4 @@ Allow: /
 User-agent: LinkedInBot
 Allow: /
 
-Sitemap: https://portfolio-iota-ashen-ylt3ljby06.vercel.app/sitemap.xml
+Sitemap: https://austinstickley.dev/sitemap.xml

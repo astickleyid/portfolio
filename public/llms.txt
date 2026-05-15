@@ -32,4 +32,4 @@ Austin Stickley owns the full product stack: interface design, React/Next.js fro
 
 ## Optional
 
-- [Portfolio](https://portfolio-iota-ashen-ylt3ljby06.vercel.app): Full portfolio with live device previews of shipped products
+- [Portfolio](https://austinstickley.dev): Full portfolio with live device previews of shipped products
