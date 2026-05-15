@@ -63,6 +63,20 @@ const flagshipProjects = [
       { label: 'Code', href: 'https://github.com/astickleyid/shooter-app' },
     ],
   },
+  {
+    id: 'fieldline',
+    number: '04',
+    label: 'White-label CRM',
+    title: 'Fieldline',
+    tagline: 'CRM built for small trade businesses. Job pipeline, lead capture, SMS/email automation, AI quoting, and white-label operator controls.',
+    chips: ['Next.js', 'Upstash Redis', 'Anthropic API', 'Iron Session', 'Vercel'],
+    iframeUrl: 'https://fieldline-app.vercel.app',
+    iframeLabel: 'fieldline-app.vercel.app',
+    links: [
+      { label: 'Open app', href: 'https://fieldline-app.vercel.app', primary: true },
+      { label: 'Code', href: 'https://github.com/astickleyid/fieldline-app' },
+    ],
+  },
 ];
 
 const supportingProjects = [

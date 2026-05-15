@@ -31,7 +31,7 @@ export function DeviceSimulator({ url, label, height = 520, scale = 0.75 }) {
             onLoad={() => setLoaded(true)}
             onError={() => setBlocked(true)}
             title={label}
-            sandbox="allow-scripts allow-same-origin allow-forms"
+            sandbox="allow-scripts allow-same-origin allow-forms allow-pointer-lock allow-popups allow-modals"
             loading="lazy"
           />
         ) : (
