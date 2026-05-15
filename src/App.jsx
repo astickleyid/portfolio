@@ -24,6 +24,7 @@ function IconLinkedin({ size = 18 }) {
     </svg>
   );
 }
+import { useState } from 'react';
 import { motion, useScroll, useSpring } from 'motion/react';
 import { ContactForm } from './components/ContactForm';
 import { DeviceSimulator } from './components/DeviceSimulator';
@@ -258,6 +259,7 @@ const techStack = [
 ];
 
 function App() {
+  const [activeFilters, setActiveFilters] = useState(new Set());
   const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 160, damping: 28, mass: 0.2 });
 
@@ -369,7 +371,79 @@ function App() {
           </div>
 
           <div className="shell flagship-list">
-            {flagshipProjects.map((project, index) => (
+            {(() => {
+              const allTags = [...new Set(flagshipProjects.flatMap((p) => p.chips))];
+              const tagCounts = Object.fromEntries(
+                allTags.map((tag) => [
+                  tag,
+                  flagshipProjects.filter((p) => p.chips.includes(tag)).length,
+                ])
+              );
+              const toggleFilter = (tag) => {
+                setActiveFilters((prev) => {
+                  const next = new Set(prev);
+                  if (next.has(tag)) next.delete(tag);
+                  else next.add(tag);
+                  return next;
+                });
+              };
+              const filteredProjects =
+                activeFilters.size === 0
+                  ? flagshipProjects
+                  : flagshipProjects.filter((p) =>
+                      p.chips.some((chip) => activeFilters.has(chip))
+                    );
+              const pillBase = {
+                borderRadius: 'var(--radius-sm)',
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.72rem',
+                padding: '4px 12px',
+                cursor: 'pointer',
+                border: '1px solid var(--line)',
+                background: 'none',
+                lineHeight: 1.4,
+                transition: 'background 0.15s, color 0.15s, border-color 0.15s',
+              };
+              const pillActive = {
+                ...pillBase,
+                background: 'var(--accent-soft)',
+                color: 'var(--accent)',
+                borderColor: 'var(--accent)',
+              };
+              const pillInactive = {
+                ...pillBase,
+                background: 'var(--surface)',
+                color: 'var(--muted)',
+                borderColor: 'var(--line)',
+              };
+              return (
+                <>
+                  <div
+                    className="flagship-filter-pills"
+                    style={{
+                      display: 'flex',
+                      flexWrap: 'wrap',
+                      gap: '8px',
+                      marginBottom: '48px',
+                    }}
+                  >
+                    <button
+                      style={activeFilters.size === 0 ? pillActive : pillInactive}
+                      onClick={() => setActiveFilters(new Set())}
+                    >
+                      All
+                    </button>
+                    {allTags.map((tag) => (
+                      <button
+                        key={tag}
+                        style={activeFilters.has(tag) ? pillActive : pillInactive}
+                        onClick={() => toggleFilter(tag)}
+                      >
+                        {tag} ({tagCounts[tag]})
+                      </button>
+                    ))}
+                  </div>
+                  {filteredProjects.map((project, index) => (
               <div key={project.id} id={project.id}>
               <Reveal
                 className={`flagship flagship--${project.theme} ${index % 2 === 1 ? 'flagship--reverse' : ''}`}
@@ -428,7 +502,10 @@ function App() {
                 </div>
               </Reveal>
               </div>
-            ))}
+                  ))}
+                </>
+              );
+            })()}
           </div>
         </section>
 
