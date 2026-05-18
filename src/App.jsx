@@ -362,6 +362,64 @@ function App() {
           </div>
         </section>
 
+        {/* Skills & Stack */}
+        <section className="section section--stack-grid" aria-label="Skills and stack">
+          <div className="shell">
+            <Reveal className="section-heading">
+              <span className="eyebrow">Stack</span>
+              <h2>Tools I reach for by default.</h2>
+            </Reveal>
+
+            <Reveal delay={0.08}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '32px', marginTop: '40px' }}>
+                {[
+                  {
+                    label: 'Frontend',
+                    color: '#6366f1',
+                    bg: 'rgba(99,102,241,0.1)',
+                    border: 'rgba(99,102,241,0.25)',
+                    items: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Vite'],
+                  },
+                  {
+                    label: 'Backend',
+                    color: '#10b981',
+                    bg: 'rgba(16,185,129,0.1)',
+                    border: 'rgba(16,185,129,0.25)',
+                    items: ['Node.js / Express', 'Python', 'Supabase', 'PostgreSQL', 'SQLite'],
+                  },
+                  {
+                    label: 'Mobile',
+                    color: '#f97316',
+                    bg: 'rgba(249,115,22,0.1)',
+                    border: 'rgba(249,115,22,0.25)',
+                    items: ['React Native', 'Capacitor', 'iOS (Swift)', 'Android'],
+                  },
+                  {
+                    label: 'Infrastructure',
+                    color: '#94a3b8',
+                    bg: 'rgba(148,163,184,0.08)',
+                    border: 'rgba(148,163,184,0.2)',
+                    items: ['Vercel', 'Cloudflare', 'Git / GitHub', 'Docker'],
+                  },
+                ].map((group) => (
+                  <div key={group.label}>
+                    <span style={{ fontSize: '0.7rem', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '0.1em', color: group.color, display: 'block', marginBottom: '14px' }}>
+                      {group.label}
+                    </span>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                      {group.items.map((item) => (
+                        <span key={item} style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', padding: '4px 12px', borderRadius: 'var(--radius-sm)', background: group.bg, color: group.color, border: `1px solid ${group.border}`, lineHeight: 1.5 }}>
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
         <section className="section" id="work">
           <div className="shell section-heading">
             <Reveal>
