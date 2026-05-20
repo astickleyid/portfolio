@@ -374,51 +374,60 @@ function App() {
                 </h2>
 
                 <p className="about__lead">
-                  I&rsquo;m <strong>Austin Stickley</strong> — a self-taught product
-                  builder from Toledo, Ohio. My background is in vision and execution,
-                  not computer science. I learned to ship real software by pairing
-                  product instinct with AI tools, and I&rsquo;ve been building in
-                  production ever since.
+                  I&rsquo;m <strong>Austin Michael Stickley</strong> — a self-described
+                  vibe coder and product builder from Toledo, Ohio. My background is
+                  vision and execution, not computer science. I treat AI development
+                  less like rigid engineering and more like alchemy: you understand the
+                  inputs, you understand the outputs, and you learn to bend the system
+                  to do things it wasn&rsquo;t explicitly designed for.
                 </p>
 
                 <p>
                   Before the software, I ran Grasslane Lawn Co., a lawn care business
-                  I started in Toledo. That gave me a hands-on understanding of how
-                  small trade businesses actually operate — the scheduling gaps, the
-                  lead flow problems, the manual work that software should eliminate.
-                  Fieldline came directly from that experience.
+                  I started in Toledo. That gave me a hands-on view of how small trade
+                  businesses actually operate — the scheduling gaps, the lead flow
+                  problems, the manual overhead that software should eliminate.
+                  Fieldline and NWO Answering both came directly from that experience.
                 </p>
 
                 <p>
                   I build across the full stack because I have to. Design, frontend,
-                  backend, AI integration, billing, infrastructure — if I hand any
-                  of that off, the product stops being mine. The goal is always the
-                  same: get to a live, working system that solves a real problem.
-                  Everything else is overhead.
+                  backend, AI behavior, billing, infra — if I hand any of it off, the
+                  product stops being mine. I also run local LLM deployments (Ollama,
+                  Phi-3, Llama 3) to prototype multi-agent workflows before they go
+                  anywhere near production. The goal is always the same: a live,
+                  working system that solves a real problem.
                 </p>
 
                 <p>
-                  Outside of building, I spend time on music production in Logic Pro,
-                  game development, interior design, and trading. I write and record
-                  my own music. VOID RIFT started as a personal project to understand
-                  how games are actually built from scratch, with no engine.
+                  On the creative side I produce hip-hop and R&amp;B — Atlanta/Detroit
+                  trap, late-night energy, Drake/Offset territory. I record in a home
+                  studio running a Mac Studio through a Focusrite Scarlett Solo into a
+                  Rode PodMic. VOID RIFT started as a personal build-to-understand
+                  project: a complete twin-stick shooter with no engine, just Canvas
+                  API and about 480KB of vanilla JS. I also built
+                  whereisjimcarrey.com — a satirical brutalist newspaper that went
+                  exactly as unhinged as it sounds.
                 </p>
 
                 <p>
-                  I&rsquo;m currently focused on nXcor, Fieldline, and findafiend —
-                  three products with distinct markets that share the same operating
-                  philosophy: build the whole system, ship it, own it.
+                  Currently focused on nXcor, Fieldline, and findafiend — three
+                  products with distinct markets and the same operating philosophy:
+                  own the whole system, ship it, keep it running.
                 </p>
 
                 <div className="about__facts">
                   {[
                     { label: 'Based',         value: 'Toledo, Ohio — Northwest Ohio / Detroit area' },
-                    { label: 'Focus',         value: 'AI product engineering, full-stack development, solo founder' },
-                    { label: 'Stack',         value: 'React, Next.js, Node.js, Claude API, Stripe, Supabase, Vercel' },
-                    { label: 'Background',    value: 'Self-taught — product vision first, engineering second' },
+                    { label: 'Focus',         value: 'AI product engineering, full-stack, solo founder' },
+                    { label: 'Stack',         value: 'React, Next.js, Node.js, Claude API, Ollama, Stripe, Supabase, Vercel' },
+                    { label: 'Local AI',      value: 'Ollama · Phi-3 · Llama 3 · local multi-agent workflows' },
+                    { label: 'Background',    value: 'Self-taught — vibe coder, product vision first' },
                     { label: 'Companies',     value: 'Stickley AI · Grasslane Lawn Co.' },
-                    { label: 'Interests',     value: 'Music production (Logic Pro), game dev, interior design, rap, trading' },
-                    { label: 'Status',        value: 'Open to work — product engineering, AI integration, full-stack builds' },
+                    { label: 'Studio',        value: 'Mac Studio · Focusrite Scarlett Solo · Rode PodMic' },
+                    { label: 'Music',         value: 'Hip-hop & R&B production — Atlanta/Detroit trap, Logic Pro' },
+                    { label: 'Interests',     value: 'Game dev, interior design, trading, collectibles, AI philosophy' },
+                    { label: 'Status',        value: 'Open to work — AI integration, product engineering, full-stack' },
                   ].map((f) => (
                     <div key={f.label} className="about__fact">
                       <span className="about__fact-label">{f.label}</span>
