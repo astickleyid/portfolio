@@ -174,7 +174,7 @@ function App() {
                   Austin Stickley
                 </h1>
                 <p className="hero__subtitle">
-                  AI-native builder. Founder instincts. <em>Do it proper.</em>
+                  AI-native builder. Founder. <em>Do it proper.</em>
                 </p>
 
                 <NowBuilding />
