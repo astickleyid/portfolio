@@ -157,7 +157,7 @@ function App() {
           </a>
           <nav className="site-nav" aria-label="Primary">
             <a href="#work">Work</a>
-            <a href="#approach">Approach</a>
+            <a href="#about">About</a>
             <a href="#contact">Contact</a>
           </nav>
         </div>
@@ -346,6 +346,86 @@ function App() {
                   Most products fail at the seams between design, code, AI behavior, and billing.
                   My job is to <em>remove those seams</em> by owning all of them.
                 </p>
+              </Reveal>
+            </div>
+          </div>
+        </section>
+
+
+        {/* About */}
+        <section className="section" id="about" aria-labelledby="about-title">
+          <div className="shell">
+            <div className="about">
+              <Reveal className="about__photo-wrap">
+                <img
+                  src="/austin-stickley.jpg"
+                  alt="Austin Stickley"
+                  className="about__photo"
+                  width="900"
+                  height="1125"
+                  loading="lazy"
+                />
+                <p className="about__photo-cap">Toledo, Ohio · 2026</p>
+              </Reveal>
+
+              <Reveal delay={0.06} className="about__body">
+                <h2 id="about-title" className="section__title">
+                  Background
+                </h2>
+
+                <p className="about__lead">
+                  I&rsquo;m <strong>Austin Stickley</strong> — a self-taught product
+                  builder from Toledo, Ohio. My background is in vision and execution,
+                  not computer science. I learned to ship real software by pairing
+                  product instinct with AI tools, and I&rsquo;ve been building in
+                  production ever since.
+                </p>
+
+                <p>
+                  Before the software, I ran Grasslane Lawn Co., a lawn care business
+                  I started in Toledo. That gave me a hands-on understanding of how
+                  small trade businesses actually operate — the scheduling gaps, the
+                  lead flow problems, the manual work that software should eliminate.
+                  Fieldline came directly from that experience.
+                </p>
+
+                <p>
+                  I build across the full stack because I have to. Design, frontend,
+                  backend, AI integration, billing, infrastructure — if I hand any
+                  of that off, the product stops being mine. The goal is always the
+                  same: get to a live, working system that solves a real problem.
+                  Everything else is overhead.
+                </p>
+
+                <p>
+                  Outside of building, I spend time on music production in Logic Pro,
+                  game development, interior design, and trading. I write and record
+                  my own music. VOID RIFT started as a personal project to understand
+                  how games are actually built from scratch, with no engine.
+                </p>
+
+                <p>
+                  I&rsquo;m currently focused on nXcor, Fieldline, and findafiend —
+                  three products with distinct markets that share the same operating
+                  philosophy: build the whole system, ship it, own it.
+                </p>
+
+                <div className="about__facts">
+                  {[
+                    { label: 'Based',         value: 'Toledo, Ohio — Northwest Ohio / Detroit area' },
+                    { label: 'Focus',         value: 'AI product engineering, full-stack development, solo founder' },
+                    { label: 'Stack',         value: 'React, Next.js, Node.js, Claude API, Stripe, Supabase, Vercel' },
+                    { label: 'Background',    value: 'Self-taught — product vision first, engineering second' },
+                    { label: 'Companies',     value: 'Stickley AI · Grasslane Lawn Co.' },
+                    { label: 'Interests',     value: 'Music production (Logic Pro), game dev, interior design, rap, trading' },
+                    { label: 'Status',        value: 'Open to work — product engineering, AI integration, full-stack builds' },
+                  ].map((f) => (
+                    <div key={f.label} className="about__fact">
+                      <span className="about__fact-label">{f.label}</span>
+                      <span className="about__fact-value">{f.value}</span>
+                    </div>
+                  ))}
+                </div>
               </Reveal>
             </div>
           </div>
