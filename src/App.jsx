@@ -174,7 +174,7 @@ function App() {
                   Austin Stickley
                 </h1>
                 <p className="hero__subtitle">
-                  AI-native products, <em>shipped</em> end-to-end.
+                  AI-native builder. Founder instincts. <em>Do it proper.</em>
                 </p>
 
                 <NowBuilding />
@@ -374,46 +374,65 @@ function App() {
                 </h2>
 
                 <p className="about__lead">
-                  I&rsquo;m <strong>Austin Michael Stickley</strong> — a self-described
-                  vibe coder and product builder from Toledo, Ohio. My background is
-                  vision and execution, not computer science. I treat AI development
-                  less like rigid engineering and more like alchemy: you understand the
-                  inputs, you understand the outputs, and you learn to bend the system
-                  to do things it wasn&rsquo;t explicitly designed for.
+                  I&rsquo;m <strong>Austin Michael Stickley.</strong> Not just
+                  &ldquo;into AI&rdquo; — I&rsquo;m the kind of person who looks at
+                  software everyone else accepts as normal and immediately asks:
+                  <em>Why can&rsquo;t this be automated? Why does this need five
+                  tools? Why is the agent not actually doing the work?</em>
+                </p>
+
+                <div className="about__lanes">
+                  {[
+                    { lane: 'Engineering',      desc: 'Full-stack, mobile, backend, CLI, automation, AI agents' },
+                    { lane: 'Product',          desc: 'Workflows, systems, user value, monetization' },
+                    { lane: 'Design',           desc: 'Premium UI instincts, brand direction, visual consistency' },
+                    { lane: 'Founder energy',   desc: 'Moves fast, challenges weak ideas, wants real execution' },
+                    { lane: 'Creative',         desc: 'Branding, audio, streaming, visual identity, thumbnails' },
+                    { lane: 'AI-native',        desc: 'Agents, automation, local models, orchestration layers' },
+                  ].map((l) => (
+                    <div key={l.lane} className="about__lane">
+                      <div className="about__lane-title">{l.lane}</div>
+                      <div className="about__lane-desc">{l.desc}</div>
+                    </div>
+                  ))}
+                </div>
+
+                <p>
+                  I have strong taste. Generic UI — I see it. Bad branding — I catch
+                  it. Placeholder code dressed up as production — I hate it. The
+                  standard is Vercel-level polish, Apple-like restraint, dark premium
+                  interfaces with real UX flows. Not &ldquo;a project&rdquo; — a
+                  product that feels like it belongs next to the best tools in the
+                  market.
+                </p>
+
+                <div className="about__callout">
+                  <span className="about__callout-text">&ldquo;Do it proper.&rdquo;</span>
+                  <span className="about__callout-attr">The only standard that matters</span>
+                </div>
+
+                <p>
+                  I&rsquo;m thinking about AI operating layers, not prompt boxes.
+                  Multi-agent systems, local runtimes, repo agents, builder agents,
+                  CLI automation, voice-first input. A lot of people are still
+                  building better wrappers. That&rsquo;s not the work.
                 </p>
 
                 <p>
-                  Before the software, I ran Grasslane Lawn Co., a lawn care business
-                  I started in Toledo. That gave me a hands-on view of how small trade
-                  businesses actually operate — the scheduling gaps, the lead flow
-                  problems, the manual overhead that software should eliminate.
-                  Fieldline and NWO Answering both came directly from that experience.
+                  Before the software, I ran Grasslane Lawn Co. in Toledo — which
+                  gave me direct exposure to how small trade businesses actually break
+                  down operationally. Fieldline and NWO Answering came directly from
+                  that experience. I also run local LLM deployments (Ollama, Phi-3,
+                  Llama 3) to prototype multi-agent workflows before they go anywhere
+                  near production.
                 </p>
 
                 <p>
-                  I build across the full stack because I have to. Design, frontend,
-                  backend, AI behavior, billing, infra — if I hand any of it off, the
-                  product stops being mine. I also run local LLM deployments (Ollama,
-                  Phi-3, Llama 3) to prototype multi-agent workflows before they go
-                  anywhere near production. The goal is always the same: a live,
-                  working system that solves a real problem.
-                </p>
-
-                <p>
-                  On the creative side I produce hip-hop and R&amp;B — Atlanta/Detroit
-                  trap, late-night energy, Drake/Offset territory. I record in a home
-                  studio running a Mac Studio through a Focusrite Scarlett Solo into a
-                  Rode PodMic. VOID RIFT started as a personal build-to-understand
-                  project: a complete twin-stick shooter with no engine, just Canvas
-                  API and about 480KB of vanilla JS. I also built
-                  whereisjimcarrey.com — a satirical brutalist newspaper that went
-                  exactly as unhinged as it sounds.
-                </p>
-
-                <p>
-                  Currently focused on nXcor, Fieldline, and findafiend — three
-                  products with distinct markets and the same operating philosophy:
-                  own the whole system, ship it, keep it running.
+                  I produce hip-hop and R&amp;B — Atlanta/Detroit trap, late-night
+                  energy, recorded on a Mac Studio through a Focusrite Scarlett Solo
+                  and a Rode PodMic. I built VOID RIFT to understand how games are
+                  actually constructed with no engine. I built whereisjimcarrey.com
+                  because sometimes you need a palate cleanser.
                 </p>
 
                 <div className="about__facts">
