@@ -9,32 +9,58 @@ const initialForm = {
   message: '',
 };
 
+const PROJECT_LABELS = {
+  'ai-integration': 'AI Integration / workflow',
+  'full-stack': 'Full-stack web or mobile product',
+  'automation': 'Business automation',
+  'saas': 'SaaS product',
+  'other': 'Something else',
+};
+
+// Submits via Formsubmit.co — no API key required.
+// First submission triggers a one-time verification email to ams@stickleyai.com.
+// Click that link once and all future submissions deliver directly to the inbox.
+const FORMSUBMIT_URL = 'https://formsubmit.co/ajax/ams@stickleyai.com';
+
 export function ContactForm() {
   const [form, setForm] = useState(initialForm);
   const [status, setStatus] = useState('idle');
-  const [errorMessage, setErrorMessage] = useState('');
 
   async function handleSubmit(event) {
     event.preventDefault();
     setStatus('loading');
-    setErrorMessage('');
 
     try {
-      const response = await fetch('/api/contact', {
+      const payload = {
+        name: form.name,
+        email: form.email,
+        _replyto: form.email,
+        _subject: `Portfolio inquiry from ${form.name} — ${PROJECT_LABELS[form.project] || form.project}`,
+        project: PROJECT_LABELS[form.project] || form.project,
+        message: form.message,
+        _captcha: 'false',
+        _template: 'table',
+      };
+
+      const res = await fetch(FORMSUBMIT_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(payload),
       });
 
-      if (!response.ok) {
-        throw new Error('Request failed');
-      }
+      const data = await res.json().catch(() => ({}));
 
-      setStatus('success');
-      setForm(initialForm);
-    } catch (error) {
+      if (res.ok && data.success !== 'false') {
+        setStatus('success');
+        setForm(initialForm);
+      } else {
+        throw new Error(data.message || 'Submission failed');
+      }
+    } catch {
       setStatus('error');
-      setErrorMessage('The form failed to send. Email me directly at ams@stickleyai.com.');
     }
   }
 
@@ -109,7 +135,7 @@ export function ContactForm() {
         >
           {status === 'success'
             ? 'Message received. I will follow up soon.'
-            : errorMessage}
+            : 'Failed to send — email me directly at ams@stickleyai.com.'}
         </div>
       )}
     </form>
