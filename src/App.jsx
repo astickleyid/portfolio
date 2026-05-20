@@ -56,7 +56,7 @@ const flagshipProjects = [
     title: 'VOID RIFT',
     tagline: 'Full twin-stick shooter built without an engine. Missions, upgrade economy, boss waves, iOS shell — all vanilla JS.',
     chips: ['Vanilla JS', 'Canvas API', 'Capacitor / iOS', 'Vercel', 'LocalStorage'],
-    iframeUrl: 'https://shooter-app-git-main-lemxnaidhead-6918s-projects.vercel.app',
+    iframeUrl: '/games/voidrift',
     iframeLabel: 'VOID RIFT',
     links: [
       { label: 'Play live', href: 'https://shooter-app-git-main-lemxnaidhead-6918s-projects.vercel.app', primary: true },

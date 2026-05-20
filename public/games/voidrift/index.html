@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
+  <meta name="description" content="VOID RIFT - A browser-based twin-stick shooter with intense action and deep customization">
+  <meta name="theme-color" content="#4ade80">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>VOID RIFT</title>
+  
+  <!-- Link external styles -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="social-ui.css" />
+</head>
+<body>
+  <!-- INITIAL LOADING OVERLAY -->
+  <div id="loadingOverlay" class="loading-overlay">
+    <div class="loading-content">
+      <h1 id="loadingTitle" class="loading-title-main"></h1>
+      <div class="terminal-logs" id="terminalLogs"></div>
+      <div class="loading-bar-container">
+        <div class="loading-bar">
+          <canvas id="loadingShipCanvas" class="loading-ship-canvas"></canvas>
+          <div class="loading-bar-fill"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- START SCREEN -->
+  <div id="startScreen">
+    <div class="start-header">
+      <div id="gameTitle"><span class="title-accent">VOID</span><span class="title-accent">RIFT</span></div>
+      <div class="title-tagline">CREATED BY AUSTIN STICKLEY</div>
+      <div class="gameplay-hint" id="gameplayHint">
+        <span class="hint-icon">💫</span>
+        <span class="hint-text">Twin-stick action awaits</span>
+      </div>
+    </div>
+    
+    <div class="start-main">
+      <button id="startButton" class="startButton-primary">
+        <span class="btn-icon">▶</span> START GAME
+      </button>
+      
+      <div class="difficulty-inline">
+        <select id="difficultySelect" class="difficultyDropdown">
+          <option value="easy">Easy</option>
+          <option value="normal" selected>Normal</option>
+          <option value="hard">Hard</option>
+        </select>
+      </div>
+      
+
+    </div>
+    
+    <div class="start-nav">
+      <button id="openShopFromStart" class="nav-btn">
+        <img class="nav-icon" src="assets/icons/icon-upgrades.svg" alt="" width="20" height="20"/>
+        <span class="nav-label">Upgrades</span>
+      </button>
+      <button id="settingsButton" class="nav-btn">
+        <img class="nav-icon" src="assets/icons/icon-hangar.svg" alt="" width="20" height="20"/>
+        <span class="nav-label">Hangar</span>
+      </button>
+      <button id="leaderboardButton" class="nav-btn">
+        <img class="nav-icon" src="assets/icons/icon-trophy.svg" alt="" width="20" height="20"/>
+        <span class="nav-label">Rankings</span>
+      </button>
+    </div>
+    
+    <div class="start-footer">
+      <button id="profileButton" class="footer-btn" style="display: none;"><img src="assets/icons/icon-profile.svg" alt="Profile" width="16" height="16"/></button>
+      <span class="footer-divider"></span>
+      <button id="loginButton" class="footer-btn footer-btn-text">Login</button>
+    </div>
+  </div>
+
+  <!-- AUTHENTICATION MODAL -->
+  <div id="authModal" class="modal">
+    <div class="modal-content auth-modal">
+      <div class="modal-header">
+        <h2>Player Login</h2>
+        <button id="closeAuth" class="closeBtn">✕</button>
+      </div>
+      <div class="auth-content">
+        <div class="auth-section">
+          <p style="color: #94a3b8; font-size: 14px; margin-bottom: 16px;">
+            Sign in to save your scores to the leaderboard
+          </p>
+          <label>
+            <span class="auth-label">Username</span>
+            <input type="text" id="authUsername" class="auth-input" placeholder="Enter username" autocomplete="username" />
+          </label>
+          <label>
+            <span class="auth-label">Password</span>
+            <input type="password" id="authPassword" class="auth-input" placeholder="Enter password" autocomplete="current-password" />
+          </label>
+          <div id="authError" class="auth-error"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="authRegister" class="secondaryBtn">Register</button>
+        <button id="authLogin" class="primaryBtn">Login</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEADERBOARD MODAL -->
+  <div id="leaderboardModal" class="modal">
+    <div class="modal-content leaderboard-modal">
+      <div class="modal-header">
+        <h2>Leaderboard</h2>
+        <button id="closeLeaderboard" class="closeBtn">✕</button>
+      </div>
+      <div class="leaderboard-content">
+        <div class="leaderboard-user-info">
+          <span id="leaderboardUsername">Not logged in</span>
+          <button id="leaderboardLogout" class="secondaryBtn" style="display: none;">Logout</button>
+          <button id="leaderboardLogin" class="secondaryBtn">Login</button>
+        </div>
+        <div id="leaderboardStatus" class="leaderboard-status" style="display: none;"></div>
+        <div class="leaderboard-filter">
+          <button class="filter-btn active" data-difficulty="all">All</button>
+          <button class="filter-btn" data-difficulty="easy">Easy</button>
+          <button class="filter-btn" data-difficulty="normal">Normal</button>
+          <button class="filter-btn" data-difficulty="hard">Hard</button>
+        </div>
+        <div id="leaderboardList" class="leaderboard-list">
+          <!-- Leaderboard entries will be populated here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GAME CONTAINER -->
+  <div id="gameContainer">
+    <canvas id="gameCanvas"></canvas>
+    
+    <!-- HUD -->
+    <div id="uiPanel">
+      <div class="ui-stat-row"><span class="ui-text-label">Score:</span><span id="scoreValue" class="ui-text-value">0</span></div>
+      <div class="ui-stat-row"><span class="ui-text-label">Level:</span><span id="levelValue" class="ui-text-value">1</span></div>
+      <div class="ui-stat-row"><span class="ui-text-label">Pilot Lv:</span><span id="pilotLevelValue" class="ui-text-value">1</span></div>
+      <div class="ui-stat-row"><span class="ui-text-label">HP:</span>
+        <div class="ui-bar-container"><div id="healthBar" class="ui-bar-fill"></div></div>
+      </div>
+      <div class="ui-stat-row"><span class="ui-text-label">Ammo:</span>
+        <div class="ui-bar-container"><div id="ammoBar" class="ui-bar-fill"></div></div>
+      </div>
+      <div class="ui-stat-row"><span class="ui-text-label">XP:</span>
+        <div class="ui-bar-container xp"><div id="xpBar" class="ui-bar-fill"></div></div>
+        <span id="xpText" class="ui-text-value">0%</span>
+      </div>
+      <div class="ui-stat-row"><span class="ui-text-label">Ult:</span>
+        <div class="ui-bar-container ult"><div id="ultBar" class="ui-bar-fill"></div></div>
+        <span id="ultText" class="ui-text-value">0%</span>
+      </div>
+      <div class="ui-stat-row loadoutRow">
+        <span class="ui-text-label">Sec:</span><span id="secondaryText" class="ui-text-value">0</span>
+        <span class="ui-text-label">Def:</span><span id="defenseText" class="ui-text-value">Ready</span>
+      </div>
+      <div id="creditsBadge"><span class="creditLabel">CR</span><span id="creditsText">0</span></div>
+      <!-- Unified menu button (pause + settings merged) - moved into HUD -->
+      <button id="unifiedMenuButton">☰</button>
+    </div>
+    
+    <!-- BOSS HEALTH BAR -->
+    <div id="bossBar" style="display:none; position:absolute; top:0; left:50%; transform:translateX(-50%); width:60%; max-width:480px; padding:8px 16px; z-index:20; text-align:center;">
+      <div id="bossBarLabel" style="font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:#ff4444; margin-bottom:4px;">&#9888; BOSS</div>
+      <div id="bossBarName" style="font-size:13px; font-weight:600; color:#fff; margin-bottom:6px;">Unknown</div>
+      <div style="background:rgba(255,255,255,0.15); border-radius:4px; height:8px; overflow:hidden;">
+        <div id="bossBarFill" style="height:100%; background:linear-gradient(90deg,#ff2222,#ff6644); width:100%; transition:width 0.1s;"></div>
+      </div>
+    </div>
+
+    <!-- ABILITY HUD (Q key special ability) -->
+    <div id="abilityHud" style="position:absolute;bottom:70px;left:50%;transform:translateX(-50%);display:none;align-items:center;gap:8px;font-family:monospace;font-size:13px;color:#fff;z-index:15;">
+      <button id="abilityQBtn" style="border:1px solid rgba(255,255,255,.4);padding:2px 8px;border-radius:4px;background:rgba(0,0,0,.4);color:#fff;cursor:pointer;font-family:monospace;font-size:13px;touch-action:manipulation;">Q</button>
+      <span id="abilityName" style="opacity:.8"></span>
+      <span id="abilityCooldownBar" style="width:80px;height:6px;background:rgba(255,255,255,.15);border-radius:3px;overflow:hidden;display:inline-block;">
+        <div id="abilityCooldownFill" style="height:100%;background:#4ade80;width:100%;transition:width .1s;"></div>
+      </span>
+    </div>
+
+    <!-- ACTION LOG -->
+    <div id="actionLog"></div>
+    
+    <!-- EQUIPMENT SLOT INDICATOR - Secondary Weapons Dock -->
+    <div id="equipmentIndicator" role="toolbar" aria-label="Equipment slots">
+      <div class="equip-slot active" data-slot="0" tabindex="0" role="button" aria-pressed="true" aria-label="Primary weapon slot">
+        <img class="equip-icon" src="assets/icons/primary-pulse.svg" alt="Primary" width="24" height="24"/>
+        <span class="equip-label">Primary</span>
+        <span class="equip-key">1</span>
+      </div>
+      <div class="equip-slot" data-slot="1" tabindex="0" role="button" aria-pressed="false" aria-label="Secondary slot 2">
+        <img class="equip-icon" src="assets/icons/defense-aegis.svg" alt="Defense" width="24" height="24"/>
+        <span class="equip-label">Slot 2</span>
+        <span class="equip-key">2</span>
+      </div>
+      <div class="equip-slot" data-slot="2" tabindex="0" role="button" aria-pressed="false" aria-label="Secondary slot 3">
+        <img class="equip-icon" src="assets/icons/secondary-nova.svg" alt="Secondary" width="24" height="24"/>
+        <span class="equip-label">Slot 3</span>
+        <span class="equip-key">3</span>
+      </div>
+      <div class="equip-slot" data-slot="3" tabindex="0" role="button" aria-pressed="false" aria-label="Secondary slot 4">
+        <img class="equip-icon" src="assets/icons/boost-icon.svg" alt="Boost" width="24" height="24"/>
+        <span class="equip-label">Slot 4</span>
+        <span class="equip-key">4</span>
+      </div>
+    </div>
+    
+    <!-- RADIAL QUICK-SELECT MENU (appears on long-press) -->
+    <div id="radialMenu" class="radial-menu" role="menu" aria-label="Quick-select equipment" style="display: none;">
+      <div class="radial-center" aria-hidden="true">
+        <span>DROP</span>
+      </div>
+      <div class="radial-item" data-slot="0" role="menuitem" tabindex="-1">
+        <img src="assets/icons/primary-pulse.svg" alt="Primary" width="32" height="32"/>
+        <span>Primary</span>
+      </div>
+      <div class="radial-item" data-slot="1" role="menuitem" tabindex="-1">
+        <img src="assets/icons/defense-aegis.svg" alt="Slot 2" width="32" height="32"/>
+        <span>Slot 2</span>
+      </div>
+      <div class="radial-item" data-slot="2" role="menuitem" tabindex="-1">
+        <img src="assets/icons/secondary-nova.svg" alt="Slot 3" width="32" height="32"/>
+        <span>Slot 3</span>
+      </div>
+      <div class="radial-item" data-slot="3" role="menuitem" tabindex="-1">
+        <img src="assets/icons/boost-icon.svg" alt="Slot 4" width="32" height="32"/>
+        <span>Slot 4</span>
+      </div>
+    </div>
+    
+    <!-- HUD PREVIEW for weapon selection -->
+    <div id="weaponPreview" class="weapon-preview" style="display: none;">
+      <img class="preview-icon" src="" alt="" width="48" height="48"/>
+      <div class="preview-info">
+        <span class="preview-name"></span>
+        <span class="preview-desc"></span>
+      </div>
+    </div>
+    
+    <!-- MOBILE CONTROLS -->
+    <div id="mobileControls">
+      <!-- Floating joystick zones -->
+      <div id="leftTouchZone" class="touchZone">
+        <div id="joystickMoveBase" class="joystickBase"><div id="joystickMoveStick" class="joystickStick"></div></div>
+      </div>
+      <div id="rightTouchZone" class="touchZone">
+        <div id="joystickShootBase" class="joystickBase"><div id="joystickShootStick" class="joystickStick"></div></div>
+      </div>
+    </div>
+    
+    <!-- Pause Menu Modal -->
+    <div id="pauseMenuModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="pauseMenuTitle">
+      <div class="modal-content pause-menu">
+        <div class="modal-header">
+          <h2 id="pauseMenuTitle"><img src="assets/icons/icon-pause.svg" alt="" width="24" height="24" style="vertical-align: middle; margin-right: 8px;"/> Game Paused</h2>
+        </div>
+        <div class="pause-menu-content">
+          <button id="resumeGameBtn" class="pause-menu-btn primary" aria-label="Resume Game"><img src="assets/icons/icon-play.svg" alt="" width="20" height="20"/> Resume Game</button>
+          <button id="restartGameBtn" class="pause-menu-btn" aria-label="Restart Game"><img src="assets/icons/icon-restart.svg" alt="" width="20" height="20"/> Restart Game</button>
+          <button id="saveGameBtn" class="pause-menu-btn" aria-label="Save Game"><img src="assets/icons/icon-save.svg" alt="" width="20" height="20"/> Save Game</button>
+          <button id="loadGameBtn" class="pause-menu-btn" aria-label="Load Game"><img src="assets/icons/icon-load.svg" alt="" width="20" height="20"/> Load Game</button>
+          <button id="pauseShopBtn" class="pause-menu-btn" aria-label="Upgrades Shop"><img src="assets/icons/icon-shop.svg" alt="" width="20" height="20"/> Upgrades & Shop</button>
+          <button id="pauseHangarBtn" class="pause-menu-btn" aria-label="Ship Hangar"><img src="assets/icons/icon-hangar.svg" alt="" width="20" height="20"/> Ship Hangar</button>
+          <button id="pauseLeaderboardBtn" class="pause-menu-btn" aria-label="Leaderboard"><img src="assets/icons/icon-trophy.svg" alt="" width="20" height="20"/> Leaderboard</button>
+          <button id="exitToMenuBtn" class="pause-menu-btn danger" aria-label="Exit to Main Menu"><img src="assets/icons/icon-exit.svg" alt="" width="20" height="20"/> Exit to Main Menu</button>
+          <div id="pauseMenuMessage" class="pause-menu-message"></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Game Over Modal -->
+    <div id="gameOverModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="gameOverTitle">
+      <div class="modal-content game-over-screen">
+        <div class="game-over-header">
+          <h1 id="gameOverTitle"><img src="assets/icons/icon-gameover.svg" alt="" width="40" height="40" style="vertical-align: middle; margin-right: 12px;"/> GAME OVER</h1>
+        </div>
+        <div class="game-over-stats">
+          <div class="stat-item">
+            <span class="stat-label">Final Score</span>
+            <span id="gameOverScore" class="stat-value">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Level Reached</span>
+            <span id="gameOverLevel" class="stat-value">1</span>
+          </div>
+          <div class="stat-item" id="gameOverRankContainer">
+            <span class="stat-label">Leaderboard Rank</span>
+            <span id="gameOverRank" class="stat-value rank-badge">#1</span>
+          </div>
+          <div id="gameOverLoginPrompt" class="login-prompt" style="display: none;">
+            <p><img src="assets/icons/icon-unlock.svg" alt="" width="16" height="16" style="vertical-align: middle; margin-right: 6px;"/> Login to save your score to the leaderboard!</p>
+          </div>
+        </div>
+        <div id="personalBestBanner" class="personal-best-banner" style="display:none;">🏆 New Personal Best!</div>
+        <div class="local-leaderboard-panel">
+          <div class="local-lb-title">Your Best Runs</div>
+          <table class="local-lb-table">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Score</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody id="localLeaderboardBody">
+              <!-- Populated by showGameOverScreen() -->
+            </tbody>
+          </table>
+        </div>
+        <div class="game-over-actions">
+          <button id="gameOverRestartBtn" class="game-over-btn primary"><img src="assets/icons/icon-restart.svg" alt="" width="20" height="20"/> Play Again</button>
+          <button id="gameOverShopBtn" class="game-over-btn"><img src="assets/icons/icon-shop.svg" alt="" width="20" height="20"/> Upgrades & Shop</button>
+          <button id="gameOverHangarBtn" class="game-over-btn"><img src="assets/icons/icon-hangar.svg" alt="" width="20" height="20"/> Ship Hangar</button>
+          <button id="gameOverLeaderboardBtn" class="game-over-btn"><img src="assets/icons/icon-trophy.svg" alt="" width="20" height="20"/> Leaderboard</button>
+          <button id="gameOverLoginBtn" class="game-over-btn" style="display: none;"><img src="assets/icons/icon-login.svg" alt="" width="20" height="20"/> Login</button>
+          <button id="gameOverMenuBtn" class="game-over-btn secondary"><img src="assets/icons/icon-home.svg" alt="" width="20" height="20"/> Main Menu</button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Unified Menu Modal (combines pause, settings, weapons, equipment) -->
+    <div id="controlSettingsModal" class="modal">
+      <div class="modal-content unified-menu">
+        <div class="modal-header">
+          <h2>Game Menu</h2>
+          <button id="closeControlSettings" class="closeBtn">✕</button>
+        </div>
+        
+        <!-- Tab Navigation -->
+        <div class="menu-tabs">
+          <button class="menu-tab active" data-tab="game">Game</button>
+          <button class="menu-tab" data-tab="equipment">Equipment</button>
+          <button class="menu-tab" data-tab="upgrades">Upgrades</button>
+          <button class="menu-tab" data-tab="weapons">Weapons</button>
+          <button class="menu-tab" data-tab="controls">Controls</button>
+        </div>
+        
+        <!-- Game Tab - Primary tab for game controls -->
+        <div class="tab-content active" id="gameTab">
+          <div class="settings-section">
+            <h3>Game Actions</h3>
+            <div class="game-actions">
+              <button id="menuResumeBtn" class="game-action-btn primary"><img src="assets/icons/icon-play.svg" alt="" width="20" height="20"/> Resume Game</button>
+              <button id="menuRestartBtn" class="game-action-btn"><img src="assets/icons/icon-restart.svg" alt="" width="20" height="20"/> Restart Game</button>
+              <button id="menuSaveBtn" class="game-action-btn"><img src="assets/icons/icon-save.svg" alt="" width="20" height="20"/> Save Game</button>
+              <button id="menuLoadBtn" class="game-action-btn"><img src="assets/icons/icon-load.svg" alt="" width="20" height="20"/> Load Game</button>
+              <button id="menuExitBtn" class="game-action-btn danger"><img src="assets/icons/icon-exit.svg" alt="" width="20" height="20"/> Return to Start Screen</button>
+            </div>
+          </div>
+          <div class="settings-section">
+            <h3>Quick Links</h3>
+            <div class="game-actions">
+              <button id="menuShopBtn" class="game-action-btn"><img src="assets/icons/icon-shop.svg" alt="" width="20" height="20"/> Upgrades & Shop</button>
+              <button id="menuHangarBtn" class="game-action-btn"><img src="assets/icons/icon-hangar.svg" alt="" width="20" height="20"/> Ship Hangar</button>
+              <button id="menuLeaderboardBtn" class="game-action-btn"><img src="assets/icons/icon-trophy.svg" alt="" width="20" height="20"/> Leaderboard</button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Equipment Class Tab -->
+        <div class="tab-content" id="equipmentTab">
+          <div class="settings-section">
+            <h3>Configure Equipment Loadout</h3>
+            <p style="color: #94a3b8; font-size: 13px; margin-bottom: 16px;">
+              Customize your 4 equipment slots. Each slot can be activated using different methods during gameplay.
+            </p>
+            
+            <div class="equipment-slot-config">
+              <label>
+                <span>Slot 1 (Primary Weapon) - Always Active</span>
+                <select id="equipSlot1" class="equipment-select">
+                  <option value="primary:pulse">Pulse Blaster</option>
+                  <option value="primary:scatter">Scatter Coil</option>
+                  <option value="primary:rail">Rail Lance</option>
+                  <option value="primary:ionburst">Ion Burst</option>
+                </select>
+              </label>
+              
+              <label>
+                <span>Slot 2 - Secondary Equipment</span>
+                <select id="equipSlot2" class="equipment-select">
+                  <option value="defense:aegis">Aegis Shield</option>
+                  <option value="defense:reflector">Reflector Veil</option>
+                  <option value="secondary:nova">Nova Bomb</option>
+                  <option value="secondary:cluster">Cluster Barrage</option>
+                  <option value="secondary:seeker">Seeker Swarm</option>
+                  <option value="secondary:gravity">Gravity Well</option>
+                  <option value="boost">Boost</option>
+                </select>
+              </label>
+              
+              <label>
+                <span>Slot 3 - Secondary Equipment</span>
+                <select id="equipSlot3" class="equipment-select">
+                  <option value="secondary:nova">Nova Bomb</option>
+                  <option value="secondary:cluster">Cluster Barrage</option>
+                  <option value="secondary:seeker">Seeker Swarm</option>
+                  <option value="secondary:gravity">Gravity Well</option>
+                  <option value="defense:aegis">Aegis Shield</option>
+                  <option value="defense:reflector">Reflector Veil</option>
+                  <option value="boost">Boost</option>
+                </select>
+              </label>
+              
+              <label>
+                <span>Slot 4 - Ultimate/Boost</span>
+                <select id="equipSlot4" class="equipment-select">
+                  <option value="boost">Boost</option>
+                  <option value="ultimate:voidstorm">Voidstorm</option>
+                  <option value="ultimate:solarbeam">Solar Beam</option>
+                  <option value="defense:aegis">Aegis Shield</option>
+                  <option value="secondary:nova">Nova Bomb</option>
+                  <option value="secondary:cluster">Cluster Barrage</option>
+                  <option value="secondary:seeker">Seeker Swarm</option>
+                  <option value="secondary:gravity">Gravity Well</option>
+                </select>
+              </label>
+            </div>
+            
+            <div style="background: rgba(0,0,0,0.6); border: 2px solid rgba(74,222,128,0.3); border-radius: 12px; padding: 16px; margin-top: 20px;">
+              <h4 style="color: #86efac; font-size: 14px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                <img src="assets/icons/icon-gamepad.svg" alt="" width="16" height="16"/> In-Game Controls
+              </h4>
+              
+              <div style="display: grid; gap: 10px; font-size: 12px;">
+                <div style="display: flex; align-items: start; gap: 10px;">
+                  <span style="color: #4ade80; font-weight: 700; min-width: 120px;">Keyboard:</span>
+                  <span style="color: #cbd5e1;">Press <kbd style="background: rgba(74,222,128,0.2); padding: 2px 6px; border-radius: 4px; font-family: monospace;">1</kbd> <kbd style="background: rgba(74,222,128,0.2); padding: 2px 6px; border-radius: 4px; font-family: monospace;">2</kbd> <kbd style="background: rgba(74,222,128,0.2); padding: 2px 6px; border-radius: 4px; font-family: monospace;">3</kbd> <kbd style="background: rgba(74,222,128,0.2); padding: 2px 6px; border-radius: 4px; font-family: monospace;">4</kbd> to activate each slot directly</span>
+                </div>
+                
+                <div style="display: flex; align-items: start; gap: 10px;">
+                  <span style="color: #4ade80; font-weight: 700; min-width: 120px;">Touch/Mouse:</span>
+                  <span style="color: #cbd5e1;">Tap the equipment icons at the top of screen, OR long-press anywhere on screen to open radial menu</span>
+                </div>
+                
+                <div style="display: flex; align-items: start; gap: 10px;">
+                  <span style="color: #4ade80; font-weight: 700; min-width: 120px;">Gamepad:</span>
+                  <span style="color: #cbd5e1;">Use D-pad or face buttons to select equipment slots</span>
+                </div>
+              </div>
+              
+              <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(74,222,128,0.2);">
+                <p style="color: #60a5fa; font-size: 11px; margin: 0;">
+                  <img src="assets/icons/icon-tip.svg" alt="" width="12" height="12" style="vertical-align: middle; margin-right: 4px;"/> 
+                  <strong>Tip:</strong> Long-press anywhere on the screen (avoiding joysticks) to quickly access the radial equipment menu during gameplay.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Upgrades Tab -->
+        <div class="tab-content" id="upgradesTab">
+          <div id="upgradesContent"></div>
+        </div>
+        
+        <!-- Weapons Tab -->
+        <div class="tab-content" id="weaponsTab">
+          <div id="weaponsContent"></div>
+        </div>
+        
+        <!-- Controls Tab -->
+        <div class="tab-content" id="controlsTab">
+          <div class="settings-section">
+            <h3>Audio</h3>
+            <label class="checkbox-label">
+              <input type="checkbox" id="audioEnabled" checked>
+              <span>Sound Enabled</span>
+            </label>
+            <label>
+              <span>Master Volume</span>
+              <input type="range" id="masterVolume" min="0" max="100" value="70">
+              <span id="masterVolumeValue">70%</span>
+            </label>
+            <label>
+              <span>Sound Effects</span>
+              <input type="range" id="sfxVolume" min="0" max="100" value="80">
+              <span id="sfxVolumeValue">80%</span>
+            </label>
+            <label>
+              <span>Music</span>
+              <input type="range" id="musicVolume" min="0" max="100" value="50">
+              <span id="musicVolumeValue">50%</span>
+            </label>
+          </div>
+          <div class="settings-section">
+            <h3>Layout</h3>
+            <label>
+              <span>Control Opacity</span>
+              <input type="range" id="controlOpacity" min="30" max="100" value="90">
+              <span id="opacityValue">90%</span>
+            </label>
+            <label>
+              <span>Joystick Size</span>
+              <input type="range" id="joystickSize" min="80" max="140" value="100">
+              <span id="joystickSizeValue">100%</span>
+            </label>
+          </div>
+          <div class="settings-section">
+            <h3>Sensitivity</h3>
+            <label>
+              <span>Movement Sensitivity</span>
+              <input type="range" id="moveSensitivity" min="50" max="150" value="100">
+              <span id="moveSensValue">100%</span>
+            </label>
+            <label>
+              <span>Aim Sensitivity</span>
+              <input type="range" id="aimSensitivity" min="50" max="150" value="100">
+              <span id="aimSensValue">100%</span>
+            </label>
+            <label>
+              <span>Deadzone</span>
+              <input type="range" id="deadzone" min="5" max="25" value="12">
+              <span id="deadzoneValue">12%</span>
+            </label>
+          </div>
+          <div class="settings-section">
+            <h3>Advanced</h3>
+            <label class="checkbox-label">
+              <input type="checkbox" id="floatingJoysticks" checked>
+              <span>Floating Joysticks (appear where you touch)</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="hapticFeedback" checked>
+              <span>Haptic Feedback</span>
+            </label>
+          </div>
+          <div class="settings-section">
+            <h3>Display Options</h3>
+            <label class="checkbox-label">
+              <input type="checkbox" id="showFPSToggle">
+              <span>Show FPS Counter (or press G)</span>
+            </label>
+            <button id="fullscreenToggle" class="fullscreenBtn">Toggle Fullscreen (F key)</button>
+          </div>
+        </div>
+        
+        <div class="modal-footer">
+          <button id="resetControls" class="secondaryBtn">Reset to Default</button>
+          <button id="saveControls" class="primaryBtn">Save & Close</button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- MESSAGE BOX FOR LEVELS/GAME OVER -->
+    <div id="messageBox">
+      <div id="messageTitle">LEVEL 1</div>
+      <div id="messageText">Kill 10 enemies to advance!</div>
+      <button id="messageButton">Start</button>
+    </div>
+  </div>
+
+  <!-- WAVE UPGRADE MODAL -->
+  <div id="waveUpgradeModal" class="wave-upgrade-modal" role="dialog" aria-modal="true" aria-labelledby="waveUpgradeTitle">
+    <div class="wave-upgrade-backdrop"></div>
+    <div class="wave-upgrade-panel">
+      <div class="wave-upgrade-header">
+        <div class="wave-upgrade-subtitle">WAVE COMPLETE</div>
+        <h2 id="waveUpgradeTitle" class="wave-upgrade-title">CHOOSE AN UPGRADE</h2>
+        <div class="wave-upgrade-hint">Select one perk to carry into the next wave</div>
+      </div>
+      <div class="wave-upgrade-cards" id="waveUpgradeCards">
+        <!-- Cards injected by showWaveUpgradeScreen() -->
+      </div>
+    </div>
+  </div>
+
+  <!-- SHOP MODAL -->
+  <div id="shopModal">
+    <div id="shopCard">
+      <div id="shopHeader">
+        <div id="shopTitle">Upgrades &amp; Mods</div>
+        <div class="shopHeaderActions">
+          <span class="shopCredits">CR <span id="shopCredits">0</span></span>
+          <button id="openHangarFromShop" class="secondaryBtn">Hangar</button>
+          <button id="closeShop">Close</button>
+        </div>
+      </div>
+      <div class="shopGrid" id="shopGrid"></div>
+    </div>
+  </div>
+
+  <!-- HANGAR MODAL -->
+  <div id="hangarModal" class="modal">
+    <div class="modal-content hangar-modal">
+      <div class="modal-header">
+        <h2>HANGAR &mdash; Choose Your Ship</h2>
+        <button id="closeHangar" class="closeBtn">&#x2715;</button>
+      </div>
+      <div class="hangar-content">
+        <div class="hangar-grid" id="hangarGrid">
+          <!-- Ship cards rendered by renderHangar() -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Include external scripts -->
+  
+  <!-- Firebase Backend (replaces Vercel KV) -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+  <script src="firebase-backend.js"></script>
+  
+  <!-- Firebase Configuration - REPLACE WITH YOUR CONFIG -->
+  <script>
+    // Get your config from: https://console.firebase.google.com/
+    // See FIREBASE_SETUP.md for instructions
+    const firebaseConfig = {
+      // Paste your Firebase config here
+      // Example:
+      // apiKey: "AIzaSyXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      // authDomain: "your-app.firebaseapp.com",
+      // databaseURL: "https://your-app.firebaseio.com",
+      // projectId: "your-app",
+      // storageBucket: "your-app.appspot.com",
+      // messagingSenderId: "123456789",
+      // appId: "1:123456789:web:abcdef"
+    };
+    
+    // Initialize Firebase (only if config is set)
+    if (firebaseConfig.apiKey) {
+      FirebaseBackend.initialize(firebaseConfig);
+    } else {
+      console.warn('⚠️ Firebase not configured. Add your config to index.html');
+      console.warn('📖 See FIREBASE_SETUP.md for setup instructions');
+    }
+  </script>
+  
+  <!-- Game Scripts -->
+  <script src="auth-system.js"></script>
+  <script src="leaderboard-system.js"></script>
+  <script src="social-ui.js"></script>
+  
+  <!-- Firebase Adapter - Makes existing code work with Firebase -->
+  <script src="firebase-adapter.js"></script>
+  
+  <script src="audio-manager.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
