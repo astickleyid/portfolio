@@ -33,6 +33,8 @@ import { NowBuilding } from './components/NowBuilding';
 import { AnimatedCounter } from './components/AnimatedCounter';
 import { Reveal } from './components/Reveal';
 import { StickyProjectNav } from './components/StickyProjectNav';
+import { ShowcaseTabs } from './components/ShowcaseTabs';
+import { RecentlyShipped } from './components/RecentlyShipped';
 
 
 const flagshipProjects = [
@@ -258,8 +260,33 @@ const techStack = [
   'SQLite', 'Redis', 'Tailwind CSS', 'Motion', 'WebGL', 'RTMP / HLS',
 ];
 
+const showcaseProjects = flagshipProjects.map((p) => ({
+  id: p.id,
+  name: p.title,
+  category: p.label.replace(/^\d+\s*·\s*/, ''),
+  trigger: p.tagline ?? p.bullets[0]?.title ?? p.title,
+  tagline: p.tagline ?? '',
+  headline: p.title,
+  summary: p.summary,
+  stack: p.chips,
+  role: p.role.split(/,\s+|\.\s+/).map((s) => s.trim()).filter(Boolean),
+  whyItMatters: p.proof,
+  links: p.links,
+  images: {
+    primary: p.images?.primary ?? null,
+    primaryAlt: `${p.title} screenshot`,
+    secondary: p.images?.secondary ?? null,
+    secondaryAlt: `${p.title} secondary screenshot`,
+    phone: p.images?.phone ?? null,
+    phoneAlt: `${p.title} mobile screenshot`,
+  },
+  artifacts: p.bullets.map((b) => ({ label: b.title, text: b.text })),
+  tone: p.theme,
+}));
+
 function App() {
   const [activeFilters, setActiveFilters] = useState(new Set());
+  const [workViewMode, setWorkViewMode] = useState('list');
   const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 160, damping: 28, mass: 0.2 });
 
@@ -299,6 +326,8 @@ function App() {
               <Reveal delay={0.12}>
                 <NowBuilding />
               </Reveal>
+
+              <RecentlyShipped />
 
               <div className="hero__actions">
                 <a className="button button--primary" href="#work">
@@ -423,11 +452,34 @@ function App() {
         <section className="section" id="work">
           <div className="shell section-heading">
             <Reveal>
-              <span className="eyebrow">Selected work</span>
-              <h2>Four flagship projects that show the strongest mix of product judgment and technical execution.</h2>
+              <div className="work-section__header">
+                <div>
+                  <span className="eyebrow">Selected work</span>
+                  <h2>Four flagship projects that show the strongest mix of product judgment and technical execution.</h2>
+                </div>
+                <div className="work-view-toggle" role="group" aria-label="View mode">
+                  <button
+                    className={`work-view-toggle__pill${workViewMode === 'list' ? ' is-active' : ''}`}
+                    onClick={() => setWorkViewMode('list')}
+                  >
+                    List
+                  </button>
+                  <button
+                    className={`work-view-toggle__pill${workViewMode === 'showcase' ? ' is-active' : ''}`}
+                    onClick={() => setWorkViewMode('showcase')}
+                  >
+                    Showcase
+                  </button>
+                </div>
+              </div>
             </Reveal>
           </div>
 
+          {workViewMode === 'showcase' ? (
+            <div className="shell" style={{ marginTop: '28px' }}>
+              <ShowcaseTabs projects={showcaseProjects} />
+            </div>
+          ) : (
           <div className="shell flagship-list">
             {(() => {
               const allTags = [...new Set(flagshipProjects.flatMap((p) => p.chips))];
@@ -565,6 +617,7 @@ function App() {
               );
             })()}
           </div>
+          )}
         </section>
 
         <section className="section section--supporting">

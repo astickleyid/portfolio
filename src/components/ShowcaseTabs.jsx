@@ -88,17 +88,23 @@ export function ShowcaseTabs({ projects }) {
             </div>
 
             <div className={clsx('showcase__visual', `showcase__visual--${activeProject.tone}`)}>
-              <motion.div className="showcase__visual-main" layout>
-                <img src={activeProject.images.primary} alt={activeProject.images.primaryAlt} />
-              </motion.div>
+              {activeProject.images.primary && (
+                <motion.div className="showcase__visual-main" layout>
+                  <img src={activeProject.images.primary} alt={activeProject.images.primaryAlt} />
+                </motion.div>
+              )}
 
-              <motion.div className="showcase__visual-secondary" layout>
-                <img src={activeProject.images.secondary} alt={activeProject.images.secondaryAlt} />
-              </motion.div>
+              {activeProject.images.secondary && (
+                <motion.div className="showcase__visual-secondary" layout>
+                  <img src={activeProject.images.secondary} alt={activeProject.images.secondaryAlt} />
+                </motion.div>
+              )}
 
-              <motion.div className="showcase__visual-phone" layout>
-                <img src={activeProject.images.phone} alt={activeProject.images.phoneAlt} />
-              </motion.div>
+              {activeProject.images.phone && (
+                <motion.div className="showcase__visual-phone" layout>
+                  <img src={activeProject.images.phone} alt={activeProject.images.phoneAlt} />
+                </motion.div>
+              )}
 
               <div className="showcase__artifact-rail">
                 {activeProject.artifacts.map((artifact) => (
