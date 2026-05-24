@@ -1132,11 +1132,13 @@ em { font-family: var(--font-serif); font-style: italic; font-weight: 500; }
   }
   .about__photo-wrap {
     position: static;
-    max-width: 100%;
+    max-width: 320px;
   }
   .about__photo {
-    aspect-ratio: 4 / 3;
-    object-position: center 28%;
+    aspect-ratio: unset;
+    height: auto;
+    object-fit: unset;
+    width: 100%;
   }
 }
 
