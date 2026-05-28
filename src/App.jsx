@@ -35,6 +35,8 @@ import { Reveal } from './components/Reveal';
 import { StickyProjectNav } from './components/StickyProjectNav';
 import { ShowcaseTabs } from './components/ShowcaseTabs';
 import { RecentlyShipped } from './components/RecentlyShipped';
+import { HowIBuild } from './components/HowIBuild';
+import { Testimonials } from './components/Testimonials';
 
 
 const flagshipProjects = [
@@ -305,6 +307,7 @@ function App() {
           <nav className="site-header__nav" aria-label="Primary">
             <a href="#work">Work</a>
             <a href="#approach">Approach</a>
+            <a href="#process">Process</a>
             <a href="#contact">Contact</a>
           </nav>
         </div>
@@ -691,6 +694,26 @@ function App() {
             </div>
           </div>
         </section>
+
+        <section className="section section--how-i-build" id="process">
+          <div className="shell">
+            <Reveal className="section-heading">
+              <span className="eyebrow">Process</span>
+              <h2>How I build — from brief to production.</h2>
+              <p style={{ marginTop: '12px', fontSize: '1.04rem', maxWidth: '56ch' }}>
+                AI changes the speed. It does not change the discipline required to ship something that actually works. Here is the loop I use on every product.
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.08}>
+              <div style={{ marginTop: '40px' }}>
+                <HowIBuild />
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
+        <Testimonials />
 
         <section className="section section--contact" id="contact">
           <div className="shell contact-layout">
