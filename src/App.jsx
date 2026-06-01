@@ -289,6 +289,7 @@ const showcaseProjects = flagshipProjects.map((p) => ({
 function App() {
   const [activeFilters, setActiveFilters] = useState(new Set());
   const [workViewMode, setWorkViewMode] = useState('list');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 160, damping: 28, mass: 0.2 });
 
@@ -310,7 +311,27 @@ function App() {
             <a href="#process">Process</a>
             <a href="#contact">Contact</a>
           </nav>
+
+          {/* Mobile hamburger button */}
+          <button
+            className="site-header__hamburger"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileMenuOpen}
+          >
+            {mobileMenuOpen ? '✕' : '☰'}
+          </button>
         </div>
+
+        {/* Mobile nav overlay */}
+        {mobileMenuOpen && (
+          <nav className="site-header__mobile-nav" aria-label="Mobile navigation">
+            <a href="#work" onClick={() => setMobileMenuOpen(false)}>Work</a>
+            <a href="#approach" onClick={() => setMobileMenuOpen(false)}>Approach</a>
+            <a href="#process" onClick={() => setMobileMenuOpen(false)}>Process</a>
+            <a href="#contact" onClick={() => setMobileMenuOpen(false)}>Contact</a>
+          </nav>
+        )}
       </header>
 
       <main id="top">
