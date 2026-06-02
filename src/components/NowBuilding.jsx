@@ -14,7 +14,7 @@ export function NowBuilding() {
       <span className="now-building__project">
         <a
           className="now-building__project-name"
-          href="https://rivalapp.io"
+          href="https://rival-alpha.vercel.app"
           target="_blank"
           rel="noopener noreferrer"
         >Rival</a>

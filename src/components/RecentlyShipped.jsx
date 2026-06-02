@@ -1,13 +1,20 @@
 const shippedItems = [
-  { project: 'Rival', feature: 'persistent filter state' },
-  { project: 'VOID RIFT', feature: 'Hangar upgrade shop' },
-  { project: 'Portfolio', feature: 'Skills & Stack section' },
-  { project: 'Rival', feature: 'competitor activity bars' },
-  { project: 'VOID RIFT', feature: 'berserker enemy' },
+  { project: 'Rival', feature: 'Cmd+K global search palette' },
+  { project: 'VOID RIFT', feature: 'LEVIATHAN boss (wave 10 multi-phase)' },
+  { project: 'Rival', feature: 'inline competitor name + URL editing' },
+  { project: 'VOID RIFT', feature: 'roguelite upgrade card picker' },
+  { project: 'Rival', feature: 'competitor activity comparison bar' },
+  { project: 'Portfolio', feature: 'dark redesign + device simulator' },
+  { project: 'VOID RIFT', feature: 'achievement system (10 achievements)' },
   { project: 'Rival', feature: 'digest view mode' },
-  { project: 'Portfolio', feature: 'animated counters' },
-  { project: 'VOID RIFT', feature: 'carrier enemy' },
-  { project: 'Rival', feature: 'keyboard shortcuts' },
+  { project: 'VOID RIFT', feature: 'Daily Challenge mode' },
+  { project: 'Rival', feature: 'filter persistence + CSV export' },
+  { project: 'Portfolio', feature: 'full OG / SEO meta suite' },
+  { project: 'VOID RIFT', feature: 'persistent Hangar upgrade shop' },
+  { project: 'Rival', feature: 'clickable stats cards toggle filters' },
+  { project: 'VOID RIFT', feature: 'off-screen enemy direction indicators' },
+  { project: 'Rival', feature: 'keyboard shortcuts system' },
+  { project: 'Portfolio', feature: 'Skills & Stack + tech filter pills' },
 ];
 
 const marqueeStyles = `
