@@ -18,7 +18,15 @@ export function NowBuilding() {
           target="_blank"
           rel="noopener noreferrer"
         >Rival</a>
-        <span className="now-building__project-desc"> · competitor intelligence SaaS</span>
+        <span className="now-building__project-desc" aria-hidden="true"> · </span>
+        <a
+          className="now-building__project-name"
+          href="https://voidrift.vercel.app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >VOID RIFT</a>
+        <span className="now-building__project-desc" aria-hidden="true"> · </span>
+        <span className="now-building__project-name">Portfolio</span>
       </span>
     </motion.div>
   );

@@ -134,7 +134,7 @@ const flagshipProjects = [
     bullets: [
       {
         title: 'What shipped',
-        text: 'Ship selection with stat bars, a persistent upgrade shop, roguelite wave upgrades, kill combo multiplier, power-up drops, boss waves, specialized enemy types (carrier, phantom, splitter, sniper, berserker), local leaderboard, and a Capacitor iOS wrapper.',
+        text: 'Ship selection with stat bars, a persistent upgrade shop, roguelite wave upgrades, kill combo multiplier, ship skin system (4 color variants per class), a multi-phase LEVIATHAN boss at wave 10, press kit page, personal best banner, power-up drops, specialized enemy types, local leaderboard, and a Capacitor iOS wrapper.',
       },
       {
         title: 'Design move',
@@ -173,7 +173,7 @@ const flagshipProjects = [
     bullets: [
       {
         title: 'What shipped',
-        text: 'Scheduled scraping, AI diff synthesis, weekly email digests, briefing annotations, bookmark and filter system, export to markdown and CSV, competitor status badges, activity sparkline charts, keyboard navigation, persistent filter state, and a Stripe subscription paywall.',
+        text: 'Scheduled scraping, AI diff synthesis, weekly email digests, briefing annotations, signal rating system (routine/notable/critical), per-competitor internal notes, Cmd+K global search palette, trending keywords, bookmark and filter system, export to markdown and CSV, competitor status badges, activity sparkline charts, keyboard navigation, persistent filter state, and a Stripe subscription paywall.',
       },
       {
         title: 'Design move',
