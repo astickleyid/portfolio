@@ -1,4 +1,12 @@
+import { useState } from 'react';
+
 const shippedItems = [
+  { project: 'Rival', feature: 'New This Week summary — 7-day briefing rollup grouped by competitor' },
+  { project: 'Rival', feature: 'unread briefing count badges per competitor on Competitors list' },
+  { project: 'Portfolio', feature: 'availability status badge — pulsing green Available for consulting pill' },
+  { project: 'Portfolio', feature: 'active section highlighting in StickyProjectNav' },
+  { project: 'VOID RIFT', feature: 'post-wave stats overlay — wave number, kills, credits for 2s before upgrade picker' },
+  { project: 'VOID RIFT', feature: 'Game Center-only mode + full WebContent resync' },
   { project: 'Rival', feature: 'unread briefing count badges per competitor' },
   { project: 'Portfolio', feature: 'active section highlighting in sticky nav' },
   { project: 'VOID RIFT', feature: 'live combo timer bar in HUD' },
@@ -30,10 +38,13 @@ const marqueeStyles = `
 `;
 
 export function RecentlyShipped() {
+  const [paused, setPaused] = useState(false);
   const doubled = [...shippedItems, ...shippedItems];
 
   return (
     <div
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
       style={{
         overflow: 'hidden',
         maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
@@ -49,6 +60,7 @@ export function RecentlyShipped() {
           flexDirection: 'row',
           gap: '0',
           animation: 'marquee 35s linear infinite',
+          animationPlayState: paused ? 'paused' : 'running',
           width: 'max-content',
           willChange: 'transform',
         }}
