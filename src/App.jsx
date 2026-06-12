@@ -338,6 +338,10 @@ function App() {
         <section className="hero">
           <div className="shell hero__layout">
             <Reveal className="hero__copy">
+              <div className="availability-badge">
+                <span className="availability-badge__dot" aria-hidden="true" />
+                <span>Available for consulting</span>
+              </div>
               <span className="eyebrow">AI product engineer</span>
               <h1>
                 Products with <span>taste</span>, system depth, and enough rigor to survive launch.
