@@ -106,6 +106,12 @@ export function ShowcaseTabs({ projects }) {
                 </motion.div>
               )}
 
+              {!activeProject.images.primary && !activeProject.images.secondary && activeProject.mockupComponent && (
+                <motion.div className="showcase__visual-main" layout>
+                  {activeProject.mockupComponent}
+                </motion.div>
+              )}
+
               <div className="showcase__artifact-rail">
                 {activeProject.artifacts.map((artifact) => (
                   <div key={artifact.label} className="artifact-card">

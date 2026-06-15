@@ -37,6 +37,7 @@ import { ShowcaseTabs } from './components/ShowcaseTabs';
 import { RecentlyShipped } from './components/RecentlyShipped';
 import { HowIBuild } from './components/HowIBuild';
 import { Testimonials } from './components/Testimonials';
+import { RivalMockup } from './components/RivalMockup';
 
 
 const flagshipProjects = [
@@ -284,6 +285,7 @@ const showcaseProjects = flagshipProjects.map((p) => ({
   },
   artifacts: p.bullets.map((b) => ({ label: b.title, text: b.text })),
   tone: p.theme,
+  mockupComponent: p.id === 'rival' ? <RivalMockup /> : null,
 }));
 
 function App() {
