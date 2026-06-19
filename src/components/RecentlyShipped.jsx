@@ -1,14 +1,21 @@
 import { useState } from 'react';
 
 const shippedItems = [
+  { project: 'Rival', feature: 'Last 24h date filter + D/W keyboard shortcuts for date ranges' },
+  { project: 'Rival', feature: 'full keyboard shortcuts modal — ?-key, all bindings documented' },
+  { project: 'Rival', feature: 'Copy as Markdown per-card — structured export with competitor + signal + notes' },
+  { project: 'Rival', feature: 'Notable signal stat card on Dashboard — orange badge + filter toggle' },
+  { project: 'Portfolio', feature: 'ClaruSignMockup — inline contract risk UI for showcase' },
+  { project: 'Portfolio', feature: 'Rival dashboard CSS mockup in showcase — dark UI inline visual panel' },
+  { project: 'VOID RIFT', feature: 'Restore Purchases — App Store 3.1.1 compliance, Settings UI button' },
+  { project: 'VOID RIFT', feature: 'Settings tab in Hangar — master/sfx/music sliders + mute toggle' },
+  { project: 'VOID RIFT', feature: 'tech fragment collect notification — gold shimmer toast on pickup' },
+  { project: 'VOID RIFT', feature: 'live mission progress HUD — top-right panel with 3 daily mission bars' },
   { project: 'Rival', feature: 'New This Week summary — 7-day briefing rollup grouped by competitor' },
   { project: 'Rival', feature: 'unread briefing count badges per competitor on Competitors list' },
   { project: 'Portfolio', feature: 'availability status badge — pulsing green Available for consulting pill' },
   { project: 'Portfolio', feature: 'active section highlighting in StickyProjectNav' },
   { project: 'VOID RIFT', feature: 'post-wave stats overlay — wave number, kills, credits for 2s before upgrade picker' },
-  { project: 'VOID RIFT', feature: 'Game Center-only mode + full WebContent resync' },
-  { project: 'Rival', feature: 'unread briefing count badges per competitor' },
-  { project: 'Portfolio', feature: 'active section highlighting in sticky nav' },
   { project: 'VOID RIFT', feature: 'live combo timer bar in HUD' },
   { project: 'Rival', feature: 'trending keywords + clear-filters reset' },
   { project: 'Rival', feature: 'per-competitor internal notes (auto-save)' },
@@ -24,9 +31,7 @@ const shippedItems = [
   { project: 'Rival', feature: 'competitor activity comparison bar' },
   { project: 'VOID RIFT', feature: 'achievement system (10 achievements)' },
   { project: 'Rival', feature: 'digest view mode' },
-  { project: 'VOID RIFT', feature: 'Daily Challenge mode' },
   { project: 'Rival', feature: 'filter persistence + CSV export' },
-  { project: 'Portfolio', feature: 'full OG / SEO meta suite' },
   { project: 'VOID RIFT', feature: 'persistent Hangar upgrade shop' },
 ];
 

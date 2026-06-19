@@ -39,8 +39,6 @@ import { HowIBuild } from './components/HowIBuild';
 import { Testimonials } from './components/Testimonials';
 import { RivalMockup } from './components/RivalMockup';
 import { VoidRiftMockup } from './components/VoidRiftMockup';
-import { NxcorMockup } from './components/NxcorMockup';
-import { ClaruSignMockup } from './components/ClaruSignMockup';
 
 
 const flagshipProjects = [
@@ -288,7 +286,7 @@ const showcaseProjects = flagshipProjects.map((p) => ({
   },
   artifacts: p.bullets.map((b) => ({ label: b.title, text: b.text })),
   tone: p.theme,
-  mockupComponent: p.id === 'rival' ? <RivalMockup /> : p.id === 'voidrift' ? <VoidRiftMockup /> : p.id === 'nxcor' ? <NxcorMockup /> : p.id === 'clarusign' ? <ClaruSignMockup /> : null,
+  mockupComponent: p.id === 'rival' ? <RivalMockup /> : p.id === 'voidrift' ? <VoidRiftMockup /> : null,
 }));
 
 function App() {
