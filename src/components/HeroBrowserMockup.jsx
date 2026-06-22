@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
+import { RivalMockup } from './RivalMockup';
+import { VoidRiftMockup } from './VoidRiftMockup';
 
 function IframeSlide({ src, alt }) {
   const [loaded, setLoaded] = useState(false);
@@ -57,6 +59,7 @@ const slides = [
     img: '/images/nxcor-feed.png',
     alt: 'nXcor feed interface',
     accent: '#4f6fff',
+    mockupComponent: null,
   },
   {
     id: 'clarusign',
@@ -68,17 +71,31 @@ const slides = [
     img: '/images/clarusign.png',
     alt: 'ClaruSign contract analysis',
     accent: '#ff6d42',
+    mockupComponent: null,
   },
   {
     id: 'rival',
     url: 'rival-alpha.vercel.app',
     iframeSrc: null,
-    label: 'Competitive intel',
+    label: 'Competitive intel SaaS',
     badge: 'Live',
     badgeKind: 'live',
     img: null,
-    alt: 'Rival competitive intelligence',
-    accent: '#4f6fff',
+    alt: 'Rival competitive intelligence dashboard',
+    accent: '#6366f1',
+    mockupComponent: <RivalMockup />,
+  },
+  {
+    id: 'voidrift',
+    url: 'voidrift.vercel.app',
+    iframeSrc: null,
+    label: 'Browser game',
+    badge: 'iOS + Web',
+    badgeKind: 'live',
+    img: null,
+    alt: 'VOID RIFT twin-stick shooter',
+    accent: '#4ade80',
+    mockupComponent: <VoidRiftMockup />,
   },
 ];
 
@@ -170,13 +187,15 @@ export function HeroBrowserMockup() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5, ease: 'easeInOut' }}
           >
-            {slide.iframeSrc ? (
+            {slide.mockupComponent ? (
+              <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
+                {slide.mockupComponent}
+              </div>
+            ) : slide.iframeSrc ? (
               <IframeSlide src={slide.iframeSrc} alt={slide.alt} />
             ) : slide.img ? (
               <img src={slide.img} alt={slide.alt} draggable={false} />
-            ) : (
-              <RivalPlaceholder />
-            )}
+            ) : null}
           </motion.div>
         </AnimatePresence>
       </div>
@@ -234,44 +253,3 @@ export function HeroBrowserMockup() {
   );
 }
 
-function RivalPlaceholder() {
-  return (
-    <div className="rival-placeholder">
-      <div className="rival-placeholder__topbar">
-        <span className="rival-placeholder__brand">Rival</span>
-        <div className="rival-placeholder__tabs">
-          <span className="rival-placeholder__tab is-active">Dashboard</span>
-          <span className="rival-placeholder__tab">Briefings</span>
-          <span className="rival-placeholder__tab">Competitors</span>
-        </div>
-      </div>
-      <div className="rival-placeholder__body">
-        <div className="rival-placeholder__sidebar">
-          {['Stripe', 'Linear', 'Vercel', 'Notion'].map((name, i) => (
-            <div key={name} className="rival-placeholder__item" style={{ opacity: 1 - i * 0.14 }}>
-              <span className="rival-placeholder__dot" />
-              <span>{name}</span>
-            </div>
-          ))}
-        </div>
-        <div className="rival-placeholder__main">
-          <div className="rival-placeholder__card rival-placeholder__card--wide">
-            <span className="rival-placeholder__label">Latest change</span>
-            <p>Stripe raised checkout fees for EU merchants — affects SaaS pricing</p>
-            <span className="rival-placeholder__tag">Pricing · 2h ago</span>
-          </div>
-          <div className="rival-placeholder__card-row">
-            <div className="rival-placeholder__card">
-              <span className="rival-placeholder__label">Monitored</span>
-              <strong>4</strong>
-            </div>
-            <div className="rival-placeholder__card">
-              <span className="rival-placeholder__label">Briefings</span>
-              <strong>12</strong>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
