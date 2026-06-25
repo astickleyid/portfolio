@@ -61,6 +61,17 @@ export function ShowcaseTabs({ projects }) {
                 ))}
               </div>
 
+              {activeProject.buildStats && (
+                <div className="showcase__build-stats">
+                  {activeProject.buildStats.map((stat) => (
+                    <div key={stat.label} className="showcase__build-stat">
+                      <span className="showcase__build-stat-value">{stat.value}</span>
+                      <span className="showcase__build-stat-label">{stat.label}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+
               <div className="showcase__detail-grid">
                 <div className="showcase__detail-card">
                   <span className="detail-label">Role</span>

@@ -1872,6 +1872,36 @@ p {
   gap: 8px;
 }
 
+.showcase__build-stats {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border, rgba(0,0,0,0.08));
+}
+
+.showcase__build-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.showcase__build-stat-value {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-text, #0a0a0a);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.showcase__build-stat-label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-text-muted, #6b7280);
+}
+
 .showcase__detail-grid {
   display: grid;
   gap: 14px;

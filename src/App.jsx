@@ -39,6 +39,8 @@ import { HowIBuild } from './components/HowIBuild';
 import { Testimonials } from './components/Testimonials';
 import { RivalMockup } from './components/RivalMockup';
 import { VoidRiftMockup } from './components/VoidRiftMockup';
+import { NxcorMockup } from './components/NxcorMockup';
+import { ClaruSignMockup } from './components/ClaruSignMockup';
 
 
 const flagshipProjects = [
@@ -69,6 +71,11 @@ const flagshipProjects = [
         title: 'System depth',
         text: 'Presence, messaging, playback, storage, mobile packaging, and interface hierarchy all had to reinforce the same product model.',
       },
+    ],
+    buildStats: [
+      { label: 'Timeline', value: '8 wks' },
+      { label: 'Team', value: 'Solo' },
+      { label: 'Platform', value: 'iOS + Web' },
     ],
     chips: ['React', 'Node / Express', 'Socket.IO', 'SQLite WAL', 'RTMP / HLS', 'Capacitor'],
     images: {
@@ -109,6 +116,11 @@ const flagshipProjects = [
         text: 'PDF parsing, Claude API analysis, payment gating, and structured report delivery all work as one experience.',
       },
     ],
+    buildStats: [
+      { label: 'Timeline', value: '6 wks' },
+      { label: 'Team', value: 'Solo' },
+      { label: 'Stack', value: 'AI-native' },
+    ],
     chips: ['React', 'Claude API', 'PDF.js', 'Supabase'],
     images: {
       primary: '/images/clarusign.png',
@@ -146,6 +158,11 @@ const flagshipProjects = [
         title: 'System depth',
         text: 'Adaptive difficulty, save state, enemy formation patterns, special abilities per ship class, and an audio manager all wired together without a framework.',
       },
+    ],
+    buildStats: [
+      { label: 'Timeline', value: '12 wks' },
+      { label: 'Team', value: 'Solo' },
+      { label: 'Ships', value: '9 classes' },
     ],
     chips: ['Vanilla JS', 'Canvas API', 'Capacitor / iOS', 'Vercel', 'LocalStorage'],
     images: {
@@ -185,6 +202,11 @@ const flagshipProjects = [
         title: 'System depth',
         text: 'A Cloudflare Worker handles scheduling and scraping. A synthesis layer diffs content and calls the AI. Stripe webhooks gate access. Resend delivers email. The frontend reads from Supabase with RLS. All filter and reading state persists client-side without a round-trip.',
       },
+    ],
+    buildStats: [
+      { label: 'Timeline', value: '10 wks' },
+      { label: 'Team', value: 'Solo' },
+      { label: 'Integrations', value: 'Stripe + AI' },
     ],
     chips: ['React', 'Supabase', 'Stripe', 'Cloudflare Workers', 'Resend', 'OpenAI'],
     images: {
@@ -275,6 +297,7 @@ const showcaseProjects = flagshipProjects.map((p) => ({
   stack: p.chips,
   role: p.role.split(/,\s+|\.\s+/).map((s) => s.trim()).filter(Boolean),
   whyItMatters: p.proof,
+  buildStats: p.buildStats ?? [],
   links: p.links,
   images: {
     primary: p.images?.primary ?? null,
@@ -286,7 +309,7 @@ const showcaseProjects = flagshipProjects.map((p) => ({
   },
   artifacts: p.bullets.map((b) => ({ label: b.title, text: b.text })),
   tone: p.theme,
-  mockupComponent: p.id === 'rival' ? <RivalMockup /> : p.id === 'voidrift' ? <VoidRiftMockup /> : null,
+  mockupComponent: p.id === 'rival' ? <RivalMockup /> : p.id === 'voidrift' ? <VoidRiftMockup /> : p.id === 'nxcor' ? <NxcorMockup /> : p.id === 'clarusign' ? <ClaruSignMockup /> : null,
 }));
 
 function App() {
@@ -416,6 +439,11 @@ function App() {
                 <div className="credentials-strip__item">
                   <AnimatedCounter target={0} className="credentials-strip__number" />
                   <span className="credentials-strip__label">teams required</span>
+                </div>
+                <div className="credentials-strip__divider" aria-hidden="true" />
+                <div className="credentials-strip__item">
+                  <AnimatedCounter target={43} className="credentials-strip__number" />
+                  <span className="credentials-strip__label">features shipped</span>
                 </div>
               </div>
             </Reveal>
