@@ -13,10 +13,12 @@ import {
 import { motion, useScroll, useSpring } from 'motion/react';
 import { ContactForm } from './components/ContactForm';
 import { DeviceSimulator } from './components/DeviceSimulator';
+import { HowIBuild } from './components/HowIBuild';
 import { LiveProductsPanel } from './components/LiveProductsPanel';
 import { NowBuilding } from './components/NowBuilding';
 import { Reveal } from './components/Reveal';
 import { StickyProjectNav } from './components/StickyProjectNav';
+import { Testimonials } from './components/Testimonials';
 
 /* ─── Data ───────────────────────────────────────────────── */
 
@@ -352,6 +354,25 @@ function App() {
         </section>
 
 
+        {/* How I Build */}
+        <section className="section" id="process" aria-labelledby="process-title">
+          <div className="shell">
+            <div className="section__head">
+              <div className="section__head-meta">
+                <span className="section__index">[ 06 / Process ]</span>
+              </div>
+              <Reveal>
+                <h2 id="process-title" className="section__title">
+                  How the work <em>actually</em> gets built.
+                </h2>
+              </Reveal>
+            </div>
+            <Reveal>
+              <HowIBuild />
+            </Reveal>
+          </div>
+        </section>
+
         {/* About */}
         <section className="section" id="about" aria-labelledby="about-title">
           <div className="shell">
@@ -459,12 +480,31 @@ function App() {
           </div>
         </section>
 
+        {/* Testimonials */}
+        <section className="section" id="testimonials" aria-labelledby="testimonials-title">
+          <div className="shell">
+            <div className="section__head">
+              <div className="section__head-meta">
+                <span className="section__index">[ 08 / Testimonials ]</span>
+              </div>
+              <Reveal>
+                <h2 id="testimonials-title" className="section__title">
+                  What people say about <em>working together</em>.
+                </h2>
+              </Reveal>
+            </div>
+            <Reveal>
+              <Testimonials />
+            </Reveal>
+          </div>
+        </section>
+
         {/* Contact */}
         <section className="section" id="contact" aria-labelledby="contact-title">
           <div className="shell">
             <div className="section__head">
               <div className="section__head-meta">
-                <span className="section__index">[ 06 / Contact ]</span>
+                <span className="section__index">[ 09 / Contact ]</span>
               </div>
             </div>
 
