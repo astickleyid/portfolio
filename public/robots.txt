@@ -1,0 +1,61 @@
+# Austin Stickley — Portfolio
+# https://austinstickley.dev
+
+# All crawlers
+User-agent: *
+Allow: /
+Disallow:
+
+# Google
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+# Google AI (Gemini, SGE)
+User-agent: Google-Extended
+Allow: /
+
+# OpenAI / ChatGPT
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic / Claude
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# Meta AI
+User-agent: FacebookBot
+Allow: /
+
+# Common Crawl (used to train most LLMs)
+User-agent: CCBot
+Allow: /
+
+# Bing / Microsoft Copilot
+User-agent: Bingbot
+Allow: /
+
+User-agent: msnbot
+Allow: /
+
+# Apple
+User-agent: Applebot
+Allow: /
+
+# LinkedIn
+User-agent: LinkedInBot
+Allow: /
+
+Sitemap: https://austinstickley.dev/sitemap.xml

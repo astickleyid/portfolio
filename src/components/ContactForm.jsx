@@ -1,82 +1,65 @@
 import { useState } from 'react';
-import clsx from 'clsx';
 import { Send } from 'lucide-react';
 
-const initialForm = {
-  name: '',
-  email: '',
-  project: '',
-  message: '',
+const initialForm = { name: '', email: '', project: '', message: '' };
+
+const PROJECT_LABELS = {
+  'ai-integration': 'AI Integration / workflow',
+  'full-stack':     'Full-stack web or mobile product',
+  'automation':     'Business automation',
+  'saas':           'SaaS product',
+  'other':          'Something else',
 };
 
 export function ContactForm() {
-  const [form, setForm] = useState(initialForm);
-  const [status, setStatus] = useState('idle');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [form, setForm]     = useState(initialForm);
+  const [sent, setSent]     = useState(false);
 
-  async function handleSubmit(event) {
-    event.preventDefault();
-    setStatus('loading');
-    setErrorMessage('');
+  function handleSubmit(e) {
+    e.preventDefault();
 
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      });
+    const subject = `Portfolio inquiry — ${form.name} (${PROJECT_LABELS[form.project] || form.project})`;
+    const body    = [
+      `Name:    ${form.name}`,
+      `Email:   ${form.email}`,
+      `Project: ${PROJECT_LABELS[form.project] || form.project}`,
+      ``,
+      form.message,
+    ].join('\n');
 
-      if (!response.ok) {
-        throw new Error('Request failed');
-      }
+    window.location.href =
+      `mailto:ams@stickleyai.com` +
+      `?subject=${encodeURIComponent(subject)}` +
+      `&body=${encodeURIComponent(body)}`;
 
-      setStatus('success');
-      setForm(initialForm);
-    } catch (error) {
-      setStatus('error');
-      setErrorMessage('The form failed to send. Email me directly at astickleyid@gmail.com.');
-    }
+    setSent(true);
+    setForm(initialForm);
   }
 
-  function handleChange(event) {
-    const { name, value } = event.target;
-    setForm((current) => ({ ...current, [name]: value }));
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setForm((c) => ({ ...c, [name]: value }));
   }
 
   return (
-    <form className="contact-form" onSubmit={handleSubmit}>
-      <div className="contact-form__row">
+    <form className="form" onSubmit={handleSubmit} aria-label="Contact form">
+      <div className="form__row">
         <label className="field">
-          <span>Name</span>
-          <input
-            type="text"
-            name="name"
-            value={form.name}
-            onChange={handleChange}
-            placeholder="Your name"
-            required
-          />
+          <span className="field__label">Name</span>
+          <input type="text" name="name" value={form.name} onChange={handleChange}
+            placeholder="Your name" autoComplete="name" required />
         </label>
-
         <label className="field">
-          <span>Email</span>
-          <input
-            type="email"
-            name="email"
-            value={form.email}
-            onChange={handleChange}
-            placeholder="you@company.com"
-            required
-          />
+          <span className="field__label">Email</span>
+          <input type="email" name="email" value={form.email} onChange={handleChange}
+            placeholder="you@company.com" autoComplete="email" required />
         </label>
       </div>
 
       <label className="field">
-        <span>Project type</span>
+        <span className="field__label">Project type</span>
         <select name="project" value={form.project} onChange={handleChange} required>
-          <option value="" disabled>
-            Select one
-          </option>
+          <option value="" disabled>Select one</option>
           <option value="ai-integration">AI integration / workflow</option>
           <option value="full-stack">Full-stack web or mobile product</option>
           <option value="automation">Business automation</option>
@@ -86,32 +69,23 @@ export function ContactForm() {
       </label>
 
       <label className="field">
-        <span>Brief</span>
-        <textarea
-          name="message"
-          rows="7"
-          value={form.message}
-          onChange={handleChange}
+        <span className="field__label">Brief</span>
+        <textarea name="message" rows="6" value={form.message} onChange={handleChange}
           placeholder="What are you building, where is it blocked, and what needs to be true when it ships?"
-          required
-        />
+          required />
       </label>
 
-      <button className="contact-form__submit" type="submit" disabled={status === 'loading'}>
-        <span>{status === 'loading' ? 'Sending...' : 'Send inquiry'}</span>
-        <Send size={16} />
-      </button>
-
-      {(status === 'success' || status === 'error') && (
-        <div
-          className={clsx(
-            'contact-form__status',
-            status === 'success' ? 'is-success' : 'is-error'
-          )}
-        >
-          {status === 'success'
-            ? 'Message received. I will follow up soon.'
-            : errorMessage}
+      {!sent ? (
+        <button className="form__submit" type="submit">
+          <span>Send inquiry</span>
+          <Send />
+        </button>
+      ) : (
+        <div role="status" className="form__status is-success">
+          Your email client opened with everything pre-filled — just hit send.{' '}
+          <a href="mailto:ams@stickleyai.com" style={{ color: 'inherit', textDecoration: 'underline' }}>
+            Direct link if it didn&rsquo;t open.
+          </a>
         </div>
       )}
     </form>

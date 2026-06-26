@@ -1,27 +1,15 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 
-const NAV_PILLS = [
-  { label: 'nXcor', id: 'nxcor' },
-  { label: 'ClaruSign', id: 'clarusign' },
-  { label: 'VOID RIFT', id: 'voidrift' },
-  { label: 'Rival', id: 'rival' },
-  { label: 'Process', id: 'process' },
-];
-
-const SECTION_IDS = NAV_PILLS.map((p) => p.id);
-
-export function StickyProjectNav() {
+export function StickyProjectNav({ projects = [] }) {
   const [visible, setVisible] = useState(false);
   const [activeId, setActiveId] = useState(null);
 
   useEffect(() => {
-    const hero = document.querySelector('.hero');
-
     function onScroll() {
+      const hero = document.querySelector('.hero');
       if (!hero) return;
-      const heroBottom = hero.getBoundingClientRect().bottom;
-      setVisible(heroBottom < 0);
+      setVisible(hero.getBoundingClientRect().bottom < 0);
     }
 
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -52,42 +40,31 @@ export function StickyProjectNav() {
 
   function scrollTo(id) {
     const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   return (
     <AnimatePresence>
       {visible && (
         <motion.nav
-          className="sticky-project-nav"
+          className="sticky-nav"
           aria-label="Project navigation"
-          initial={{ opacity: 0, y: -12 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -12 }}
+          initial={{ opacity: 0, x: 12 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 12 }}
           transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="sticky-project-nav__inner">
-            {NAV_PILLS.map((pill) => {
-              const isActive = pill.id === activeId;
-              return (
-                <button
-                  key={pill.id}
-                  className={`sticky-project-nav__pill${isActive ? ' sticky-project-nav__pill--active' : ''}`}
-                  onClick={() => scrollTo(pill.id)}
-                  type="button"
-                  style={isActive ? {
-                    background: 'var(--accent, #6366f1)',
-                    color: '#fff',
-                    borderColor: 'var(--accent, #6366f1)',
-                  } : undefined}
-                >
-                  {pill.label}
-                </button>
-              );
-            })}
-          </div>
+          {projects.map((project) => (
+            <button
+              key={project.id}
+              type="button"
+              className="sticky-nav__btn"
+              onClick={() => scrollTo(project.id)}
+            >
+              <span className="sticky-nav__btn-num">{project.number}</span>
+              <span>{project.title}</span>
+            </button>
+          ))}
         </motion.nav>
       )}
     </AnimatePresence>

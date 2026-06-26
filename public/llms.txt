@@ -1,0 +1,35 @@
+# Austin Stickley
+
+> Full-stack AI product engineer and solo founder based in Toledo, Ohio. Designs and ships AI-native web and mobile products end-to-end — React, Next.js, Node.js, Claude API, Stripe, Supabase — no handoffs. Open to work.
+
+Austin Stickley owns the full product stack: interface design, React/Next.js frontend, Node.js/Express backend, AI model integration (Claude API, OpenAI), Stripe billing, database architecture, and Vercel/DigitalOcean deployment. Every product listed here is live and shipped by one person.
+
+## Live Products
+
+- [nXcor](https://n-xcor.com): Social streaming PWA. React, Node.js, Socket.IO realtime presence, SQLite WAL, RTMP ingest, HLS playback, iOS Capacitor shell. Live feed, communities, DMs, notifications, RTMP streaming.
+- [ClaruSign](https://clarusign.vercel.app): AI contract review SaaS. Upload PDF → Claude API returns risk-scored clauses, plain-English explanations, suggested revisions, and a draft negotiation email. Stripe-gated.
+- [AURA](https://aura-ar-world.vercel.app): Geo-AR platform. Live camera passthrough, TensorFlow.js COCO-SSD object detection, voice commands (Web Speech API), IFF tagging, threat scoring, TomTom traffic, Vercel KV backend.
+- [findafiend](https://findafiend.com): Community rideshare PWA for Detroit and Toledo. GPS tracking, driver heartbeat, Cash App deep links, star ratings, city share pages, admin dashboard. Next.js, Upstash Redis.
+- [KeyBridge](https://github.com/astickleyid/keybridge): Universal API key vault. AES-256-GCM encryption, Supabase RLS, usage analytics, Stripe billing, resolution engine for AI agent key management. Next.js, Upstash Redis.
+- [VOID RIFT](https://voidrift.vercel.app): Browser-based twin-stick tactical shooter. Ship selection, upgrade economy, missions, kill-combo multipliers, boss waves, leaderboard. Vanilla JS, Canvas API — no game engine. iOS Capacitor wrapper.
+
+## Skills & Stack
+
+**Languages:** JavaScript, TypeScript, Python, HTML, CSS
+**Frontend:** React, Next.js, Vite, Tailwind CSS, Capacitor (iOS)
+**Backend:** Node.js, Express, Next.js API routes, serverless functions
+**AI/ML:** Claude API (Anthropic), OpenAI API, TensorFlow.js, prompt engineering, AI product architecture
+**Databases:** SQLite, Supabase (Postgres), Upstash Redis
+**Payments:** Stripe (checkout, webhooks, subscriptions)
+**Infrastructure:** Vercel, DigitalOcean VPS, GitHub Actions
+**Realtime:** Socket.IO, WebRTC, RTMP, HLS
+
+## Contact
+
+- Email: ams@stickleyai.com
+- GitHub: https://github.com/astickleyid
+- Location: Toledo, Ohio / Detroit, Michigan area
+
+## Optional
+
+- [Portfolio](https://austinstickley.dev): Full portfolio with live device previews of shipped products
