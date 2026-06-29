@@ -1,6 +1,12 @@
 import { useState } from 'react';
 
 const shippedItems = [
+  { project: 'Rival', feature: 'competitor pin-to-top — star icon hoists priority competitors, order persisted to localStorage' },
+  { project: 'VOID RIFT', feature: 'rewarded ad web simulation — 5s countdown, skip-after-3s, animated progress bar, Claim Reward UX' },
+  { project: 'Portfolio', feature: 'NowBuilding updated to Rival — competitor intelligence, live project signal' },
+  { project: 'Rival', feature: 'signal activity heatmap — 30-day color-coded strip, click a square to filter briefings by day' },
+  { project: 'VOID RIFT', feature: 'global leaderboard tab — Local/Global toggle, fetches from LeaderboardSystem' },
+  { project: 'Rival', feature: 'Cmd+K global search palette — full-text search across competitors and briefings' },
   { project: 'VOID RIFT', feature: 'Daily Challenge launcher in Hangar — seeded run, today\'s best score, Start button' },
   { project: 'VOID RIFT', feature: 'Leaderboard tab in Hangar — top 20 local runs with rank, score, wave, difficulty' },
   { project: 'VOID RIFT', feature: 'Restore Purchases — App Store 3.1.1 compliance, Settings UI button wired to IAPManager' },

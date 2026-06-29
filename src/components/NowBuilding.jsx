@@ -11,8 +11,8 @@ export function NowBuilding() {
       <span className="now-building__dot" aria-hidden="true" />
       <span className="now-building__lbl">Now building</span>
       <span className="now-building__sep" aria-hidden="true">/</span>
-      <span className="now-building__name">findafiend</span>
-      <span className="now-building__desc">· community rideshare</span>
+      <span className="now-building__name">Rival</span>
+      <span className="now-building__desc">· competitor intelligence</span>
     </motion.div>
   );
 }
