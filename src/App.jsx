@@ -19,6 +19,7 @@ import { NowBuilding } from './components/NowBuilding';
 import { Reveal } from './components/Reveal';
 import { StickyProjectNav } from './components/StickyProjectNav';
 import { Testimonials } from './components/Testimonials';
+import { AnimatedCounter } from './components/AnimatedCounter';
 
 /* ─── Data ───────────────────────────────────────────────── */
 
@@ -216,6 +217,27 @@ function App() {
               <Reveal delay={0.08}>
                 <LiveProductsPanel />
               </Reveal>
+            </div>
+          </div>
+        </section>
+
+        {/* Stats strip */}
+        <section className="stats-strip" aria-label="By the numbers">
+          <div className="shell">
+            <div className="stats-strip__grid">
+              {[
+                { target: 10, suffix: '+', label: 'Products shipped' },
+                { target: 4,  suffix: '',  label: 'Live products'    },
+                { target: 3,  suffix: '+', label: 'Years building'   },
+                { target: 12, suffix: '+', label: 'Technologies'     },
+              ].map(({ target, suffix, label }) => (
+                <div key={label} className="stats-strip__item">
+                  <div className="stats-strip__number">
+                    <AnimatedCounter target={target} suffix={suffix} duration={1400} />
+                  </div>
+                  <div className="stats-strip__label">{label}</div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
