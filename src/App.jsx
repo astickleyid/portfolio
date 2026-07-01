@@ -20,6 +20,7 @@ import { Reveal } from './components/Reveal';
 import { StickyProjectNav } from './components/StickyProjectNav';
 import { Testimonials } from './components/Testimonials';
 import { AnimatedCounter } from './components/AnimatedCounter';
+import { FieldlineMockup } from './components/FieldlineMockup';
 
 /* ─── Data ───────────────────────────────────────────────── */
 
@@ -75,6 +76,7 @@ const flagshipProjects = [
     chips: ['Next.js', 'Upstash Redis', 'Anthropic API', 'Iron Session', 'Vercel'],
     iframeUrl: 'https://fieldline-app.vercel.app',
     iframeLabel: 'fieldline-app.vercel.app',
+    mockupComponent: <FieldlineMockup />,
     links: [
       { label: 'Open app', href: 'https://fieldline-app.vercel.app', primary: true },
       { label: 'Code', href: 'https://github.com/astickleyid/fieldline-app' },
@@ -285,7 +287,9 @@ function App() {
                         label={project.iframeLabel}
                         height={520}
                         scale={0.7}
-                      />
+                      >
+                        {project.mockupComponent || null}
+                      </DeviceSimulator>
                     </div>
                   </article>
                 </Reveal>

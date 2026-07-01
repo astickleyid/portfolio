@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export function DeviceSimulator({ url, label, height = 520, scale = 0.75 }) {
+export function DeviceSimulator({ url, label, height = 520, scale = 0.75, children }) {
   const [loaded, setLoaded] = useState(false);
   const [blocked, setBlocked] = useState(false);
 
@@ -18,7 +18,11 @@ export function DeviceSimulator({ url, label, height = 520, scale = 0.75 }) {
         </div>
       </div>
       <div className="device-sim__viewport" style={{ height }}>
-        {!blocked ? (
+        {children ? (
+          <div style={{ width: '100%', height: '100%', overflow: 'hidden' }}>
+            {children}
+          </div>
+        ) : !blocked ? (
           <iframe
             src={url}
             className="device-sim__iframe"
@@ -41,7 +45,7 @@ export function DeviceSimulator({ url, label, height = 520, scale = 0.75 }) {
             </a>
           </div>
         )}
-        {!loaded && !blocked && (
+        {!children && !loaded && !blocked && (
           <div className="device-sim__loading">Loading…</div>
         )}
       </div>
