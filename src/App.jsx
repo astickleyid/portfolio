@@ -21,6 +21,8 @@ import { StickyProjectNav } from './components/StickyProjectNav';
 import { Testimonials } from './components/Testimonials';
 import { AnimatedCounter } from './components/AnimatedCounter';
 import { FieldlineMockup } from './components/FieldlineMockup';
+import { RivalMockup } from './components/RivalMockup';
+import { VoidRiftMockup } from './components/VoidRiftMockup';
 
 /* ─── Data ───────────────────────────────────────────────── */
 
@@ -62,6 +64,7 @@ const flagshipProjects = [
     chips: ['Vanilla JS', 'Canvas API', 'Capacitor / iOS', 'Vercel', 'LocalStorage'],
     iframeUrl: '/games/voidrift',
     iframeLabel: 'VOID RIFT',
+    mockupComponent: <VoidRiftMockup />,
     links: [
       { label: 'Play live', href: 'https://shooter-app-git-main-lemxnaidhead-6918s-projects.vercel.app', primary: true },
       { label: 'Code', href: 'https://github.com/astickleyid/shooter-app' },
@@ -80,6 +83,21 @@ const flagshipProjects = [
     links: [
       { label: 'Open app', href: 'https://fieldline-app.vercel.app', primary: true },
       { label: 'Code', href: 'https://github.com/astickleyid/fieldline-app' },
+    ],
+  },
+  {
+    id: 'rival',
+    number: '05',
+    label: 'Competitive intel SaaS',
+    title: 'Rival',
+    tagline: 'Tracks competitor websites, turns changes into AI briefings, ships with signal ratings, heatmaps, digest views, and a Stripe subscription layer.',
+    chips: ['React', 'TypeScript', 'Supabase', 'Stripe', 'Vercel'],
+    iframeUrl: 'https://rival-alpha.vercel.app',
+    iframeLabel: 'rival-alpha.vercel.app',
+    mockupComponent: <RivalMockup />,
+    links: [
+      { label: 'Open app', href: 'https://rival-alpha.vercel.app', primary: true },
+      { label: 'Code', href: 'https://github.com/astickleyid/rival' },
     ],
   },
 ];
@@ -111,15 +129,6 @@ const supportingProjects = [
     chips: ['Next.js', 'Supabase', 'Upstash Redis', 'Stripe'],
     liveUrl: '',
     codeUrl: 'https://github.com/astickleyid/keybridge',
-  },
-  {
-    title: 'Rival',
-    label: 'Competitive intel',
-    icon: Workflow,
-    text: 'Tracks competitors, turns changes into briefings, wraps it in subscription.',
-    chips: ['React', 'Supabase', 'Stripe', 'Briefings'],
-    liveUrl: 'https://rival-alpha.vercel.app',
-    codeUrl: 'https://github.com/astickleyid/rival',
   },
   {
     title: 'NWO Answering',
