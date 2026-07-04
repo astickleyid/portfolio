@@ -21,6 +21,8 @@ import { StickyProjectNav } from './components/StickyProjectNav';
 import { Testimonials } from './components/Testimonials';
 import { AnimatedCounter } from './components/AnimatedCounter';
 import { FieldlineMockup } from './components/FieldlineMockup';
+import { NxcorMockup } from './components/NxcorMockup';
+import { ClaruSignMockup } from './components/ClaruSignMockup';
 import { RivalMockup } from './components/RivalMockup';
 import { VoidRiftMockup } from './components/VoidRiftMockup';
 
@@ -36,6 +38,7 @@ const flagshipProjects = [
     chips: ['React', 'Node / Express', 'Socket.IO', 'SQLite WAL', 'RTMP / HLS', 'Capacitor'],
     iframeUrl: 'https://n-xcor.com',
     iframeLabel: 'n-xcor.com',
+    mockupComponent: <NxcorMockup />,
     links: [
       { label: 'Live site', href: 'https://n-xcor.com', primary: true },
       { label: 'Code', href: 'https://github.com/Stickley-AI/nXcor' },
@@ -50,6 +53,7 @@ const flagshipProjects = [
     chips: ['React', 'Claude API', 'PDF.js', 'Supabase', 'Stripe'],
     iframeUrl: 'https://clarusign.vercel.app',
     iframeLabel: 'clarusign.com',
+    mockupComponent: <ClaruSignMockup />,
     links: [
       { label: 'Open app', href: 'https://clarusign.vercel.app', primary: true },
       { label: 'Code', href: 'https://github.com/astickleyid/clarusign' },

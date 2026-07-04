@@ -1,6 +1,9 @@
 import { useState } from 'react';
 
 const shippedItems = [
+  { project: 'Rival', feature: 'Bookmarks page — /bookmarks route, cross-competitor saved signals view with critical/notable counts' },
+  { project: 'Portfolio', feature: 'NxcorMockup + ClaruSignMockup wired — all 5 flagship projects now use static mockup components' },
+  { project: 'VOID RIFT', feature: 'Missions tab in Hangar — daily mission progress bars, Claim button, reset countdown' },
   { project: 'Portfolio', feature: 'FieldlineMockup — inline CRM job pipeline kanban mockup for Fieldline showcase' },
   { project: 'Rival', feature: 'competitor pin-to-top — star icon hoists priority competitors, order persisted to localStorage' },
   { project: 'VOID RIFT', feature: 'rewarded ad web simulation — 5s countdown, skip-after-3s, animated progress bar, Claim Reward UX' },
