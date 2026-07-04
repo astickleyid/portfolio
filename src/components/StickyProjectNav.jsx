@@ -32,7 +32,7 @@ export function StickyProjectNav({ projects = [] }) {
       }
     );
 
-    const elements = SECTION_IDS.map((id) => document.getElementById(id)).filter(Boolean);
+    const elements = projects.map((p) => document.getElementById(p.id)).filter(Boolean);
     elements.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
