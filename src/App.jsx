@@ -20,11 +20,6 @@ import { Reveal } from './components/Reveal';
 import { StickyProjectNav } from './components/StickyProjectNav';
 import { Testimonials } from './components/Testimonials';
 import { AnimatedCounter } from './components/AnimatedCounter';
-import { FieldlineMockup } from './components/FieldlineMockup';
-import { NxcorMockup } from './components/NxcorMockup';
-import { ClaruSignMockup } from './components/ClaruSignMockup';
-import { RivalMockup } from './components/RivalMockup';
-import { VoidRiftMockup } from './components/VoidRiftMockup';
 
 /* ─── Data ───────────────────────────────────────────────── */
 
@@ -38,7 +33,6 @@ const flagshipProjects = [
     chips: ['React', 'Node / Express', 'Socket.IO', 'SQLite WAL', 'RTMP / HLS', 'Capacitor'],
     iframeUrl: 'https://n-xcor.com',
     iframeLabel: 'n-xcor.com',
-    mockupComponent: <NxcorMockup />,
     links: [
       { label: 'Live site', href: 'https://n-xcor.com', primary: true },
       { label: 'Code', href: 'https://github.com/Stickley-AI/nXcor' },
@@ -51,9 +45,8 @@ const flagshipProjects = [
     title: 'ClaruSign',
     tagline: 'Upload a contract, get a structured AI review — risks, plain-English explanations, suggested revisions, negotiation email.',
     chips: ['React', 'Claude API', 'PDF.js', 'Supabase', 'Stripe'],
-    iframeUrl: 'https://clarusign.vercel.app',
+    iframeUrl: 'https://clarusign.com',
     iframeLabel: 'clarusign.com',
-    mockupComponent: <ClaruSignMockup />,
     links: [
       { label: 'Open app', href: 'https://clarusign.vercel.app', primary: true },
       { label: 'Code', href: 'https://github.com/astickleyid/clarusign' },
@@ -68,7 +61,6 @@ const flagshipProjects = [
     chips: ['Vanilla JS', 'Canvas API', 'Capacitor / iOS', 'Vercel', 'LocalStorage'],
     iframeUrl: '/games/voidrift',
     iframeLabel: 'VOID RIFT',
-    mockupComponent: <VoidRiftMockup />,
     links: [
       { label: 'Play live', href: 'https://shooter-app-git-main-lemxnaidhead-6918s-projects.vercel.app', primary: true },
       { label: 'Code', href: 'https://github.com/astickleyid/shooter-app' },
@@ -83,7 +75,6 @@ const flagshipProjects = [
     chips: ['Next.js', 'Upstash Redis', 'Anthropic API', 'Iron Session', 'Vercel'],
     iframeUrl: 'https://fieldline-app.vercel.app',
     iframeLabel: 'fieldline-app.vercel.app',
-    mockupComponent: <FieldlineMockup />,
     links: [
       { label: 'Open app', href: 'https://fieldline-app.vercel.app', primary: true },
       { label: 'Code', href: 'https://github.com/astickleyid/fieldline-app' },
@@ -98,7 +89,6 @@ const flagshipProjects = [
     chips: ['React', 'TypeScript', 'Supabase', 'Stripe', 'Vercel'],
     iframeUrl: 'https://rival-alpha.vercel.app',
     iframeLabel: 'rival-alpha.vercel.app',
-    mockupComponent: <RivalMockup />,
     links: [
       { label: 'Open app', href: 'https://rival-alpha.vercel.app', primary: true },
       { label: 'Code', href: 'https://github.com/astickleyid/rival' },
@@ -300,9 +290,7 @@ function App() {
                         label={project.iframeLabel}
                         height={520}
                         scale={0.7}
-                      >
-                        {project.mockupComponent || null}
-                      </DeviceSimulator>
+                      />
                     </div>
                   </article>
                 </Reveal>
