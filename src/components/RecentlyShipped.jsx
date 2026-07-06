@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 const shippedItems = [
+  { project: 'Rival', feature: 'Notes Journal — /notes route, annotated briefings grouped by competitor with inline note previews' },
   { project: 'Rival', feature: 'Bookmarks page — /bookmarks route, cross-competitor saved signals view with critical/notable counts' },
   { project: 'Portfolio', feature: 'NxcorMockup + ClaruSignMockup wired — all 5 flagship projects now use static mockup components' },
   { project: 'VOID RIFT', feature: 'Missions tab in Hangar — daily mission progress bars, Claim button, reset countdown' },
