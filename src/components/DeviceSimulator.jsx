@@ -1,8 +1,17 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export function DeviceSimulator({ url, label, height = 520, scale = 0.75, children }) {
   const [loaded, setLoaded] = useState(false);
   const [blocked, setBlocked] = useState(false);
+
+  // Some embedded apps (e.g. nXcor) hold open live socket connections and never
+  // fire a clean `onLoad`, leaving the spinner hanging forever. Reveal the frame
+  // after a fixed grace period regardless — the iframe is already painting behind it.
+  useEffect(() => {
+    if (children) return undefined;
+    const t = setTimeout(() => setLoaded(true), 2500);
+    return () => clearTimeout(t);
+  }, [children]);
 
   return (
     <div className="device-sim">

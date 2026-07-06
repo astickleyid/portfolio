@@ -73,7 +73,7 @@ const flagshipProjects = [
     title: 'Fieldline',
     tagline: 'CRM built for small trade businesses. Job pipeline, lead capture, SMS/email automation, AI quoting, and white-label operator controls.',
     chips: ['Next.js', 'Upstash Redis', 'Anthropic API', 'Iron Session', 'Vercel'],
-    iframeUrl: 'https://fieldline-app.vercel.app',
+    iframeUrl: 'https://fieldline-app.vercel.app/showcase',
     iframeLabel: 'fieldline-app.vercel.app',
     links: [
       { label: 'Open app', href: 'https://fieldline-app.vercel.app', primary: true },
