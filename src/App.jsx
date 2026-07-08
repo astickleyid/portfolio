@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   ArrowUpRight,
   BrainCircuit,
@@ -11,6 +12,7 @@ import {
   Send,
 } from 'lucide-react';
 import { motion, useScroll, useSpring } from 'motion/react';
+import { CaseStudyModal } from './components/CaseStudyModal';
 import { ContactForm } from './components/ContactForm';
 import { DeviceSimulator } from './components/DeviceSimulator';
 import { HowIBuild } from './components/HowIBuild';
@@ -149,6 +151,7 @@ const supportingProjects = [
 function App() {
   const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 160, damping: 28, mass: 0.2 });
+  const [caseStudy, setCaseStudy] = useState(null);
 
   return (
     <div className="app">
@@ -281,6 +284,28 @@ function App() {
                             <ArrowUpRight />
                           </a>
                         ))}
+                        <button
+                          onClick={() => setCaseStudy(project)}
+                          style={{
+                            fontFamily: 'var(--font-mono)',
+                            fontSize: 11,
+                            letterSpacing: '0.14em',
+                            textTransform: 'uppercase',
+                            color: 'var(--ink-45)',
+                            background: 'none',
+                            border: 'none',
+                            cursor: 'pointer',
+                            padding: '12px 0',
+                            transition: 'color 0.18s',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: 4,
+                          }}
+                          onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--accent)'; }}
+                          onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--ink-45)'; }}
+                        >
+                          Case study →
+                        </button>
                       </div>
                     </div>
 
@@ -568,6 +593,10 @@ function App() {
           </div>
         </section>
       </main>
+
+      {caseStudy && (
+        <CaseStudyModal project={caseStudy} onClose={() => setCaseStudy(null)} />
+      )}
 
       {/* Footer */}
       <footer className="site-foot">
