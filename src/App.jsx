@@ -425,6 +425,84 @@ function App() {
           </div>
         </section>
 
+        {/* Tech Stack */}
+        <section className="section" id="stack" aria-labelledby="stack-title">
+          <div className="shell">
+            <div className="section__head">
+              <div className="section__head-meta">
+                <span className="section__index">[ 07 / Stack ]</span>
+              </div>
+              <Reveal>
+                <h2 id="stack-title" className="section__title">
+                  Tools I <em>actually</em> ship with.
+                </h2>
+                <p className="section__lede">
+                  The full picture — frontend to infra, AI to mobile.
+                </p>
+              </Reveal>
+            </div>
+
+            <Reveal>
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(3, 1fr)',
+                gap: '16px',
+              }}
+                className="stack-grid"
+              >
+                {[
+                  {
+                    category: 'Frontend',
+                    techs: ['React', 'Next.js', 'TypeScript', 'Tailwind', 'Motion/Framer', 'Vite'],
+                  },
+                  {
+                    category: 'Backend',
+                    techs: ['Node.js', 'Express', 'FastAPI', 'Supabase Edge', 'Socket.IO', 'REST APIs'],
+                  },
+                  {
+                    category: 'AI & Models',
+                    techs: ['Claude API', 'OpenAI', 'Ollama', 'Phi-3', 'Llama 3', 'Anthropic SDK'],
+                  },
+                  {
+                    category: 'Mobile',
+                    techs: ['Capacitor', 'iOS Native', 'Flutter (learning)', 'React Native'],
+                  },
+                  {
+                    category: 'Infra & DevOps',
+                    techs: ['Vercel', 'Cloudflare', 'GitHub Actions', 'Docker', 'nginx'],
+                  },
+                  {
+                    category: 'Data & Storage',
+                    techs: ['Supabase', 'PostgreSQL', 'Upstash Redis', 'SQLite WAL', 'LocalStorage'],
+                  },
+                ].map(({ category, techs }) => (
+                  <div
+                    key={category}
+                    style={{
+                      background: 'rgba(255,255,255,0.04)',
+                      border: '1px solid rgba(255,255,255,0.08)',
+                      borderRadius: '12px',
+                      padding: '20px',
+                    }}
+                  >
+                    <div
+                      className="eyebrow"
+                      style={{ marginBottom: '14px', display: 'block' }}
+                    >
+                      {category}
+                    </div>
+                    <div className="flagship__chips" style={{ gap: '6px' }}>
+                      {techs.map((tech) => (
+                        <span key={tech} className="chip">{tech}</span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
         {/* About */}
         <section className="section" id="about" aria-labelledby="about-title">
           <div className="shell">

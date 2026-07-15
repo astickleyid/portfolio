@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 const shippedItems = [
+  { project: 'Portfolio', feature: 'tech stack grid — 6-category visual breakdown of frontend, backend, AI, mobile, and infra skills' },
   { project: 'Rival', feature: 'Insights page — cross-competitor intelligence summary with activity ranking, top signals, and signal distribution' },
   { project: 'Rival', feature: 'competitor comparison modal — side-by-side signal analysis for 2 tracked competitors' },
   { project: 'Rival', feature: 'week-over-week trend indicators on Dashboard stat cards — ↑↓ delta vs last week' },

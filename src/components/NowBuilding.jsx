@@ -12,7 +12,7 @@ export function NowBuilding() {
       <span className="now-building__lbl">Now building</span>
       <span className="now-building__sep" aria-hidden="true">/</span>
       <span className="now-building__name">Rival</span>
-      <span className="now-building__desc">· AI briefings + signal insights</span>
+      <span className="now-building__desc">· AI briefings + signal insights, weekly report</span>
     </motion.div>
   );
 }
