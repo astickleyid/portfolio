@@ -1,6 +1,12 @@
 import { useState } from 'react';
 
 const shippedItems = [
+  { project: 'VOID RIFT', feature: 'Ghost Orb drop — 3% drop from elite/WANTED enemies, 3s invincibility on pickup with cyan shimmer' },
+  { project: 'Rival', feature: 'Copy as Markdown export — one-click full weekly report copy for Slack/email sharing' },
+  { project: 'Rival', feature: 'weekly report page — /report route, grouped by competitor, signal severity, print-ready' },
+  { project: 'Rival', feature: 'search + competitor filter on Notes page — keyword and dropdown filters with live results count' },
+  { project: 'VOID RIFT', feature: 'Medic Orb drop — 4% enemy death chance when HP <60%, +20 HP heal, glowing green cross orb' },
+  { project: 'VOID RIFT', feature: 'Power Surge orb drop — 6% enemy death chance, 1.8× DMG boost for 8s with HUD timer' },
   { project: 'Portfolio', feature: 'tech stack grid — 6-category visual breakdown of frontend, backend, AI, mobile, and infra skills' },
   { project: 'Rival', feature: 'Insights page — cross-competitor intelligence summary with activity ranking, top signals, and signal distribution' },
   { project: 'Rival', feature: 'competitor comparison modal — side-by-side signal analysis for 2 tracked competitors' },
