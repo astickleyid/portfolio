@@ -1,6 +1,9 @@
 import { useState } from 'react';
 
 const shippedItems = [
+  { project: 'VOID RIFT', feature: 'Freeze Orb drop — 4% enemy death chance, slows all enemies 60% for 3s with ice-blue shimmer' },
+  { project: 'Rival', feature: 'Email report delivery — one-click send of the weekly competitive intelligence report to your inbox' },
+  { project: 'Portfolio', feature: 'Rival added to live products panel — competitive intel SaaS now listed alongside nXcor, ClaruSign, VOID RIFT' },
   { project: 'VOID RIFT', feature: 'Ghost Orb drop — 3% drop from elite/WANTED enemies, 3s invincibility on pickup with cyan shimmer' },
   { project: 'Rival', feature: 'Copy as Markdown export — one-click full weekly report copy for Slack/email sharing' },
   { project: 'Rival', feature: 'weekly report page — /report route, grouped by competitor, signal severity, print-ready' },

@@ -43,6 +43,13 @@ const PRODUCTS = [
     status: 'Live',
     live: true,
   },
+  {
+    name: 'Rival',
+    desc: 'Competitive intelligence SaaS',
+    href: 'https://rival-alpha.vercel.app',
+    status: 'Live',
+    live: true,
+  },
 ];
 
 export function LiveProductsPanel() {

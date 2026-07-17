@@ -11,8 +11,8 @@ export function NowBuilding() {
       <span className="now-building__dot" aria-hidden="true" />
       <span className="now-building__lbl">Now building</span>
       <span className="now-building__sep" aria-hidden="true">/</span>
-      <span className="now-building__name">VOID RIFT</span>
-      <span className="now-building__desc">· Ghost Orb + orb drop system, new boss variants</span>
+      <span className="now-building__name">Rival</span>
+      <span className="now-building__desc">· on-demand email report delivery + Freeze Orb in VOID RIFT</span>
     </motion.div>
   );
 }
