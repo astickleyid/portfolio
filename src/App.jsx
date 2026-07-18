@@ -152,6 +152,20 @@ function App() {
   const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 160, damping: 28, mass: 0.2 });
   const [caseStudy, setCaseStudy] = useState(null);
+  const [activeChip, setActiveChip] = useState(null);
+
+  const allChips = [...new Set([
+    ...flagshipProjects.flatMap((p) => p.chips),
+    ...supportingProjects.flatMap((p) => p.chips),
+  ])];
+
+  const filteredFlagship = activeChip
+    ? flagshipProjects.filter((p) => p.chips.includes(activeChip))
+    : flagshipProjects;
+
+  const filteredSupporting = activeChip
+    ? supportingProjects.filter((p) => p.chips.includes(activeChip))
+    : supportingProjects;
 
   return (
     <div className="app">
@@ -253,8 +267,83 @@ function App() {
         {/* Selected work */}
         <section className="section" id="work" aria-labelledby="work-title">
           <div className="shell">
+            {/* Tech chip filter */}
+            <div style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: '6px',
+              marginBottom: 'var(--s-8)',
+              paddingBottom: 'var(--s-5)',
+              borderBottom: '1px solid var(--rule)',
+            }}>
+              <button
+                onClick={() => setActiveChip(null)}
+                style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: 10,
+                  letterSpacing: '0.14em',
+                  textTransform: 'uppercase',
+                  padding: '5px 12px',
+                  border: '1px solid',
+                  borderRadius: 'var(--r-2)',
+                  cursor: 'pointer',
+                  transition: 'background 0.18s, color 0.18s, border-color 0.18s',
+                  background: activeChip === null ? 'var(--accent)' : 'transparent',
+                  color: activeChip === null ? 'var(--bg)' : 'var(--cream-60)',
+                  borderColor: activeChip === null ? 'var(--accent)' : 'var(--rule)',
+                }}
+                onMouseEnter={(e) => {
+                  if (activeChip !== null) {
+                    e.currentTarget.style.borderColor = 'var(--accent)';
+                    e.currentTarget.style.color = 'var(--accent)';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (activeChip !== null) {
+                    e.currentTarget.style.borderColor = 'var(--rule)';
+                    e.currentTarget.style.color = 'var(--cream-60)';
+                  }
+                }}
+              >
+                All
+              </button>
+              {allChips.map((chip) => (
+                <button
+                  key={chip}
+                  onClick={() => setActiveChip(activeChip === chip ? null : chip)}
+                  style={{
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: 10,
+                    letterSpacing: '0.14em',
+                    textTransform: 'uppercase',
+                    padding: '5px 9px',
+                    border: '1px solid',
+                    borderRadius: 'var(--r-2)',
+                    cursor: 'pointer',
+                    transition: 'background 0.18s, color 0.18s, border-color 0.18s',
+                    background: activeChip === chip ? 'var(--accent)' : 'transparent',
+                    color: activeChip === chip ? 'var(--bg)' : 'var(--cream-60)',
+                    borderColor: activeChip === chip ? 'var(--accent)' : 'var(--rule)',
+                  }}
+                  onMouseEnter={(e) => {
+                    if (activeChip !== chip) {
+                      e.currentTarget.style.borderColor = 'var(--accent)';
+                      e.currentTarget.style.color = 'var(--accent)';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (activeChip !== chip) {
+                      e.currentTarget.style.borderColor = 'var(--rule)';
+                      e.currentTarget.style.color = 'var(--cream-60)';
+                    }
+                  }}
+                >
+                  {chip}
+                </button>
+              ))}
+            </div>
 <div className="flagship-list">
-              {flagshipProjects.map((project, index) => (
+              {filteredFlagship.map((project, index) => (
                 <Reveal key={project.id} delay={index * 0.04}>
                   <article className="flagship" id={project.id} aria-labelledby={`${project.id}-title`}>
                     <div className="flagship__copy">
@@ -343,7 +432,7 @@ function App() {
 
             <Reveal>
               <div className="work-grid">
-                {supportingProjects.map((project) => {
+                {filteredSupporting.map((project) => {
                   const Icon = project.icon;
                   return (
                     <article key={project.title} className="work-card">
