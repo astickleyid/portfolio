@@ -12,28 +12,32 @@ const PROJECT_LABELS = {
 };
 
 export function ContactForm() {
-  const [form, setForm]     = useState(initialForm);
-  const [sent, setSent]     = useState(false);
+  const [form, setForm]           = useState(initialForm);
+  const [sent, setSent]           = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError]         = useState(null);
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
+    setSubmitting(true);
+    setError(null);
 
-    const subject = `Portfolio inquiry — ${form.name} (${PROJECT_LABELS[form.project] || form.project})`;
-    const body    = [
-      `Name:    ${form.name}`,
-      `Email:   ${form.email}`,
-      `Project: ${PROJECT_LABELS[form.project] || form.project}`,
-      ``,
-      form.message,
-    ].join('\n');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
 
-    window.location.href =
-      `mailto:ams@stickleyai.com` +
-      `?subject=${encodeURIComponent(subject)}` +
-      `&body=${encodeURIComponent(body)}`;
+      if (!res.ok) throw new Error('Non-2xx response');
 
-    setSent(true);
-    setForm(initialForm);
+      setSent(true);
+      setForm(initialForm);
+    } catch {
+      setError('Failed to send — please email directly at ams@stickleyai.com');
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   function handleChange(e) {
@@ -75,17 +79,20 @@ export function ContactForm() {
           required />
       </label>
 
+      {error && (
+        <div role="alert" className="form__status is-error">
+          {error}
+        </div>
+      )}
+
       {!sent ? (
-        <button className="form__submit" type="submit">
-          <span>Send inquiry</span>
-          <Send />
+        <button className="form__submit" type="submit" disabled={submitting}>
+          <span>{submitting ? 'Sending…' : 'Send inquiry'}</span>
+          {!submitting && <Send />}
         </button>
       ) : (
         <div role="status" className="form__status is-success">
-          Your email client opened with everything pre-filled — just hit send.{' '}
-          <a href="mailto:ams@stickleyai.com" style={{ color: 'inherit', textDecoration: 'underline' }}>
-            Direct link if it didn&rsquo;t open.
-          </a>
+          Message sent! I&rsquo;ll reply within 24 hours.
         </div>
       )}
     </form>
