@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   ArrowUpRight,
   BrainCircuit,
@@ -153,6 +153,20 @@ function App() {
   const progress = useSpring(scrollYProgress, { stiffness: 160, damping: 28, mass: 0.2 });
   const [caseStudy, setCaseStudy] = useState(null);
   const [activeChip, setActiveChip] = useState(null);
+  const [isDark, setIsDark] = useState(() => {
+    const stored = localStorage.getItem('theme');
+    if (stored) return stored === 'dark';
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  });
+
+  useEffect(() => {
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  }, [isDark]);
 
   const allChips = [...new Set([
     ...flagshipProjects.flatMap((p) => p.chips),
@@ -760,6 +774,50 @@ function App() {
           </div>
         </section>
       </main>
+
+      {/* Dark mode toggle */}
+      <button
+        onClick={() => setIsDark(!isDark)}
+        aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+        style={{
+          position: 'fixed',
+          top: '1rem',
+          right: '1rem',
+          zIndex: 100,
+          width: '36px',
+          height: '36px',
+          borderRadius: '50%',
+          border: '1px solid var(--rule-strong)',
+          background: 'var(--bg)',
+          color: 'var(--ink)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          cursor: 'pointer',
+          transition: 'background 0.25s ease, border-color 0.25s ease, color 0.25s ease',
+          flexShrink: 0,
+        }}
+      >
+        {isDark ? (
+          /* Sun — click to switch to light mode */
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"/>
+            <line x1="12" y1="2" x2="12" y2="6"/>
+            <line x1="12" y1="18" x2="12" y2="22"/>
+            <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/>
+            <line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/>
+            <line x1="2" y1="12" x2="6" y2="12"/>
+            <line x1="18" y1="12" x2="22" y2="12"/>
+            <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"/>
+            <line x1="16.24" y1="7.76" x2="19.07" y2="4.93"/>
+          </svg>
+        ) : (
+          /* Moon — click to switch to dark mode */
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        )}
+      </button>
 
       {caseStudy && (
         <CaseStudyModal project={caseStudy} onClose={() => setCaseStudy(null)} />
