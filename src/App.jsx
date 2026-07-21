@@ -22,6 +22,7 @@ import { Reveal } from './components/Reveal';
 import { StickyProjectNav } from './components/StickyProjectNav';
 import { Testimonials } from './components/Testimonials';
 import { AnimatedCounter } from './components/AnimatedCounter';
+import { RecentlyShipped } from './components/RecentlyShipped';
 
 /* ─── Data ───────────────────────────────────────────────── */
 
@@ -217,6 +218,8 @@ function App() {
                 </p>
 
                 <NowBuilding />
+
+                <RecentlyShipped />
 
                 <div className="hero__cta">
                   <a className="btn btn--primary" href="#work">
