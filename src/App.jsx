@@ -631,11 +631,13 @@ function App() {
                 </h2>
 
                 <p className="about__lead">
-                  I&rsquo;m <strong>Austin Michael Stickley.</strong> Not just
-                  &ldquo;into AI&rdquo; — I&rsquo;m the kind of person who looks at
-                  software everyone else accepts as normal and immediately asks:
-                  <em>Why can&rsquo;t this be automated? Why does this need five
-                  tools? Why is the agent not actually doing the work?</em>
+                  I&rsquo;m <strong>Austin Michael Stickley</strong>, a solo
+                  full-stack builder based in Toledo, Ohio. I design and ship
+                  complete products — architecture, frontend, backend, and AI
+                  integration — using Claude as my primary execution layer. I&rsquo;m
+                  most interested in the gaps most software leaves open: workflows
+                  still split across five disconnected tools, or &ldquo;AI features&rdquo;
+                  that amount to a chatbot bolted onto an old interface.
                 </p>
 
                 <div className="about__lanes">
@@ -643,7 +645,7 @@ function App() {
                     { lane: 'Engineering',      desc: 'Full-stack, mobile, backend, CLI, automation, AI agents' },
                     { lane: 'Product',          desc: 'Workflows, systems, user value, monetization' },
                     { lane: 'Design',           desc: 'Premium UI instincts, brand direction, visual consistency' },
-                    { lane: 'Founder energy',   desc: 'Moves fast, challenges weak ideas, wants real execution' },
+                    { lane: 'Ownership',        desc: 'Takes ideas end-to-end — spec, build, deploy, support' },
                     { lane: 'Creative',         desc: 'Branding, audio, streaming, visual identity, thumbnails' },
                     { lane: 'AI-native',        desc: 'Agents, automation, local models, orchestration layers' },
                   ].map((l) => (
@@ -655,41 +657,39 @@ function App() {
                 </div>
 
                 <p>
-                  I have strong taste. Generic UI — I see it. Bad branding — I catch
-                  it. Placeholder code dressed up as production — I hate it. The
-                  standard is Vercel-level polish, Apple-like restraint, dark premium
-                  interfaces with real UX flows. Not &ldquo;a project&rdquo; — a
-                  product that feels like it belongs next to the best tools in the
-                  market.
+                  I care about interface quality and hold my own work to a clear
+                  bar: dark, premium, restrained — closer to what teams like Vercel
+                  or Linear ship than a typical side project. That applies whether
+                  it&rsquo;s a landing page or a full production app.
                 </p>
 
                 <div className="about__callout">
                   <span className="about__callout-text">&ldquo;Do it proper.&rdquo;</span>
-                  <span className="about__callout-attr">The only standard that matters</span>
+                  <span className="about__callout-attr">A phrase I default to when scoping anything</span>
                 </div>
 
                 <p>
-                  I&rsquo;m thinking about AI operating layers, not prompt boxes.
-                  Multi-agent systems, local runtimes, repo agents, builder agents,
-                  CLI automation, voice-first input. A lot of people are still
-                  building better wrappers. That&rsquo;s not the work.
+                  Outside of client and product work, I spend time thinking about AI
+                  as an operating layer rather than a single prompt box —
+                  multi-agent systems, local model runtimes, repo-level agents, and
+                  voice-first input.
                 </p>
 
                 <p>
-                  Before the software, I ran Grasslane Lawn Co. in Toledo — which
-                  gave me direct exposure to how small trade businesses actually break
-                  down operationally. Fieldline and NWO Answering came directly from
-                  that experience. I also run local LLM deployments (Ollama, Phi-3,
-                  Llama 3) to prototype multi-agent workflows before they go anywhere
-                  near production.
+                  Before software, I ran Grasslane Lawn Co. in Toledo, which gave me
+                  direct, ground-level exposure to how small trade businesses
+                  actually operate. Fieldline and NWO Answering both grew out of that
+                  experience. I also run local LLM deployments (Ollama, Phi-3, Llama
+                  3) to prototype multi-agent workflows before anything goes near
+                  production.
                 </p>
 
                 <p>
-                  I produce hip-hop and R&amp;B — Atlanta/Detroit trap, late-night
-                  energy, recorded on a Mac Studio through a Focusrite Scarlett Solo
-                  and a Rode PodMic. I built VOID RIFT to understand how games are
-                  actually constructed with no engine. I built whereisjimcarrey.com
-                  because sometimes you need a palate cleanser.
+                  Outside of work, I produce hip-hop and R&amp;B — Atlanta/Detroit
+                  trap, recorded on a Mac Studio through a Focusrite Scarlett Solo and
+                  a Rode PodMic. I built VOID RIFT to learn how games are actually
+                  constructed with no engine, and whereisjimcarrey.com as a smaller,
+                  lighter side project.
                 </p>
 
                 <div className="about__facts">
@@ -698,7 +698,7 @@ function App() {
                     { label: 'Focus',         value: 'AI product engineering, full-stack, solo founder' },
                     { label: 'Stack',         value: 'React, Next.js, Node.js, Claude API, Ollama, Stripe, Supabase, Vercel' },
                     { label: 'Local AI',      value: 'Ollama · Phi-3 · Llama 3 · local multi-agent workflows' },
-                    { label: 'Background',    value: 'Self-taught — vibe coder, product vision first' },
+                    { label: 'Background',    value: 'Self-taught, product-first approach to engineering' },
                     { label: 'Companies',     value: 'Stickley AI · Grasslane Lawn Co.' },
                     { label: 'Studio',        value: 'Mac Studio · Focusrite Scarlett Solo · Rode PodMic' },
                     { label: 'Music',         value: 'Hip-hop & R&B production — Atlanta/Detroit trap, Logic Pro' },
