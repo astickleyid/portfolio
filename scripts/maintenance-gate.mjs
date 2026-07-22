@@ -21,7 +21,10 @@ const realIndex = join(dist, 'index.html');
 const realBackup = join(dist, 'index.real.html');
 const maintenance = join(dist, 'maintenance.html');
 
-const ON = process.env.MAINTENANCE === '1' || process.env.MAINTENANCE === 'true';
+const ON =
+  process.env.MAINTENANCE === '1' ||
+  process.env.MAINTENANCE === 'true' ||
+  existsSync(join(process.cwd(), '.maintenance'));
 
 if (!existsSync(dist)) {
   console.error('[maintenance-gate] dist/ not found — did vite build run?');
