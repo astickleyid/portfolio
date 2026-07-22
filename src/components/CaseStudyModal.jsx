@@ -19,7 +19,7 @@ const caseStudies = {
   },
   clarusign: {
     problem:
-      'Reading a contract solo is overwhelming — you either pay a lawyer $400/hr for a quick review or you sign blind and hope for the best. Most people skip reading entirely. There was a clear gap between "legal review is expensive" and "AI can read PDFs," but no tool that bridged them cleanly for individuals and small businesses.',
+      'Reading a contract solo is overwhelming — you either pay a lawyer $400/hr for a quick review or you sign blind and hope for the best. Most people skip reading entirely. There was a clear gap between \u201clegal review is expensive\u201d and \u201cAI can read PDFs,\u201d but no tool that bridged them cleanly for individuals and small businesses.',
     built:
       'ClaruSign lets users upload a contract PDF, which is parsed client-side with PDF.js and sent section-by-section to the Claude API for structured risk analysis. The AI returns flagged clauses, plain-English explanations, suggested revisions, and a ready-to-send negotiation email draft — all in one flow. Supabase handles auth and document storage; Stripe gates access to the full review behind a subscription.',
     decisions: [
@@ -64,7 +64,7 @@ const caseStudies = {
     decisions: [
       'Supabase for both auth and snapshot storage — the competitor content snapshots are stored as text in Postgres rather than object storage, which makes full-text diff queries fast without a separate search layer.',
       'Signal rating as a first-class data model field rather than inferred from copy — the AI outputs a structured rating object, not prose, so the heatmap and digest views can filter and sort without re-processing.',
-      'Stripe metered billing tied to competitor seat count rather than usage volume — trade businesses understand "seats" intuitively; usage-based billing requires users to predict their own behavior, which kills conversion.',
+      'Stripe metered billing tied to competitor seat count rather than usage volume — trade businesses understand \u201cseats\u201d intuitively; usage-based billing requires users to predict their own behavior, which kills conversion.',
     ],
     impact:
       'Rival is deployed at rival-alpha.vercel.app with working competitor tracking, AI briefings, heatmaps, digest views, and Stripe subscription gating. The TypeScript migration from the initial React prototype improved the reliability of the structured AI output parsing and eliminated a class of runtime errors in the heatmap renderer.',

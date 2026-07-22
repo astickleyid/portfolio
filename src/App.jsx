@@ -214,7 +214,7 @@ function App() {
                   Austin Stickley
                 </h1>
                 <p className="hero__subtitle">
-                  AI-native builder. Founder. <em>Do it proper.</em>
+                  AI-native builder. Solo founder. <em>Full stack, fully shipped.</em>
                 </p>
 
                 <NowBuilding />
@@ -664,8 +664,8 @@ function App() {
                 </p>
 
                 <div className="about__callout">
-                  <span className="about__callout-text">&ldquo;Do it proper.&rdquo;</span>
-                  <span className="about__callout-attr">A phrase I default to when scoping anything</span>
+                  <span className="about__callout-text">&ldquo;Full stack. Fully shipped.&rdquo;</span>
+                  <span className="about__callout-attr">The standard behind every product here</span>
                 </div>
 
                 <p>
@@ -747,7 +747,7 @@ function App() {
             <div className="contact">
               <Reveal>
                 <h2 id="contact-title" className="contact__title">
-                  Let's build <em>something</em>.
+                  Let&rsquo;s build <em>something</em>.
                 </h2>
 
                 <div className="contact__lines">

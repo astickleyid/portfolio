@@ -49,7 +49,7 @@ const steps = [
     summary:
       'Ship a working slice every session. No long branches, no half-built features sitting open. Each commit is a step forward someone could actually use.',
     detail:
-      'The AI-native loop is different from traditional sprints. I can go from idea to working UI in hours — but that speed creates a new discipline requirement. Every session ends with something testable. I resist the urge to "just add one more thing" before closing the loop. Working software beats well-architected prototypes.',
+      'The AI-native loop is different from traditional sprints. I can go from idea to working UI in hours — but that speed creates a new discipline requirement. Every session ends with something testable. I resist the urge to \u201cjust add one more thing\u201d before closing the loop. Working software beats well-architected prototypes.',
     terminal: [
       { type: 'comment', text: '# Small slices, fast feedback' },
       { type: 'prompt', text: 'git log --oneline -8' },

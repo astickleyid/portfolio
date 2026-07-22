@@ -1,10 +1,9 @@
 import { motion } from 'motion/react';
-import { Reveal } from './Reveal';
 
 const testimonials = [
   {
     quote:
-      "Austin built our AI answering system in weeks, not months. It handles 300+ calls a day and the quality is indistinguishable from a human agent. Best technical investment we've made.",
+      "Austin built our AI answering system in weeks, not months. It handles 300+ calls a day and the quality is indistinguishable from a human agent. Best technical investment we\u2019ve made.",
     name: 'Marcus T.',
     role: 'Operations Director',
     company: 'Home Services Co.',
@@ -12,7 +11,7 @@ const testimonials = [
   },
   {
     quote:
-      "The contract review tool he shipped for us went from idea to live product in under 3 weeks. Robust, clean, and actually works. He understands how to build AI products that don't break.",
+      "The contract review tool he shipped for us went from idea to live product in under 3 weeks. Robust, clean, and actually works. He understands how to build AI products that don\u2019t break.",
     name: 'Sarah K.',
     role: 'Founder',
     company: 'LegalTech Startup',
@@ -20,7 +19,7 @@ const testimonials = [
   },
   {
     quote:
-      "Most developers say they 'work with AI.' Austin actually ships AI products. The dashboard he built cut our analyst team's weekly reporting time by 70%.",
+      "Most developers say they \u2018work with AI.\u2019 Austin actually ships AI products. The dashboard he built cut our analyst team\u2019s weekly reporting time by 70%.",
     name: 'Jordan R.',
     role: 'Head of Strategy',
     company: 'Growth Agency',
@@ -135,28 +134,16 @@ function TestimonialCard({ testimonial, index }) {
 
 export function Testimonials() {
   return (
-    <section className="section" id="testimonials">
-      <div className="shell">
-        {/* Section header */}
-        <Reveal>
-          <span className="eyebrow">What people say</span>
-          <h2>Results that speak.</h2>
-        </Reveal>
-
-        {/* Cards grid */}
-        <div
-          style={{
-            marginTop: '48px',
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '20px',
-          }}
-        >
-          {testimonials.map((t, i) => (
-            <TestimonialCard key={t.initials} testimonial={t} index={i} />
-          ))}
-        </div>
-      </div>
-    </section>
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+        gap: '20px',
+      }}
+    >
+      {testimonials.map((t, i) => (
+        <TestimonialCard key={t.initials} testimonial={t} index={i} />
+      ))}
+    </div>
   );
 }
