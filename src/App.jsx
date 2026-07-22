@@ -20,7 +20,6 @@ import { LiveProductsPanel } from './components/LiveProductsPanel';
 import { NowBuilding } from './components/NowBuilding';
 import { Reveal } from './components/Reveal';
 import { StickyProjectNav } from './components/StickyProjectNav';
-import { Testimonials } from './components/Testimonials';
 import { AnimatedCounter } from './components/AnimatedCounter';
 import { RecentlyShipped } from './components/RecentlyShipped';
 
@@ -36,6 +35,7 @@ const flagshipProjects = [
     chips: ['React', 'Node / Express', 'Socket.IO', 'SQLite WAL', 'RTMP / HLS', 'Capacitor'],
     iframeUrl: 'https://n-xcor.com',
     iframeLabel: 'n-xcor.com',
+    knownBlocked: true,
     links: [
       { label: 'Live site', href: 'https://n-xcor.com', primary: true },
       { label: 'Code', href: 'https://github.com/Stickley-AI/nXcor' },
@@ -421,6 +421,7 @@ function App() {
                         label={project.iframeLabel}
                         height={520}
                         scale={0.7}
+                        knownBlocked={project.knownBlocked}
                       />
                     </div>
                   </article>
@@ -685,11 +686,9 @@ function App() {
                 </p>
 
                 <p>
-                  Outside of work, I produce hip-hop and R&amp;B — Atlanta/Detroit
-                  trap, recorded on a Mac Studio through a Focusrite Scarlett Solo and
-                  a Rode PodMic. I built VOID RIFT to learn how games are actually
-                  constructed with no engine, and whereisjimcarrey.com as a smaller,
-                  lighter side project.
+                  Outside of client work, I built VOID RIFT to learn how games are
+                  actually constructed with no engine, and whereisjimcarrey.com as a
+                  smaller, lighter side project.
                 </p>
 
                 <div className="about__facts">
@@ -700,8 +699,6 @@ function App() {
                     { label: 'Local AI',      value: 'Ollama · Phi-3 · Llama 3 · local multi-agent workflows' },
                     { label: 'Background',    value: 'Self-taught, product-first approach to engineering' },
                     { label: 'Companies',     value: 'Stickley AI · Grasslane Lawn Co.' },
-                    { label: 'Studio',        value: 'Mac Studio · Focusrite Scarlett Solo · Rode PodMic' },
-                    { label: 'Music',         value: 'Hip-hop & R&B production — Atlanta/Detroit trap, Logic Pro' },
                     { label: 'Interests',     value: 'Game dev, interior design, trading, collectibles, AI philosophy' },
                     { label: 'Status',        value: 'Open to work — AI integration, product engineering, full-stack' },
                   ].map((f) => (
@@ -716,31 +713,12 @@ function App() {
           </div>
         </section>
 
-        {/* Testimonials */}
-        <section className="section" id="testimonials" aria-labelledby="testimonials-title">
-          <div className="shell">
-            <div className="section__head">
-              <div className="section__head-meta">
-                <span className="section__index">[ 08 / Testimonials ]</span>
-              </div>
-              <Reveal>
-                <h2 id="testimonials-title" className="section__title">
-                  What people say about <em>working together</em>.
-                </h2>
-              </Reveal>
-            </div>
-            <Reveal>
-              <Testimonials />
-            </Reveal>
-          </div>
-        </section>
-
         {/* Contact */}
         <section className="section" id="contact" aria-labelledby="contact-title">
           <div className="shell">
             <div className="section__head">
               <div className="section__head-meta">
-                <span className="section__index">[ 09 / Contact ]</span>
+                <span className="section__index">[ 08 / Contact ]</span>
               </div>
             </div>
 

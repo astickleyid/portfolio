@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 
-export function DeviceSimulator({ url, label, height = 520, scale = 0.75, children }) {
+export function DeviceSimulator({ url, label, height = 520, scale = 0.75, children, knownBlocked = false }) {
   const [loaded, setLoaded] = useState(false);
-  const [blocked, setBlocked] = useState(false);
+  const [blocked, setBlocked] = useState(knownBlocked);
   const [visible, setVisible] = useState(false);
   const simRef = useRef(null);
 
@@ -24,15 +24,20 @@ export function DeviceSimulator({ url, label, height = 520, scale = 0.75, childr
     return () => observer.disconnect();
   }, []);
 
-  // Some embedded apps (e.g. nXcor) hold open live socket connections and never
-  // fire a clean `onLoad`, leaving the spinner hanging forever. Reveal the frame
-  // after a fixed grace period regardless — the iframe is already painting behind it.
+  // Some embedded apps hold open live socket connections and never fire a clean
+  // `onLoad`, leaving the spinner hanging forever. Reveal the frame after a fixed
+  // grace period regardless — the iframe is already painting behind it.
+  // Sites flagged `knownBlocked` send an X-Frame-Options/CSP header that refuses
+  // embedding outright — no `error` event fires for that in any browser, so the
+  // only correct handling is to skip the iframe attempt entirely and go straight
+  // to the fallback link.
   useEffect(() => {
     if (!visible) return undefined;
     if (children) return undefined;
+    if (knownBlocked) return undefined;
     const t = setTimeout(() => setLoaded(true), 2500);
     return () => clearTimeout(t);
-  }, [visible, children]);
+  }, [visible, children, knownBlocked]);
 
   return (
     <div className="device-sim" ref={simRef}>
@@ -81,6 +86,7 @@ export function DeviceSimulator({ url, label, height = 520, scale = 0.75, childr
           />
         ) : (
           <div className="device-sim__fallback">
+            <span className="device-sim__fallback-note">Live preview isn&rsquo;t embeddable here</span>
             <a href={url} target="_blank" rel="noreferrer">
               Open {label} ↗
             </a>
