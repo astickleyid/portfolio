@@ -73,7 +73,6 @@ const shippedItems = [
   { project: 'VOID RIFT', feature: 'LEVIATHAN boss — wave 10 multi-phase' },
   { project: 'Portfolio', feature: 'HowIBuild interactive process section' },
   { project: 'Portfolio', feature: 'mobile hamburger navigation' },
-  { project: 'Portfolio', feature: 'Testimonials section — 3 client quotes' },
   { project: 'Rival', feature: 'inline competitor name + URL editing' },
   { project: 'VOID RIFT', feature: 'roguelite upgrade card picker' },
   { project: 'Rival', feature: 'competitor activity comparison bar' },
