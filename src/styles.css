@@ -5,19 +5,19 @@
    ───────────────────────────────────────────────────────────── */
 
 :root {
-  /* Colour — light-mode defaults; .dark overrides below */
-  --bg: #F8F8F5;
-  --bg-2: #EFEFEC;
-  --ink: #111110;
-  --ink-80: rgba(17, 17, 16, 0.80);
-  --ink-60: rgba(17, 17, 16, 0.60);
-  --ink-45: rgba(17, 17, 16, 0.45);
-  --ink-30: rgba(17, 17, 16, 0.30);
-  --ink-15: rgba(17, 17, 16, 0.15);
-  --rule:        rgba(17, 17, 16, 0.10);
-  --rule-strong: rgba(17, 17, 16, 0.18);
-  --accent: #5B8A00;
-  --accent-soft: rgba(91, 138, 0, 0.14);
+  /* Colour — dark by default (this site is dark-only) */
+  --bg: #0A0A0A;
+  --bg-2: #111111;
+  --ink: #FAFAFA;
+  --ink-80: rgba(250, 250, 250, 0.80);
+  --ink-60: rgba(250, 250, 250, 0.60);
+  --ink-45: rgba(250, 250, 250, 0.45);
+  --ink-30: rgba(250, 250, 250, 0.30);
+  --ink-15: rgba(250, 250, 250, 0.15);
+  --rule:        rgba(250, 250, 250, 0.10);
+  --rule-strong: rgba(250, 250, 250, 0.20);
+  --accent: #B5FE2C;
+  --accent-soft: rgba(181, 254, 44, 0.14);
 
   /* Legacy aliases — keep existing rules working */
   --void: var(--bg);
@@ -61,32 +61,11 @@
   :root { --shell-pad: 20px; }
 }
 
-/* ─── Dark mode overrides ─── */
-.dark {
-  --bg: #0A0A0A;
-  --bg-2: #111111;
-  --ink: #FAFAFA;
-  --ink-80: rgba(250, 250, 250, 0.80);
-  --ink-60: rgba(250, 250, 250, 0.60);
-  --ink-45: rgba(250, 250, 250, 0.45);
-  --ink-30: rgba(250, 250, 250, 0.30);
-  --ink-15: rgba(250, 250, 250, 0.15);
-  --rule:        rgba(250, 250, 250, 0.10);
-  --rule-strong: rgba(250, 250, 250, 0.20);
-  --accent: #B5FE2C;
-  --accent-soft: rgba(181, 254, 44, 0.14);
-}
-
-.dark body {
-  background: var(--bg);
-  color: var(--ink);
-}
-
-.dark .site-header {
+.site-header {
   background: rgba(8, 8, 6, 0.92);
 }
 
-.dark .sticky-nav__btn {
+.sticky-nav__btn {
   background: rgba(8, 8, 6, 0.85);
 }
 
@@ -1427,3 +1406,69 @@ em { font-family: var(--font-serif); font-style: italic; font-weight: 500; }
 @media (max-width: 860px) {
   .how-i-build { grid-template-columns: 1fr; gap: var(--s-5); }
 }
+
+/* ─── Merged process: stack grid ─── */
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: var(--s-8);
+}
+
+.stack-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-2);
+  padding: 20px;
+}
+
+.stack-card__cat {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+
+@media (max-width: 900px) {
+  .stack-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .stack-grid { grid-template-columns: 1fr; }
+}
+
+/* ─── DeviceSimulator: dark placeholder + screenshot mode ─── */
+.device-sim__placeholder {
+  background: linear-gradient(90deg, #101010 25%, #171717 50%, #101010 75%);
+  background-size: 200% 100%;
+  animation: device-sim-shimmer 1.5s infinite;
+}
+
+@keyframes device-sim-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.device-sim__shot { position: relative; }
+.device-sim__shot img { transition: transform 0.4s ease; }
+.device-sim__shot:hover img { transform: scale(1.02); }
+
+.device-sim__shot-badge {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: rgba(10, 10, 10, 0.85);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--r-2);
+  padding: 6px 10px;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  backdrop-filter: blur(6px);
+}
+.device-sim__shot:hover .device-sim__shot-badge { opacity: 1; }

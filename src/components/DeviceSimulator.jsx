@@ -1,13 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
 
-export function DeviceSimulator({ url, label, height = 520, scale = 0.75, children, knownBlocked = false }) {
+export function DeviceSimulator({ url, label, height = 520, scale = 0.75, children, image = null }) {
   const [loaded, setLoaded] = useState(false);
-  const [blocked, setBlocked] = useState(knownBlocked);
+  const [blocked, setBlocked] = useState(false);
   const [visible, setVisible] = useState(false);
   const simRef = useRef(null);
 
-  // Defer mounting the iframe (or children) until the device-sim div scrolls into view.
-  // Disconnects after first trigger so it never fires more than once.
+  // Defer mounting the iframe until the frame scrolls into view (perf).
   useEffect(() => {
     const el = simRef.current;
     if (!el) return undefined;
@@ -24,20 +23,13 @@ export function DeviceSimulator({ url, label, height = 520, scale = 0.75, childr
     return () => observer.disconnect();
   }, []);
 
-  // Some embedded apps hold open live socket connections and never fire a clean
-  // `onLoad`, leaving the spinner hanging forever. Reveal the frame after a fixed
-  // grace period regardless — the iframe is already painting behind it.
-  // Sites flagged `knownBlocked` send an X-Frame-Options/CSP header that refuses
-  // embedding outright — no `error` event fires for that in any browser, so the
-  // only correct handling is to skip the iframe attempt entirely and go straight
-  // to the fallback link.
+  // Some embedded apps hold open live sockets and never fire a clean onLoad,
+  // leaving the spinner hanging. Reveal after a grace period regardless.
   useEffect(() => {
-    if (!visible) return undefined;
-    if (children) return undefined;
-    if (knownBlocked) return undefined;
+    if (!visible || children || image) return undefined;
     const t = setTimeout(() => setLoaded(true), 2500);
     return () => clearTimeout(t);
-  }, [visible, children, knownBlocked]);
+  }, [visible, children, image]);
 
   return (
     <div className="device-sim" ref={simRef}>
@@ -54,16 +46,24 @@ export function DeviceSimulator({ url, label, height = 520, scale = 0.75, childr
       </div>
       <div className="device-sim__viewport" style={{ height }}>
         {!visible ? (
-          <div
-            className="device-sim__placeholder"
-            style={{
-              width: '100%',
-              height: '100%',
-              background: 'linear-gradient(90deg, #e8e8e8 25%, #f4f4f4 50%, #e8e8e8 75%)',
-              backgroundSize: '200% 100%',
-              animation: 'device-sim-shimmer 1.5s infinite',
-            }}
-          />
+          <div className="device-sim__placeholder" style={{ width: '100%', height: '100%' }} />
+        ) : image ? (
+          // Real screenshot for sites that block iframe embedding (X-Frame-Options).
+          <a
+            href={url}
+            target="_blank"
+            rel="noreferrer"
+            className="device-sim__shot"
+            style={{ display: 'block', width: '100%', height: '100%', position: 'relative' }}
+          >
+            <img
+              src={image}
+              alt={`${label} — live site`}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top left', display: 'block' }}
+              loading="lazy"
+            />
+            <span className="device-sim__shot-badge">Open {label} ↗</span>
+          </a>
         ) : children ? (
           <div style={{ width: '100%', height: '100%', overflow: 'hidden' }}>
             {children}
@@ -86,13 +86,10 @@ export function DeviceSimulator({ url, label, height = 520, scale = 0.75, childr
           />
         ) : (
           <div className="device-sim__fallback">
-            <span className="device-sim__fallback-note">Live preview isn&rsquo;t embeddable here</span>
-            <a href={url} target="_blank" rel="noreferrer">
-              Open {label} ↗
-            </a>
+            <a href={url} target="_blank" rel="noreferrer">Open {label} ↗</a>
           </div>
         )}
-        {visible && !children && !loaded && !blocked && (
+        {visible && !children && !image && !loaded && !blocked && (
           <div className="device-sim__loading">Loading…</div>
         )}
       </div>

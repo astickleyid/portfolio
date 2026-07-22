@@ -1,18 +1,5 @@
-import { useState, useEffect } from 'react';
-import {
-  ArrowUpRight,
-  BrainCircuit,
-  Gamepad2,
-  Layers3,
-  MapPin,
-  PhoneCall,
-  Rocket,
-  Smartphone,
-  Workflow,
-  Send,
-} from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { motion, useScroll, useSpring } from 'motion/react';
-import { CaseStudyModal } from './components/CaseStudyModal';
 import { ContactForm } from './components/ContactForm';
 import { DeviceSimulator } from './components/DeviceSimulator';
 import { HowIBuild } from './components/HowIBuild';
@@ -20,8 +7,6 @@ import { LiveProductsPanel } from './components/LiveProductsPanel';
 import { NowBuilding } from './components/NowBuilding';
 import { Reveal } from './components/Reveal';
 import { StickyProjectNav } from './components/StickyProjectNav';
-import { AnimatedCounter } from './components/AnimatedCounter';
-import { RecentlyShipped } from './components/RecentlyShipped';
 
 /* ─── Data ───────────────────────────────────────────────── */
 
@@ -31,11 +16,12 @@ const flagshipProjects = [
     number: '01',
     label: 'Creator platform',
     title: 'nXcor',
-    tagline: 'Streaming, communities, DMs, RTMP ingest, HLS playback, iOS shell. The server is the studio.',
+    tagline:
+      'A live streaming and community platform where the server is the studio — feed, communities, DMs, RTMP ingest, HLS playback, and an iOS shell.',
     chips: ['React', 'Node / Express', 'Socket.IO', 'SQLite WAL', 'RTMP / HLS', 'Capacitor'],
     iframeUrl: 'https://n-xcor.com',
     iframeLabel: 'n-xcor.com',
-    knownBlocked: true,
+    image: '/nxcor-live.png',
     links: [
       { label: 'Live site', href: 'https://n-xcor.com', primary: true },
       { label: 'Code', href: 'https://github.com/Stickley-AI/nXcor' },
@@ -46,12 +32,13 @@ const flagshipProjects = [
     number: '02',
     label: 'AI legal SaaS',
     title: 'ClaruSign',
-    tagline: 'Upload a contract, get a structured AI review — risks, plain-English explanations, suggested revisions, negotiation email.',
+    tagline:
+      'Upload a contract, get a structured AI review — risk-scored clauses, plain-English explanations, suggested revisions, and a draft negotiation email.',
     chips: ['React', 'Claude API', 'PDF.js', 'Supabase', 'Stripe'],
     iframeUrl: 'https://clarusign.com',
     iframeLabel: 'clarusign.com',
     links: [
-      { label: 'Open app', href: 'https://clarusign.vercel.app', primary: true },
+      { label: 'Open app', href: 'https://clarusign.com', primary: true },
       { label: 'Code', href: 'https://github.com/astickleyid/clarusign' },
     ],
   },
@@ -60,12 +47,13 @@ const flagshipProjects = [
     number: '03',
     label: 'Browser game',
     title: 'VOID RIFT',
-    tagline: 'Full twin-stick shooter built without an engine. Missions, upgrade economy, boss waves, iOS shell — all vanilla JS.',
+    tagline:
+      'A full twin-stick shooter built with no engine — missions, an upgrade economy, boss waves, and an iOS shell, all in vanilla JS and Canvas.',
     chips: ['Vanilla JS', 'Canvas API', 'Capacitor / iOS', 'Vercel', 'LocalStorage'],
     iframeUrl: '/games/voidrift',
     iframeLabel: 'VOID RIFT',
     links: [
-      { label: 'Play live', href: 'https://shooter-app-git-main-lemxnaidhead-6918s-projects.vercel.app', primary: true },
+      { label: 'Play live', href: '/games/voidrift', primary: true },
       { label: 'Code', href: 'https://github.com/astickleyid/shooter-app' },
     ],
   },
@@ -74,7 +62,8 @@ const flagshipProjects = [
     number: '04',
     label: 'White-label CRM',
     title: 'Fieldline',
-    tagline: 'CRM built for small trade businesses. Job pipeline, lead capture, SMS/email automation, AI quoting, and white-label operator controls.',
+    tagline:
+      'A CRM for small trade businesses — lead pipeline, AI quoting in the owner’s voice, scheduling, invoicing, reviews, and automations that run themselves.',
     chips: ['Next.js', 'Upstash Redis', 'Anthropic API', 'Iron Session', 'Vercel'],
     iframeUrl: 'https://fieldline-app.vercel.app/showcase',
     iframeLabel: 'fieldline-app.vercel.app',
@@ -88,7 +77,8 @@ const flagshipProjects = [
     number: '05',
     label: 'Competitive intel SaaS',
     title: 'Rival',
-    tagline: 'Tracks competitor websites, turns changes into AI briefings, ships with signal ratings, heatmaps, digest views, and a Stripe subscription layer.',
+    tagline:
+      'Monitors competitor sites, pricing, and changelogs, then turns every change into an AI-written briefing — with signal ratings and a Stripe subscription layer.',
     chips: ['React', 'TypeScript', 'Supabase', 'Stripe', 'Vercel'],
     iframeUrl: 'https://rival-alpha.vercel.app',
     iframeLabel: 'rival-alpha.vercel.app',
@@ -99,52 +89,22 @@ const flagshipProjects = [
   },
 ];
 
-const supportingProjects = [
-  {
-    title: 'findafiend',
-    label: 'Community rideshare',
-    icon: MapPin,
-    text: 'Cash-based community rideshare for Detroit and Toledo.',
-    chips: ['Next.js', 'Upstash Redis', 'Vercel', 'Mapbox'],
-    liveUrl: 'https://findafiend.com',
-    codeUrl: '',
-  },
-  {
-    title: 'AURA',
-    label: 'Geo-AR platform',
-    icon: Layers3,
-    text: 'Iron Man–style AR over live camera — object detection, traffic, voice commands.',
-    chips: ['TensorFlow.js', 'TomTom', 'WebGL', 'Vercel KV'],
-    liveUrl: 'https://aura-ar-world.vercel.app',
-    codeUrl: 'https://github.com/astickleyid/aura-ar-world',
-  },
-  {
-    title: 'KeyBridge',
-    label: 'API key vault',
-    icon: BrainCircuit,
-    text: 'Universal API-key management with AES-256-GCM encrypted vault.',
-    chips: ['Next.js', 'Supabase', 'Upstash Redis', 'Stripe'],
-    liveUrl: '',
-    codeUrl: 'https://github.com/astickleyid/keybridge',
-  },
-  {
-    title: 'NWO Answering',
-    label: 'Lead automation',
-    icon: PhoneCall,
-    text: 'Captures inbound leads, scores urgency, instant-SMS, CRM routing.',
-    chips: ['Node', 'Twilio', 'Lead scoring', 'Dashboard'],
-    liveUrl: '',
-    codeUrl: '',
-  },
-  {
-    title: 'FinCoach AI',
-    label: 'Consumer mobile',
-    icon: Smartphone,
-    text: 'Cross-platform finance coaching with personalized AI guidance.',
-    chips: ['Flutter', 'Firebase', 'RevenueCat', 'OpenAI'],
-    liveUrl: '',
-    codeUrl: '',
-  },
+const stack = [
+  { category: 'Frontend', techs: ['React', 'Next.js', 'TypeScript', 'Tailwind', 'Motion', 'Vite'] },
+  { category: 'Backend', techs: ['Node.js', 'Express', 'FastAPI', 'Socket.IO', 'REST'] },
+  { category: 'AI & models', techs: ['Claude API', 'OpenAI', 'Ollama', 'Phi-3', 'Llama 3'] },
+  { category: 'Data', techs: ['Supabase', 'PostgreSQL', 'Upstash Redis', 'SQLite WAL'] },
+  { category: 'Mobile', techs: ['Capacitor', 'iOS Native', 'React Native'] },
+  { category: 'Infra', techs: ['Vercel', 'Cloudflare', 'GitHub Actions', 'Docker'] },
+];
+
+const aboutLanes = [
+  { lane: 'Engineering', desc: 'Full-stack, mobile, backend, CLI, automation, AI agents' },
+  { lane: 'Product', desc: 'Workflows, systems, user value, monetization' },
+  { lane: 'Design', desc: 'Premium UI instincts, brand direction, visual consistency' },
+  { lane: 'Ownership', desc: 'Ideas taken end-to-end — spec, build, deploy, support' },
+  { lane: 'AI-native', desc: 'Agents, automation, local models, orchestration layers' },
+  { lane: 'Creative', desc: 'Branding, audio, streaming, visual identity' },
 ];
 
 /* ─── App ────────────────────────────────────────────────── */
@@ -152,35 +112,6 @@ const supportingProjects = [
 function App() {
   const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 160, damping: 28, mass: 0.2 });
-  const [caseStudy, setCaseStudy] = useState(null);
-  const [activeChip, setActiveChip] = useState(null);
-  const [isDark, setIsDark] = useState(() => {
-    const stored = localStorage.getItem('theme');
-    if (stored) return stored === 'dark';
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
-  });
-
-  useEffect(() => {
-    if (isDark) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-  }, [isDark]);
-
-  const allChips = [...new Set([
-    ...flagshipProjects.flatMap((p) => p.chips),
-    ...supportingProjects.flatMap((p) => p.chips),
-  ])];
-
-  const filteredFlagship = activeChip
-    ? flagshipProjects.filter((p) => p.chips.includes(activeChip))
-    : flagshipProjects;
-
-  const filteredSupporting = activeChip
-    ? supportingProjects.filter((p) => p.chips.includes(activeChip))
-    : supportingProjects;
 
   return (
     <div className="app">
@@ -198,6 +129,7 @@ function App() {
           <nav className="site-nav" aria-label="Primary">
             <a href="#work">Work</a>
             <a href="#about">About</a>
+            <a href="#process">Process</a>
             <a href="#contact">Contact</a>
           </nav>
         </div>
@@ -210,29 +142,20 @@ function App() {
             <div className="hero__grid">
               <Reveal className="hero__copy">
                 <span className="eyebrow">AI Product Engineer · Toledo / Detroit</span>
-                <h1 id="hero-title" className="hero__title">
-                  Austin Stickley
-                </h1>
+                <h1 id="hero-title" className="hero__title">Austin Stickley</h1>
                 <p className="hero__subtitle">
                   AI-native builder. Solo founder. <em>Full stack, fully shipped.</em>
                 </p>
 
                 <NowBuilding />
 
-                <RecentlyShipped />
-
                 <div className="hero__cta">
                   <a className="btn btn--primary" href="#work">
                     Selected work
                     <ArrowUpRight />
                   </a>
-                  <a
-                    className="btn"
-                    href="https://github.com/astickleyid"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    GitHub
+                  <a className="btn" href="#contact">
+                    Get in touch
                     <ArrowUpRight />
                   </a>
                 </div>
@@ -260,107 +183,25 @@ function App() {
           </div>
         </section>
 
-        {/* Stats strip */}
-        <section className="stats-strip" aria-label="By the numbers">
-          <div className="shell">
-            <div className="stats-strip__grid">
-              {[
-                { target: 10, suffix: '+', label: 'Products shipped' },
-                { target: 4,  suffix: '',  label: 'Live products'    },
-                { target: 3,  suffix: '+', label: 'Years building'   },
-                { target: 12, suffix: '+', label: 'Technologies'     },
-              ].map(({ target, suffix, label }) => (
-                <div key={label} className="stats-strip__item">
-                  <div className="stats-strip__number">
-                    <AnimatedCounter target={target} suffix={suffix} duration={1400} />
-                  </div>
-                  <div className="stats-strip__label">{label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Selected work */}
         <section className="section" id="work" aria-labelledby="work-title">
           <div className="shell">
-            {/* Tech chip filter */}
-            <div style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: '6px',
-              marginBottom: 'var(--s-8)',
-              paddingBottom: 'var(--s-5)',
-              borderBottom: '1px solid var(--rule)',
-            }}>
-              <button
-                onClick={() => setActiveChip(null)}
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: 10,
-                  letterSpacing: '0.14em',
-                  textTransform: 'uppercase',
-                  padding: '5px 12px',
-                  border: '1px solid',
-                  borderRadius: 'var(--r-2)',
-                  cursor: 'pointer',
-                  transition: 'background 0.18s, color 0.18s, border-color 0.18s',
-                  background: activeChip === null ? 'var(--accent)' : 'transparent',
-                  color: activeChip === null ? 'var(--bg)' : 'var(--cream-60)',
-                  borderColor: activeChip === null ? 'var(--accent)' : 'var(--rule)',
-                }}
-                onMouseEnter={(e) => {
-                  if (activeChip !== null) {
-                    e.currentTarget.style.borderColor = 'var(--accent)';
-                    e.currentTarget.style.color = 'var(--accent)';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (activeChip !== null) {
-                    e.currentTarget.style.borderColor = 'var(--rule)';
-                    e.currentTarget.style.color = 'var(--cream-60)';
-                  }
-                }}
-              >
-                All
-              </button>
-              {allChips.map((chip) => (
-                <button
-                  key={chip}
-                  onClick={() => setActiveChip(activeChip === chip ? null : chip)}
-                  style={{
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: 10,
-                    letterSpacing: '0.14em',
-                    textTransform: 'uppercase',
-                    padding: '5px 9px',
-                    border: '1px solid',
-                    borderRadius: 'var(--r-2)',
-                    cursor: 'pointer',
-                    transition: 'background 0.18s, color 0.18s, border-color 0.18s',
-                    background: activeChip === chip ? 'var(--accent)' : 'transparent',
-                    color: activeChip === chip ? 'var(--bg)' : 'var(--cream-60)',
-                    borderColor: activeChip === chip ? 'var(--accent)' : 'var(--rule)',
-                  }}
-                  onMouseEnter={(e) => {
-                    if (activeChip !== chip) {
-                      e.currentTarget.style.borderColor = 'var(--accent)';
-                      e.currentTarget.style.color = 'var(--accent)';
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    if (activeChip !== chip) {
-                      e.currentTarget.style.borderColor = 'var(--rule)';
-                      e.currentTarget.style.color = 'var(--cream-60)';
-                    }
-                  }}
-                >
-                  {chip}
-                </button>
-              ))}
+            <div className="section__head">
+              <div className="section__head-meta">
+                <span className="section__index">[ 01 / Selected work ]</span>
+              </div>
+              <Reveal>
+                <h2 id="work-title" className="section__title">
+                  Five products, <em>live</em> and in production.
+                </h2>
+                <p className="section__lede">
+                  Each one designed, built, and shipped end-to-end — solo.
+                </p>
+              </Reveal>
             </div>
-<div className="flagship-list">
-              {filteredFlagship.map((project, index) => (
+
+            <div className="flagship-list">
+              {flagshipProjects.map((project, index) => (
                 <Reveal key={project.id} delay={index * 0.04}>
                   <article className="flagship" id={project.id} aria-labelledby={`${project.id}-title`}>
                     <div className="flagship__copy">
@@ -390,28 +231,6 @@ function App() {
                             <ArrowUpRight />
                           </a>
                         ))}
-                        <button
-                          onClick={() => setCaseStudy(project)}
-                          style={{
-                            fontFamily: 'var(--font-mono)',
-                            fontSize: 11,
-                            letterSpacing: '0.14em',
-                            textTransform: 'uppercase',
-                            color: 'var(--ink-45)',
-                            background: 'none',
-                            border: 'none',
-                            cursor: 'pointer',
-                            padding: '12px 0',
-                            transition: 'color 0.18s',
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: 4,
-                          }}
-                          onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--accent)'; }}
-                          onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--ink-45)'; }}
-                        >
-                          Case study →
-                        </button>
                       </div>
                     </div>
 
@@ -419,194 +238,15 @@ function App() {
                       <DeviceSimulator
                         url={project.iframeUrl}
                         label={project.iframeLabel}
+                        image={project.image}
                         height={520}
                         scale={0.7}
-                        knownBlocked={project.knownBlocked}
                       />
                     </div>
                   </article>
                 </Reveal>
               ))}
             </div>
-          </div>
-        </section>
-
-        {/* Other work — uniform grid */}
-        <section className="section" id="more-work" aria-labelledby="more-work-title">
-          <div className="shell">
-            <div className="section__head">
-              <div className="section__head-meta">
-                <span className="section__index">[ 04 / Other work ]</span>
-              </div>
-              <Reveal>
-                <h2 id="more-work-title" className="section__title">
-                  Repeatability across very different product shapes.
-                </h2>
-                <p className="section__lede">
-                  Smaller systems and side products that prove the approach holds beyond the flagship work.
-                </p>
-              </Reveal>
-            </div>
-
-            <Reveal>
-              <div className="work-grid">
-                {filteredSupporting.map((project) => {
-                  const Icon = project.icon;
-                  return (
-                    <article key={project.title} className="work-card">
-                      <div className="work-card__head">
-                        <span className="work-card__icon" aria-hidden="true"><Icon size={16} /></span>
-                        <span className="work-card__label">{project.label}</span>
-                      </div>
-                      <h3 className="work-card__title">{project.title}</h3>
-                      <p className="work-card__text">{project.text}</p>
-                      <div className="flagship__chips">
-                        {project.chips.map((chip) => (
-                          <span key={chip} className="chip">{chip}</span>
-                        ))}
-                      </div>
-                      {(project.liveUrl || project.codeUrl) && (
-                        <div className="work-card__links">
-                          {project.liveUrl && (
-                            <a className="work-card__link" href={project.liveUrl} target="_blank" rel="noreferrer">
-                              Live <ArrowUpRight />
-                            </a>
-                          )}
-                          {project.codeUrl && (
-                            <a className="work-card__link" href={project.codeUrl} target="_blank" rel="noreferrer">
-                              Code <ArrowUpRight />
-                            </a>
-                          )}
-                        </div>
-                      )}
-                    </article>
-                  );
-                })}
-              </div>
-            </Reveal>
-          </div>
-        </section>
-
-        {/* Approach */}
-        <section className="section" id="approach" aria-labelledby="approach-title">
-          <div className="shell">
-            <div className="section__head">
-              <div className="section__head-meta">
-                <span className="section__index">[ 05 / Approach ]</span>
-              </div>
-              <Reveal>
-                <h2 id="approach-title" className="section__title">
-                  How the work actually <em>gets made</em>.
-                </h2>
-              </Reveal>
-            </div>
-
-            <div className="approach approach--single">
-              <Reveal>
-                <p className="approach__quote">
-                  Most products fail at the seams between design, code, AI behavior, and billing.
-                  My job is to <em>remove those seams</em> by owning all of them.
-                </p>
-              </Reveal>
-            </div>
-          </div>
-        </section>
-
-
-        {/* How I Build */}
-        <section className="section" id="process" aria-labelledby="process-title">
-          <div className="shell">
-            <div className="section__head">
-              <div className="section__head-meta">
-                <span className="section__index">[ 06 / Process ]</span>
-              </div>
-              <Reveal>
-                <h2 id="process-title" className="section__title">
-                  How the work <em>actually</em> gets built.
-                </h2>
-              </Reveal>
-            </div>
-            <Reveal>
-              <HowIBuild />
-            </Reveal>
-          </div>
-        </section>
-
-        {/* Tech Stack */}
-        <section className="section" id="stack" aria-labelledby="stack-title">
-          <div className="shell">
-            <div className="section__head">
-              <div className="section__head-meta">
-                <span className="section__index">[ 07 / Stack ]</span>
-              </div>
-              <Reveal>
-                <h2 id="stack-title" className="section__title">
-                  Tools I <em>actually</em> ship with.
-                </h2>
-                <p className="section__lede">
-                  The full picture — frontend to infra, AI to mobile.
-                </p>
-              </Reveal>
-            </div>
-
-            <Reveal>
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(3, 1fr)',
-                gap: '16px',
-              }}
-                className="stack-grid"
-              >
-                {[
-                  {
-                    category: 'Frontend',
-                    techs: ['React', 'Next.js', 'TypeScript', 'Tailwind', 'Motion/Framer', 'Vite'],
-                  },
-                  {
-                    category: 'Backend',
-                    techs: ['Node.js', 'Express', 'FastAPI', 'Supabase Edge', 'Socket.IO', 'REST APIs'],
-                  },
-                  {
-                    category: 'AI & Models',
-                    techs: ['Claude API', 'OpenAI', 'Ollama', 'Phi-3', 'Llama 3', 'Anthropic SDK'],
-                  },
-                  {
-                    category: 'Mobile',
-                    techs: ['Capacitor', 'iOS Native', 'Flutter (learning)', 'React Native'],
-                  },
-                  {
-                    category: 'Infra & DevOps',
-                    techs: ['Vercel', 'Cloudflare', 'GitHub Actions', 'Docker', 'nginx'],
-                  },
-                  {
-                    category: 'Data & Storage',
-                    techs: ['Supabase', 'PostgreSQL', 'Upstash Redis', 'SQLite WAL', 'LocalStorage'],
-                  },
-                ].map(({ category, techs }) => (
-                  <div
-                    key={category}
-                    style={{
-                      background: 'rgba(255,255,255,0.04)',
-                      border: '1px solid rgba(255,255,255,0.08)',
-                      borderRadius: '12px',
-                      padding: '20px',
-                    }}
-                  >
-                    <div
-                      className="eyebrow"
-                      style={{ marginBottom: '14px', display: 'block' }}
-                    >
-                      {category}
-                    </div>
-                    <div className="flagship__chips" style={{ gap: '6px' }}>
-                      {techs.map((tech) => (
-                        <span key={tech} className="chip">{tech}</span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
           </div>
         </section>
 
@@ -627,29 +267,22 @@ function App() {
               </Reveal>
 
               <Reveal delay={0.06} className="about__body">
-                <h2 id="about-title" className="section__title">
-                  Background
-                </h2>
+                <div className="section__head-meta">
+                  <span className="section__index">[ 02 / About ]</span>
+                </div>
+                <h2 id="about-title" className="section__title">Background</h2>
 
                 <p className="about__lead">
-                  I&rsquo;m <strong>Austin Michael Stickley</strong>, a solo
-                  full-stack builder based in Toledo, Ohio. I design and ship
-                  complete products — architecture, frontend, backend, and AI
-                  integration — using Claude as my primary execution layer. I&rsquo;m
-                  most interested in the gaps most software leaves open: workflows
-                  still split across five disconnected tools, or &ldquo;AI features&rdquo;
-                  that amount to a chatbot bolted onto an old interface.
+                  I&rsquo;m <strong>Austin Michael Stickley</strong>, a solo full-stack
+                  builder in Toledo, Ohio. I design and ship complete products —
+                  architecture, frontend, backend, and AI integration — using Claude as
+                  my primary execution layer. I&rsquo;m drawn to the gaps most software
+                  leaves open: workflows split across five disconnected tools, or
+                  &ldquo;AI features&rdquo; that are just a chatbot bolted onto an old interface.
                 </p>
 
                 <div className="about__lanes">
-                  {[
-                    { lane: 'Engineering',      desc: 'Full-stack, mobile, backend, CLI, automation, AI agents' },
-                    { lane: 'Product',          desc: 'Workflows, systems, user value, monetization' },
-                    { lane: 'Design',           desc: 'Premium UI instincts, brand direction, visual consistency' },
-                    { lane: 'Ownership',        desc: 'Takes ideas end-to-end — spec, build, deploy, support' },
-                    { lane: 'Creative',         desc: 'Branding, audio, streaming, visual identity, thumbnails' },
-                    { lane: 'AI-native',        desc: 'Agents, automation, local models, orchestration layers' },
-                  ].map((l) => (
+                  {aboutLanes.map((l) => (
                     <div key={l.lane} className="about__lane">
                       <div className="about__lane-title">{l.lane}</div>
                       <div className="about__lane-desc">{l.desc}</div>
@@ -658,10 +291,9 @@ function App() {
                 </div>
 
                 <p>
-                  I care about interface quality and hold my own work to a clear
-                  bar: dark, premium, restrained — closer to what teams like Vercel
-                  or Linear ship than a typical side project. That applies whether
-                  it&rsquo;s a landing page or a full production app.
+                  I hold my own work to a clear bar: dark, premium, restrained — closer
+                  to what teams like Vercel or Linear ship than a typical side project.
+                  That applies whether it&rsquo;s a landing page or a full production app.
                 </p>
 
                 <div className="about__callout">
@@ -670,37 +302,19 @@ function App() {
                 </div>
 
                 <p>
-                  Outside of client and product work, I spend time thinking about AI
-                  as an operating layer rather than a single prompt box —
-                  multi-agent systems, local model runtimes, repo-level agents, and
-                  voice-first input.
-                </p>
-
-                <p>
-                  Before software, I ran Grasslane Lawn Co. in Toledo, which gave me
-                  direct, ground-level exposure to how small trade businesses
-                  actually operate. Fieldline and NWO Answering both grew out of that
-                  experience. I also run local LLM deployments (Ollama, Phi-3, Llama
-                  3) to prototype multi-agent workflows before anything goes near
-                  production.
-                </p>
-
-                <p>
-                  Outside of client work, I built VOID RIFT to learn how games are
-                  actually constructed with no engine, and whereisjimcarrey.com as a
-                  smaller, lighter side project.
+                  Before software, I ran Grasslane Lawn Co. in Toledo — direct,
+                  ground-level exposure to how small trade businesses operate. Fieldline
+                  and NWO Answering both grew out of that. I also run local LLM
+                  deployments (Ollama, Phi-3, Llama 3) to prototype multi-agent workflows
+                  before anything goes near production.
                 </p>
 
                 <div className="about__facts">
                   {[
-                    { label: 'Based',         value: 'Toledo, Ohio — Northwest Ohio / Detroit area' },
-                    { label: 'Focus',         value: 'AI product engineering, full-stack, solo founder' },
-                    { label: 'Stack',         value: 'React, Next.js, Node.js, Claude API, Ollama, Stripe, Supabase, Vercel' },
-                    { label: 'Local AI',      value: 'Ollama · Phi-3 · Llama 3 · local multi-agent workflows' },
-                    { label: 'Background',    value: 'Self-taught, product-first approach to engineering' },
-                    { label: 'Companies',     value: 'Stickley AI · Grasslane Lawn Co.' },
-                    { label: 'Interests',     value: 'Game dev, interior design, trading, collectibles, AI philosophy' },
-                    { label: 'Status',        value: 'Open to work — AI integration, product engineering, full-stack' },
+                    { label: 'Based', value: 'Toledo, Ohio — Northwest Ohio / Detroit area' },
+                    { label: 'Focus', value: 'AI product engineering, full-stack, solo founder' },
+                    { label: 'Companies', value: 'Stickley AI · Grasslane Lawn Co.' },
+                    { label: 'Status', value: 'Open to work — AI integration, product engineering, full-stack' },
                   ].map((f) => (
                     <div key={f.label} className="about__fact">
                       <span className="about__fact-label">{f.label}</span>
@@ -713,12 +327,51 @@ function App() {
           </div>
         </section>
 
+        {/* Process — how I build + stack, merged */}
+        <section className="section" id="process" aria-labelledby="process-title">
+          <div className="shell">
+            <div className="section__head">
+              <div className="section__head-meta">
+                <span className="section__index">[ 03 / Process ]</span>
+              </div>
+              <Reveal>
+                <h2 id="process-title" className="section__title">
+                  How the work <em>actually</em> gets built.
+                </h2>
+                <p className="section__lede">
+                  Most products fail at the seams between design, code, AI behavior, and
+                  billing. I remove those seams by owning all of them.
+                </p>
+              </Reveal>
+            </div>
+
+            <Reveal>
+              <HowIBuild />
+            </Reveal>
+
+            <Reveal>
+              <div className="stack-grid">
+                {stack.map(({ category, techs }) => (
+                  <div key={category} className="stack-card">
+                    <div className="stack-card__cat">{category}</div>
+                    <div className="flagship__chips">
+                      {techs.map((tech) => (
+                        <span key={tech} className="chip">{tech}</span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
         {/* Contact */}
         <section className="section" id="contact" aria-labelledby="contact-title">
           <div className="shell">
             <div className="section__head">
               <div className="section__head-meta">
-                <span className="section__index">[ 08 / Contact ]</span>
+                <span className="section__index">[ 04 / Contact ]</span>
               </div>
             </div>
 
@@ -755,54 +408,6 @@ function App() {
           </div>
         </section>
       </main>
-
-      {/* Dark mode toggle */}
-      <button
-        onClick={() => setIsDark(!isDark)}
-        aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-        style={{
-          position: 'fixed',
-          top: '1rem',
-          right: '1rem',
-          zIndex: 100,
-          width: '36px',
-          height: '36px',
-          borderRadius: '50%',
-          border: '1px solid var(--rule-strong)',
-          background: 'var(--bg)',
-          color: 'var(--ink)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          cursor: 'pointer',
-          transition: 'background 0.25s ease, border-color 0.25s ease, color 0.25s ease',
-          flexShrink: 0,
-        }}
-      >
-        {isDark ? (
-          /* Sun — click to switch to light mode */
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <circle cx="12" cy="12" r="4"/>
-            <line x1="12" y1="2" x2="12" y2="6"/>
-            <line x1="12" y1="18" x2="12" y2="22"/>
-            <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/>
-            <line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/>
-            <line x1="2" y1="12" x2="6" y2="12"/>
-            <line x1="18" y1="12" x2="22" y2="12"/>
-            <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"/>
-            <line x1="16.24" y1="7.76" x2="19.07" y2="4.93"/>
-          </svg>
-        ) : (
-          /* Moon — click to switch to dark mode */
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-          </svg>
-        )}
-      </button>
-
-      {caseStudy && (
-        <CaseStudyModal project={caseStudy} onClose={() => setCaseStudy(null)} />
-      )}
 
       {/* Footer */}
       <footer className="site-foot">
