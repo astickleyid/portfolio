@@ -200,7 +200,7 @@ em { font-family: var(--font-serif); font-style: italic; font-weight: 500; }
   position: sticky;
   top: 0;
   z-index: 30;
-  background: rgba(248, 248, 245, 0.92);
+  background: rgba(10, 10, 10, 0.92);
   border-bottom: 1px solid var(--rule);
   backdrop-filter: blur(12px);
   transition: background-color 0.25s ease;
