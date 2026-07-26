@@ -1,6 +1,12 @@
 import { useState } from 'react';
 
 const shippedItems = [
+  { project: 'VOID RIFT', feature: 'HERALD OF VOID boss at VOID SURGE wave 15 — multi-phase swarm commander with phase transitions and elite burst' },
+  { project: 'VOID RIFT', feature: 'Kill streak combo multiplier — chain kills for x2–x5 credit/score boost with animated HUD timer' },
+  { project: 'VOID RIFT', feature: 'BOSS ENRAGED overlay — red screen flash + warning text + 8-bullet burst when boss drops to 50% HP' },
+  { project: 'Rival', feature: 'TrialBanner — trial/cancelled/expired subscription status bar with upgrade CTA and session dismissal' },
+  { project: 'Rival', feature: 'Mobile hamburger nav — responsive drawer for the 8-link NavBar on small screens' },
+  { project: 'Rival', feature: 'Scheduled weekly digest cron — hourly Vercel cron sends email+Slack to all users at their configured time' },
   { project: 'VOID RIFT', feature: 'Freeze Orb drop — 4% enemy death chance, slows all enemies 60% for 3s with ice-blue shimmer' },
   { project: 'Rival', feature: 'Email report delivery — one-click send of the weekly competitive intelligence report to your inbox' },
   { project: 'Portfolio', feature: 'Rival added to live products panel — competitive intel SaaS now listed alongside nXcor, ClaruSign, VOID RIFT' },
