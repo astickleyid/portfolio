@@ -154,6 +154,24 @@ function App() {
                     Selected work
                     <ArrowUpRight />
                   </a>
+                  <a
+                    className="btn"
+                    href="/Austin-Stickley-Resume.pdf"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Resume
+                    <ArrowUpRight />
+                  </a>
+                  <a
+                    className="btn"
+                    href="https://github.com/astickleyid"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    GitHub
+                    <ArrowUpRight />
+                  </a>
                   <a className="btn" href="#contact">
                     Get in touch
                     <ArrowUpRight />
@@ -390,9 +408,13 @@ function App() {
                     <span>GitHub</span>
                     <span>github.com/astickleyid</span>
                   </a>
+                  <a className="contact__line" href="/Austin-Stickley-Resume.pdf" target="_blank" rel="noreferrer">
+                    <span>Resume</span>
+                    <span>Download PDF</span>
+                  </a>
                   <div className="contact__line">
                     <span>Based</span>
-                    <span>Toledo / Detroit</span>
+                    <span>Toledo / Detroit · open to relocation</span>
                   </div>
                   <div className="contact__line">
                     <span>Status</span>
