@@ -5,6 +5,7 @@ import { DeviceSimulator } from './components/DeviceSimulator';
 import { HowIBuild } from './components/HowIBuild';
 import { LiveProductsPanel } from './components/LiveProductsPanel';
 import { NowBuilding } from './components/NowBuilding';
+import { ShippingVelocity } from './components/ShippingVelocity';
 import { Reveal } from './components/Reveal';
 import { StickyProjectNav } from './components/StickyProjectNav';
 
@@ -148,6 +149,8 @@ function App() {
                 </p>
 
                 <NowBuilding />
+
+                <ShippingVelocity />
 
                 <div className="hero__cta">
                   <a className="btn btn--primary" href="#work">

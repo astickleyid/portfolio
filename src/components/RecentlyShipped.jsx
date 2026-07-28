@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const shippedItems = [
+export const shippedItems = [
   { project: 'VOID RIFT', feature: 'HERALD OF VOID boss at VOID SURGE wave 15 — multi-phase swarm commander with phase transitions and elite burst' },
   { project: 'VOID RIFT', feature: 'Kill streak combo multiplier — chain kills for x2–x5 credit/score boost with animated HUD timer' },
   { project: 'VOID RIFT', feature: 'BOSS ENRAGED overlay — red screen flash + warning text + 8-bullet burst when boss drops to 50% HP' },
