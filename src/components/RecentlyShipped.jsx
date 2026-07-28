@@ -1,6 +1,10 @@
 import { useState } from 'react';
 
 export const shippedItems = [
+  { project: 'Rival', feature: 'Public /pricing page — feature comparison, $49/mo plan, trial CTA with full pricing breakdown' },
+  { project: 'Rival', feature: 'Post-checkout success toast — welcome banner on ?checkout=success redirect from Stripe' },
+  { project: 'VOID RIFT', feature: 'Mission-complete toast popup — standalone center-screen notification on mission completion' },
+  { project: 'VOID RIFT', feature: 'Mobile touch controls overhaul — prioritized touch play, safe areas, performance on iOS' },
   { project: 'VOID RIFT', feature: 'HERALD OF VOID boss at VOID SURGE wave 15 — multi-phase swarm commander with phase transitions and elite burst' },
   { project: 'VOID RIFT', feature: 'Kill streak combo multiplier — chain kills for x2–x5 credit/score boost with animated HUD timer' },
   { project: 'VOID RIFT', feature: 'BOSS ENRAGED overlay — red screen flash + warning text + 8-bullet burst when boss drops to 50% HP' },
