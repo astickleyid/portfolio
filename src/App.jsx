@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { motion, useScroll, useSpring } from 'motion/react';
+import { CaseStudyModal } from './components/CaseStudyModal';
 import { ContactForm } from './components/ContactForm';
 import { DeviceSimulator } from './components/DeviceSimulator';
 import { HowIBuild } from './components/HowIBuild';
@@ -113,6 +115,7 @@ const aboutLanes = [
 function App() {
   const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 160, damping: 28, mass: 0.2 });
+  const [activeCaseStudy, setActiveCaseStudy] = useState(null);
 
   return (
     <div className="app">
@@ -252,6 +255,14 @@ function App() {
                             <ArrowUpRight />
                           </a>
                         ))}
+                        <button
+                          className="btn"
+                          onClick={() => setActiveCaseStudy(project)}
+                          aria-label={`Open case study for ${project.title}`}
+                        >
+                          Case study
+                          <ArrowUpRight />
+                        </button>
                       </div>
                     </div>
 
@@ -441,6 +452,14 @@ function App() {
           <span>Toledo · Detroit · Open to work</span>
         </div>
       </footer>
+
+      {/* Case Study Modal */}
+      {activeCaseStudy && (
+        <CaseStudyModal
+          project={activeCaseStudy}
+          onClose={() => setActiveCaseStudy(null)}
+        />
+      )}
     </div>
   );
 }
