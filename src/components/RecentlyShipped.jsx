@@ -1,6 +1,11 @@
 import { useState } from 'react';
 
 export const shippedItems = [
+  { project: 'Rival', feature: 'Inline competitor editing — name, website, pricing & changelog URLs editable after creation' },
+  { project: 'Rival', feature: 'Upgrade-gate card for competitor limit — Starter plan shows locked UI with upgrade CTA when limit reached' },
+  { project: 'Rival', feature: 'Billing section in Settings — Stripe portal link with live plan status and trial countdown' },
+  { project: 'VOID RIFT', feature: 'Per-stat PB labels on game-over banner — shows which stats (kills, time, accuracy) hit new personal bests' },
+  { project: 'VOID RIFT', feature: 'Per-stat PB tracking on game-over — animated gold PB badges for kills, time survived, accuracy' },
   { project: 'Rival', feature: 'Public /pricing page — feature comparison, $49/mo plan, trial CTA with full pricing breakdown' },
   { project: 'Rival', feature: 'Post-checkout success toast — welcome banner on ?checkout=success redirect from Stripe' },
   { project: 'VOID RIFT', feature: 'Mission-complete toast popup — standalone center-screen notification on mission completion' },

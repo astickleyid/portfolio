@@ -12,7 +12,7 @@ export function NowBuilding() {
       <span className="now-building__lbl">Now building</span>
       <span className="now-building__sep" aria-hidden="true">/</span>
       <span className="now-building__name">Rival</span>
-      <span className="now-building__desc">· Stripe billing portal + subscription management in Settings</span>
+      <span className="now-building__desc">· inline competitor editing — name & URLs editable after creation</span>
     </motion.div>
   );
 }
