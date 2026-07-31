@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
 export const shippedItems = [
+  { project: 'VOID RIFT', feature: 'Pilot XP progress bar on game-over screen — XP earned per run with animated level progress fill' },
+  { project: 'Rival', feature: 'Snapshot diff panel on competitor detail — recent page changes per scrape run, plus fix for 24h briefing filter' },
   { project: 'Rival', feature: 'Inline competitor editing — name, website, pricing & changelog URLs editable after creation' },
   { project: 'Rival', feature: 'Upgrade-gate card for competitor limit — Starter plan shows locked UI with upgrade CTA when limit reached' },
   { project: 'Rival', feature: 'Billing section in Settings — Stripe portal link with live plan status and trial countdown' },
