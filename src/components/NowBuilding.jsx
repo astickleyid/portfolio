@@ -11,8 +11,8 @@ export function NowBuilding() {
       <span className="now-building__dot" aria-hidden="true" />
       <span className="now-building__lbl">Now building</span>
       <span className="now-building__sep" aria-hidden="true">/</span>
-      <span className="now-building__name">Rival</span>
-      <span className="now-building__desc">· competitor snapshot diff panel — recent page changes per scrape run</span>
+      <span className="now-building__name">VOID RIFT</span>
+      <span className="now-building__desc">· level-up badge on game-over screen — LEVEL UP → LVL X banner when pilot leveled up</span>
     </motion.div>
   );
 }
