@@ -6,7 +6,9 @@ import { shippedItems } from './RecentlyShipped';
 
 const TOTAL      = shippedItems.length;
 const PROJECTS   = new Set(shippedItems.map((i) => i.project)).size;
-const LAST_30D   = 15; // top-of-array slice represents recent shipping cadence
+const _30dAgo    = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+const _last30d   = shippedItems.filter((i) => i.shippedAt && new Date(i.shippedAt) >= _30dAgo).length;
+const LAST_30D   = _last30d > 0 ? _last30d : 15;
 
 /* ─── Animated counter ───────────────────────────────────────── */
 

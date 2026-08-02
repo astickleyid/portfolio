@@ -1,6 +1,18 @@
 import { motion } from 'motion/react';
+import { shippedItems } from './RecentlyShipped';
+
+function relativeShipped(isoDate) {
+  if (!isoDate) return null;
+  const diffMs   = Date.now() - new Date(isoDate).getTime();
+  const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+  if (diffDays === 0) return 'shipped today';
+  if (diffDays === 1) return 'shipped 1d ago';
+  return `shipped ${diffDays}d ago`;
+}
 
 export function NowBuilding() {
+  const lastShippedLabel = relativeShipped(shippedItems[0]?.shippedAt);
+
   return (
     <motion.div
       className="now-building"
@@ -13,6 +25,9 @@ export function NowBuilding() {
       <span className="now-building__sep" aria-hidden="true">/</span>
       <span className="now-building__name">VOID RIFT</span>
       <span className="now-building__desc">· level-up badge on game-over screen — LEVEL UP → LVL X banner when pilot leveled up</span>
+      {lastShippedLabel && (
+        <span style={{ color: 'rgba(255,255,255,0.28)', marginLeft: '0.5em' }}>· {lastShippedLabel}</span>
+      )}
     </motion.div>
   );
 }
