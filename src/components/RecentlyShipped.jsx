@@ -1,6 +1,11 @@
 import { useState } from 'react';
 
 export const shippedItems = [
+  { project: 'Rival', feature: 'Immediate change-alert email from daily cron — sends on-the-spot email when competitor pricing or changelog diffs are detected', shippedAt: '2026-08-03T00:00:00.000Z' },
+  { project: 'VOID RIFT', feature: 'Pilot level + XP bar in Hangar header — persistent level badge and XP progress bar visible before every run', shippedAt: '2026-08-03T00:00:00.000Z' },
+  { project: 'Portfolio', feature: 'NowBuilding + RecentlyShipped updated — Rival change-alert email, VOID RIFT Hangar XP bar, Rival daily cron, mission XP', shippedAt: '2026-08-03T00:00:00.000Z' },
+  { project: 'Rival', feature: 'Daily-scrape Vercel cron — serverless competitor scraping for all active users, respecting per-user scrape frequency', shippedAt: '2026-08-02T00:00:00.000Z' },
+  { project: 'VOID RIFT', feature: 'Mission claim awards direct pilot XP — +50% of credit reward as immediate XP with toast notification', shippedAt: '2026-08-02T00:00:00.000Z' },
   { project: 'VOID RIFT', feature: 'Level-up badge on game-over screen — LEVEL UP → LVL X banner appears when pilot levels up during a run', shippedAt: '2026-08-01T00:00:00.000Z' },
   { project: 'Rival', feature: 'Top competitors activity summary in weekly email — ranked bar chart of most active competitors this week', shippedAt: '2026-07-30T00:00:00.000Z' },
   { project: 'Portfolio', feature: 'NowBuilding + RecentlyShipped updated — VOID RIFT level-up badge, Rival email activity summary', shippedAt: '2026-07-29T00:00:00.000Z' },
