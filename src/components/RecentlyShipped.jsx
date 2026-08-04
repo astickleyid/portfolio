@@ -1,6 +1,9 @@
 import { useState } from 'react';
 
 export const shippedItems = [
+  { project: 'Rival', feature: 'Slack change-alert notifications — instant Slack message when daily cron detects competitor pricing or changelog diffs', shippedAt: '2026-08-04T00:00:00.000Z' },
+  { project: 'VOID RIFT', feature: 'Pilot rank tier system — RECRUIT / PILOT / ACE / VETERAN / ELITE / LEGEND badges with per-rank color themes in Hangar header', shippedAt: '2026-08-04T00:00:00.000Z' },
+  { project: 'Portfolio', feature: 'NowBuilding + RecentlyShipped updated — Rival Slack alerts, VOID RIFT rank tiers', shippedAt: '2026-08-04T00:00:00.000Z' },
   { project: 'Rival', feature: 'Immediate change-alert email from daily cron — sends on-the-spot email when competitor pricing or changelog diffs are detected', shippedAt: '2026-08-03T00:00:00.000Z' },
   { project: 'VOID RIFT', feature: 'Pilot level + XP bar in Hangar header — persistent level badge and XP progress bar visible before every run', shippedAt: '2026-08-03T00:00:00.000Z' },
   { project: 'Portfolio', feature: 'NowBuilding + RecentlyShipped updated — Rival change-alert email, VOID RIFT Hangar XP bar, Rival daily cron, mission XP', shippedAt: '2026-08-03T00:00:00.000Z' },
