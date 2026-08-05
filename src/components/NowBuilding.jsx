@@ -24,7 +24,7 @@ export function NowBuilding() {
       <span className="now-building__lbl">Now building</span>
       <span className="now-building__sep" aria-hidden="true">/</span>
       <span className="now-building__name">Rival</span>
-      <span className="now-building__desc">· Slack change-alert notifications — instant Slack DM when daily cron detects competitor diffs</span>
+      <span className="now-building__desc">· Watched keywords — per-user keyword monitoring with ⚡ alert flagging in competitor change notifications</span>
       {lastShippedLabel && (
         <span style={{ color: 'rgba(255,255,255,0.28)', marginLeft: '0.5em' }}>· {lastShippedLabel}</span>
       )}

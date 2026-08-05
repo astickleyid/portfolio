@@ -1,6 +1,9 @@
 import { useState } from 'react';
 
 export const shippedItems = [
+  { project: 'Rival', feature: 'Watched keywords — per-user keyword list with ⚡ alert flagging when keywords appear in competitor diffs', shippedAt: '2026-08-05T00:00:00.000Z' },
+  { project: 'VOID RIFT', feature: 'Prestige system — pilot resets XP/level at max for prestige badge + 10% credit multiplier per prestige tier', shippedAt: '2026-08-05T00:00:00.000Z' },
+  { project: 'Portfolio', feature: 'NowBuilding + RecentlyShipped updated — Rival watched keywords, VOID RIFT prestige system', shippedAt: '2026-08-05T00:00:00.000Z' },
   { project: 'Rival', feature: 'Slack change-alert notifications — instant Slack message when daily cron detects competitor pricing or changelog diffs', shippedAt: '2026-08-04T00:00:00.000Z' },
   { project: 'VOID RIFT', feature: 'Pilot rank tier system — RECRUIT / PILOT / ACE / VETERAN / ELITE / LEGEND badges with per-rank color themes in Hangar header', shippedAt: '2026-08-04T00:00:00.000Z' },
   { project: 'Portfolio', feature: 'NowBuilding + RecentlyShipped updated — Rival Slack alerts, VOID RIFT rank tiers', shippedAt: '2026-08-04T00:00:00.000Z' },
