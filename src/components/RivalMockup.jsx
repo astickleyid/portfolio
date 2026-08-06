@@ -184,6 +184,24 @@ export function RivalMockup() {
     { signal: null }, { signal: 'notable' },
   ];
 
+  const alertRows = [
+    { competitor: 'Stripe',  keywords: ['pricing', 'enterprise'], timeAgo: '2h ago',  signal: 'critical' },
+    { competitor: 'Linear',  keywords: ['api'],                   timeAgo: '1d ago',  signal: 'notable'  },
+    { competitor: 'Vercel',  keywords: ['enterprise'],            timeAgo: '3d ago',  signal: 'notable'  },
+  ];
+
+  function kwChip(kw) {
+    return (
+      <span key={kw} style={{
+        display: 'inline-flex', alignItems: 'center',
+        padding: '1px 7px', borderRadius: 20,
+        background: 'rgba(99,102,241,0.15)', border: '1px solid rgba(99,102,241,0.35)',
+        color: '#a5b4fc', fontSize: 9, fontWeight: 700, letterSpacing: '0.04em',
+        marginRight: 4,
+      }}>{kw}</span>
+    );
+  }
+
   return (
     <div style={s.root} aria-hidden="true">
       {/* Nav */}
@@ -191,27 +209,56 @@ export function RivalMockup() {
         <span style={s.wordmark}>Rival</span>
         <div style={s.navTabs}>
           <span style={s.navTab}>Briefings</span>
-          <span style={s.navTabActive}>Competitors</span>
+          <span style={s.navTab}>Competitors</span>
+          <span style={s.navTabActive}>⚡ Alerts</span>
           <span style={s.navTab}>Settings</span>
         </div>
         <div style={s.navSpacer} />
         <div style={s.navDot} />
       </div>
 
-      {/* Filter chips */}
-      <div style={s.filterRow}>
-        <span style={chip('All', true)}>All</span>
-        <span style={chip('Critical', false)}>Critical</span>
-        <span style={chip('Notable', false)}>Notable</span>
-        <span style={chip('Quiet', false)}>Quiet</span>
-        <div style={{ flex: 1 }} />
-        <span style={{ fontSize: 9, color: 'rgba(255,255,255,0.22)', fontFamily: 'monospace' }}>3 tracked</span>
-      </div>
-
-      {/* Competitor rows */}
+      {/* Alert rows */}
       <div style={{ flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
-        {competitors.map(c => <CompetitorRow key={c.name} {...c} />)}
-        <HeatmapStrip cells={heatmapCells} />
+        {alertRows.map(row => (
+          <div key={row.competitor} style={{
+            display: 'flex', alignItems: 'flex-start', gap: 10,
+            padding: '9px 14px', borderBottom: '1px solid rgba(255,255,255,0.04)',
+          }}>
+            {/* Icon */}
+            <div style={{
+              flexShrink: 0, width: 26, height: 26, borderRadius: '50%',
+              background: 'rgba(99,102,241,0.12)', border: '1px solid rgba(99,102,241,0.3)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              fontSize: 11,
+            }}>⚡</div>
+
+            {/* Body */}
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
+                <span style={{ fontSize: 11, fontWeight: 700, color: '#f0f0f0' }}>{row.competitor}</span>
+                <span style={{
+                  padding: '1px 6px', borderRadius: 4,
+                  background: row.signal === 'critical' ? 'rgba(239,68,68,0.12)' : 'rgba(249,115,22,0.12)',
+                  border: `1px solid ${row.signal === 'critical' ? 'rgba(239,68,68,0.25)' : 'rgba(249,115,22,0.25)'}`,
+                  color: row.signal === 'critical' ? '#f87171' : '#fb923c',
+                  fontSize: 9, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em',
+                }}>{row.signal}</span>
+                <span style={{ fontSize: 9, color: 'rgba(255,255,255,0.22)', marginLeft: 'auto' }}>{row.timeAgo}</span>
+              </div>
+              <div>{row.keywords.map(kw => kwChip(kw))}</div>
+            </div>
+          </div>
+        ))}
+
+        {/* Footer */}
+        <div style={{
+          padding: '8px 14px', borderTop: '1px solid rgba(255,255,255,0.05)',
+          display: 'flex', alignItems: 'center', gap: 6,
+        }}>
+          <span style={{ fontSize: 9, color: 'rgba(255,255,255,0.25)', fontFamily: 'monospace', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+            3 alerts · 4 keywords watched
+          </span>
+        </div>
       </div>
     </div>
   );
